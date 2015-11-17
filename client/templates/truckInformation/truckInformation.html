@@ -1,0 +1,134 @@
+<template name="truckInformation">
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Informações do Truck
+                <small>Cadastro de Informações gerais</small>
+            </h1>
+            <!--           <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                        <li class="active">Here</li>
+                      </ol> -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Informações Gerais</h3>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Nome do Food Truck</label>
+                                    <input type="email" class="form-control" id="truckName" placeholder="" value="{{truckInformation.profile.truckName}}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Especialidade</label>
+                                    <input type="text" class="form-control" id="truckSpeciality" placeholder="" value="{{truckInformation.profile.truckSpeciality}}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Imagem principal do card</label>
+                                    <!--<input type="file" id="truckImgCard">-->
+                                    {{> uploadImage imageCollection="truckCardImg" size="thumbnail" doc=currentUser classImage="tiny-img round"}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Breve descrição do Food Truck (menos de 40 caracteres)</label>
+                                    <textarea class="form-control" rows="3" placeholder="" id="truckDescription" value="{{truckInformation.profile.truckDescription}}"></textarea>
+                                </div>
+                                <!--<div class="form-group">-->
+                                <!--<label>Tags relacionadas ao truck</label>-->
+                                <!--<select class="form-control select2" multiple="multiple" data-placeholder="Selecione as tags" style="width: 100%;">-->
+                                <!--<option>Hamburger</option>-->
+                                <!--<option>Temaki</option>-->
+                                <!--<option>Hot Dog</option>-->
+                                <!--<option>Temaki</option>-->
+                                <!--<option>Polenta</option>-->
+                                <!--<option>Doces</option>-->
+                                <!--<option>Paletas</option>-->
+                                <!--</select>-->
+                                <!--</div>-->
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Informações de Contato</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="input-group">
+                                <span class="input-group-addon">@</span>
+                                <input type="text" class="form-control" placeholder="E-mail" id="truckEmail" value="{{truckInformation.profile.truckContacts.email}}">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <input type="text" class="form-control" placeholder="Telefone para contato" id="truckPhone" value="{{truckInformation.profile.truckContacts.phone}}">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">www</span>
+                                <input type="text" class="form-control" placeholder="Website" id="truckSite" value="{{truckInformation.profile.truckContacts.site}}">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+                                <input type="text" class="form-control" placeholder="Copie aqui seu link para o Facebook" id="truckFacebook" value="{{truckInformation.profile.truckContacts.facebook}}">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
+                                <input type="text" class="form-control" placeholder="Copie aqui seu link para o Twitter" id="truckTwitter" value="{{truckInformation.profile.truckContacts.twitter}}">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-instagram"></i></span>
+                                <input type="text" class="form-control" placeholder="Copie aqui seu link para o Instagram" id="truckInstagram" value="{{truckInformation.profile.truckContacts.instagram}}">
+                            </div>
+                            <br>
+
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+
+                </div><!--/.col (left) -->
+                <!-- right column -->
+                <div class="col-md-6">
+                    <!-- Horizontal Form -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Cardápio do Food Truck</h3>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Descrição completa do cardápio oferecido</label>
+                                    <textarea class="form-control" rows="15" placeholder="" id="truckMenu" value="{{truckInformation.profile.truckMenu}}"></textarea>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <a class="btn btn-app" id="saveTruckInformation"><i class="fa fa-save"></i>SALVAR</a>
+                    <div class="alert alert-success alert-dismissible fade in hidden" role="alert" id="alertSuccess" style="margin-top: 10px;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        Informações salvas com sucesso
+                    </div>
+                </div>
+
+                <!-- general form elements disabled -->
+            </div><!--/.col (right) -->
+            <!-- /.row -->
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+</template>
