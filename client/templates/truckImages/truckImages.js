@@ -15,15 +15,31 @@ Template.truckImages.events({
                 }
             });
         }
+    },
+    'click [name=deleteImg]': function(event){
+        event.preventDefault();
+        var id = event.target.id;
+        console.log(id);
+        truckImg.remove({_id: id}, function(err){
+            if(err){
+                console.log(err)
+            } else {
+                //if($("#truckImgCarousel").find(".active") != true ){
+                //    $("[data-slide-to=0]").addClass("active");
+                //    $("[indexAux=0").addClass("active");
+                //
+                //}
+            }
+        })
     }
+
 });
 
 Template.truckImages.helpers({
     'truckImages': function(){
         var user = Meteor.userId();
-        var images =  truckImg.find({addedBy: user }).fetch();
+        var images =  truckImg.find({addedBy: user}).fetch();
         if (images){
-            console.log(images);
             return images;
         }
     }

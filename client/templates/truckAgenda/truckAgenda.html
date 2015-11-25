@@ -1,3 +1,105 @@
 <template name="truckAgenda">
-    
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Agenda do Truck
+                <!--<small>Cadastro de Informações gerais</small>-->
+            </h1>
+            <!--           <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                        <li class="active">Here</li>
+                      </ol> -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Agenda</h3>
+                        </div><!-- /.box-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Agenda do dia:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" id="agendaDate" value="">
+                                    </div><!-- /.input group -->
+                                </div>
+                                <div class="form-group">
+                                    <label>Endereço</label>
+                                    <input type="email" class="form-control" id="agendaAddress" placeholder="" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Referência do local</label>
+                                    <input type="text" class="form-control" id="agendaAddressReference" placeholder="" value="">
+                                </div>
+                                <div class="map-container">
+                                    {{> googleMap name="map" options=mapOptions}}
+                                </div>
+                            </div>
+                        </form>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" id="saveAgenda"><i class="fa fa-calendar"></i> Adicionar Agenda</button>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Histórico de Agenda do Truck</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Horário inicio</th>
+                                    <th>Horário fim</th>
+                                    <th>Endereço</th>
+                                    <th>Referência</th>
+                                    <th>Opção</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#each agenda}}
+                                <tr>
+                                    <td></td>
+                                    <td>{{dateStart}}</td>
+                                    <td>{{dateEnd}}</td>
+                                    <td>{{address}}</td>
+                                    <td>{{addressReference}}</td>
+                                    <td>
+                                        <button class="btn btn-primary eraseAgenda" id="{{_id}}">
+                                        <i class="fa fa-fw fa-trash-o"></i> Apagar Agenda</button>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Horário inicio</th>
+                                    <th>Horário fim</th>
+                                    <th>Endereço</th>
+                                    <th>Referência</th>
+                                    <th>Opção</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div><!--/.col (left) -->
+                <!-- right column -->
+            </div><!--/.col (right) -->
+            <!-- /.row -->
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
 </template>

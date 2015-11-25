@@ -1,16 +1,3 @@
-Template.login.onRendered(function () {
-    var self = this;
-    if (self.view.isRendered) {
-        var body = $('body');
-        body.removeClass();
-        body.addClass("hold-transition login-page");
-
-        $(function () {
-            MeteorAdminLTE.run()
-        });
-    }
-});
-
 Template.login.events({
     'submit form':function(event){
         event.preventDefault();
@@ -18,7 +5,7 @@ Template.login.events({
         var truckPassword = $('[name=truckPassword]').val();
         Meteor.loginWithPassword(truckEmail, truckPassword,function(error){
             if(error){
-                console.log(error);
+                toastr.error(error.reason);
             }else{
                 Router.go('truckInformation');
             }

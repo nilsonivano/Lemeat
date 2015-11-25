@@ -1,3 +1,10 @@
-.main-header{
-    background: black;
+.skin-blue-light .main-header > .logo {
+    background-color: #795548;
+    color: #333333;
+    border-bottom: 0 solid transparent;
+    border-right: 1px solid #eee;
+}
+
+.skin-blue-light .main-header > .navbar {
+    background-color: #795548;
 }

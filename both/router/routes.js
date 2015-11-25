@@ -24,8 +24,3 @@ Router.route('/truckImages', {
     name: 'truckImages',
     layoutTemplate: 'appLayout'
 });
-
-Router.route('/dashboard', {
-  name: 'dashboard',
-  controller: 'DashboardController'
-});
