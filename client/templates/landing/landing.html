@@ -1,0 +1,334 @@
+<template name="landing">
+    <head>
+        <style>
+            :root {
+                --dark-primary-color: #5d4037;
+                --default-primary-color: #795548;
+                --light-primary-color: #d7ccc8;
+                --text-primary-color: #ffffff; /*text/icons*/
+                --accent-color: #ff5722;
+                --primary-background-color: #c5cae9;
+                --primary-text-color: #212121;
+                --secondary-text-color: #727272;
+                --disabled-text-color: #bdbdbd;
+                --divider-color: #B6B6B6;
+                --drawer-menu-color: #ffffff;
+            }
+
+            /*Header styling*/
+
+            .header-13-sub {
+                position: relative;
+                /*padding-top: 70px;*/
+                padding-bottom: 130px;
+                color: #bdc3c7;
+            }
+            .header-13-sub .background {
+                background-image: url("images/lemeat-landing-bg4.jpg");
+            }
+            .header-13 .brand img {
+                width: 300px ;
+                height: 96px ;
+                margin-top: 10px !important;
+            }
+            .btn-danger {
+                color: #ffffff;
+                background-color: #795548;
+            }
+            .contacts-1{
+                background-color: #795548;
+            }
+            .contacts-1 form .btn{
+                background-color:  #ff5722;
+            }
+            .bg-midnight-blue {
+                background-color: #ffffff;
+            }
+            @media (max-width: 767px) {
+                .header-13 {
+                    text-align: center;
+                }
+                .header-13 .brand {
+                    position: absolute;
+                    top: -120px;
+                    left: 25%;
+                    margin-left: -50px;
+                }
+            }
+            @media (max-width: 480px) {
+                .header-13-sub {
+                    padding-top: 50px;
+                }
+                .header-13-sub > div > .container {
+                    padding-top: 0px;
+                }
+            }
+            @media (max-width: 767px) {
+                .header-13-sub {
+                    position: relative;
+                    padding-top: 200px;
+                    padding-bottom: 130px;
+                    color: #bdc3c7;
+                }
+            }
+
+            /*Para trucks Styling*/
+            .content-4 {
+                padding-top: 50px;
+                padding-bottom: 50px;
+                position: relative;
+                background-color: #795548;
+            }
+
+            /*Mais de 80 trucks*/
+            .content-12 .btn-wide:hover,
+            .content-12 .btn-wide:active {
+                background: #5d4037;
+            }
+
+            /*Contato styling*/
+            .contacts-1 a:hover, .contacts-1 a:focus, .contacts-1 a.active {
+                color: #ff5722;
+            }
+            .contacts-1 form input:focus,
+            .contacts-1 form textarea:focus {
+                border-color: #ff5722;
+            }
+            /*Footer styling*/
+            .footer-2 .additional-links {
+                color: black;
+                text-align: center;
+
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header-13">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-11 col-sm-offset-1">
+                        <a class="brand" href="#">
+                            <img src="images/lemeat-logo.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="header-13-sub v-center bg-midnight-blue">
+            <div>
+                <div class="background"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 col-sm-offset-1">
+                            <div style="background:#ff5722; padding:20px; border-radius: 10px; opacity: 1;margin-bottom:20px;">
+                                <h3>Agora ficou mais fácil encontrar seu Food Truck favorito!</h3>
+                                <p class="lead">Aqui no Lemeat você encontra os Food Trucks mais próximos de você, conhece novos e fica sabendo de todos os eventos que acontecem por aí</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <a href="https://play.google.com/store/apps/details?id=com.lemeat">
+                                        <img src="images/googleplay_icon.png">
+                                    </a>
+                                    <!-- <a class="btn btn-danger btn-huge" href="#">Baixe na Playstore</a> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-1">
+                            <img src="images/lemeat-android-mockup.png" class="hidden-xs" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Para usuários -->
+        <section class="content-10">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Aqui no LeMeat você pode</h3>
+                        <div class="features">
+                            <div class="box">
+                                <img src="images/lemeat-icon1.png" width="100" height="100" alt="">
+                                <h6>Saber quem está por perto</h6>
+                                <p>Utilizando nosso mapa, você fica sabendo rapidinho quais os Food Trucks estão perto de você por ordem de proximidade</p>
+                            </div>
+                            <div class="box">
+                                <img src="images/lemeat-icon2.png" width="100" height="100" alt="">
+                                <h6>Descobrir os Food Trucks de sua cidade</h6>
+                                <p>Aqui você encontra de maneira fácil a agenda atualizada de diversos Food Trucks e também informações como contatos, cardápio e fotos</p>
+                            </div>
+                            <div class="box">
+                                <img src="images/lemeat-icon3.png" width="100" height="100" alt="">
+                                <h6>Encontrar eventos e Food Parks</h6>
+                                <p>Aqui também você fica sabendo de todos os eventos que estão rolando em sua cidade e todos os locais onde encontrar os famosos Food Parks</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-2 text-center">
+                        <div id="c-10_myCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="images/lemeat_app02.png" width="350" height="681" alt="">
+                                </div>
+                                <div class="item">
+                                    <img src="images/lemeat_app03.png" width="350" height="681" alt="">
+                                </div>
+                                <div class="item">
+                                    <img src="images/lemeat_app01.png" width="350" height="681" alt="">
+                                </div>
+                            </div>
+                            <ol class="carousel-indicators">
+                                <li data-target="#c-10_myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#c-10_myCarousel" data-slide-to="1"></li>
+                                <li data-target="#c-10_myCarousel" data-slide-to="2"></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Para Food Trucks -->
+                <section class="content-4">
+                    <div class="container">
+                        <h3>Para Food Trucks</h3>
+                        <div class="row features">
+                            <div class="col-sm-4">
+                                <img src="images/calendar.png" alt="" width="100" height="100">
+                                <h6>Atualize sua agenda semanal</h6>
+                                <p>
+                                    Assim seus fans ficarão sabendo antecipadamente quando você estará por perto
+                                </p>
+                            </div>
+                            <div class="col-sm-4">
+                                <img src="images/ftinfo.png" alt="" width="104" height="104">
+                                <h6>Mantenha suas informações atualizadas</h6>
+                                <p>
+                                    Aqui você pode divulgar informações de seu truck tais como o seu cardápio, tipo de comida e contatos em redes sociais. A diferença com o Facebook é a que aqui só falamos sobre Food Trucks
+                                </p>
+                            </div>
+                            <div class="col-sm-4">
+                                <img src="images/comunidade.png" alt="" width="101" height="101">
+                                <h6>Faça parte da comunidade</h6>
+                                <p>
+                                    Criamos uma comunidade para que você possa conversar com outros Food Trucks, compartilhar experiências, falar sobre eventos e muito mais. Se você ainda não faz parte de nossa comunidade entre em contato conosco
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        <!-- Food Trucks Cadastrados -->
+        <section class="content-12">
+            <a class="wide btn-wide" href="https://play.google.com/store/apps/details?id=com.lemeat" target="_blank"><b>Mais de 80 Food Trucks já estão participando do LeMeat</b></a>
+        </section>
+
+        <!-- O que estao falando -->
+        <section class="content-18">
+        <!-- <div class="container">
+            <div class="row">
+            <h3>O que estão falando do LeMeat</h3>
+        </div> -->
+            <div class="row">
+                <div class="container">
+                    <div id="c-18_myCarousel" class="carousel slide" data-interval="300">
+                        <div class="controls">
+                            <a class="carousel-control left disabled" href="#c-18_myCarousel" data-slide="prev"> </a>
+                            <a class="carousel-control right" href="#c-18_myCarousel" data-slide="next"> </a>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="quote-text">
+                                    Da pra ficar sabendo muito fácil quais os Food Trucks estão perto de onde eu trabalho
+                                </div>
+                                <div class="quote-author">Nilson Ivano</div>
+                            </div>
+                            <div class="item">
+                                <div class="quote-text">
+                                    Descobri alguns Food Trucks que ficam aqui do lado de casa! Muito Bom!
+                                </div>
+                                <div class="quote-author">Melissa Ogata</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section class="contacts-1" id="contato">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h3>CADASTRE SEU FOOD TRUCK NO LEMEAT</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form>
+                            <label class="h6">Nome</label>
+                            <input type="text" class="form-control" label="Nome do Foodtruck">
+                            <label class="h6">E-mail</label>
+                            <input type="text" class="form-control" label="Seu e-mail">
+                            <label class="h6">Mensagem</label>
+                            <textarea rows="7" class="form-control"></textarea>
+                            <button type="submit" class="btn btn-primary"><span class="fui-mail"></span></button>
+                        </form>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <div class="additional">
+                            <h6>Participe do mapa de Food Trucks mais completo do Brasil</h6>
+                            <p>Aqui no LeMeat você pode cadastrar seu Food Truck gratuitamente. Prometemos que nunca cobraremos taxa alguma pelo nosso serviço. </p>
+                        </div>
+                        <div class="aditional">
+                            <h6>Ainda tem dúvidas?</h6>
+                            <p>Fale com a equipe do LeMeat utilizando os contatos abaixo.</p>
+                            <div class="links">
+                                <a href="#"><span class="fui-phone"></span> +55 11 985 350 380</a><br>
+                                <a href="mailto:contato@lemeat.com?Subject=Contato no lemeat" target="_top"><span class="fui-mail"></span> contato@lemeat.com</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-2 bg-midnight-blue">
+            <div class="container">
+                <!-- <nav class="pull-left"> -->
+                    <!-- <ul>
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul> -->
+                <!-- </nav> -->
+                <div class="social-btns pull-right">
+                    <a href="https://www.facebook.com/lemeatbr">
+                        <div class="fui-facebook"></div>
+                        <div class="fui-facebook"></div>
+                    </a>
+                    <a href="https://twitter.com/lemeatbr">
+                        <div class="fui-twitter"></div>
+                        <div class="fui-twitter"></div>
+                    </a>
+                </div>
+                <div class="additional-links">
+                    COPYRIGHT ® 2015 LEMEAT - Todos os direitos reservados
+                </div>
+            </div>
+        </footer>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-59202550-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </body>
+</template>
