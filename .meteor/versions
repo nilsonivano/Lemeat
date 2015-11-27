@@ -60,7 +60,7 @@ ecmascript-runtime@0.2.6
 ejson@1.0.7
 email@1.0.8
 fastclick@1.0.7
-fortawesome:fontawesome@4.4.0
+fortawesome:fontawesome@4.4.0_1
 geojson-utils@1.0.4
 gwendall:body-events@0.1.6
 handlebars@1.0.4
@@ -105,6 +105,7 @@ meteortoys:throttle@2.1.0
 meteortoys:toykit@2.2.1
 minifiers@1.1.7
 minimongo@1.0.10
+miro:preloader@1.2.4
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 momentjs:moment@2.10.6
@@ -138,7 +139,7 @@ standard-minifiers@1.0.2
 templating@1.1.5
 templating-tools@1.0.0
 tracker@1.0.9
-twbs:bootstrap@3.3.5
+twbs:bootstrap@3.3.6
 ui@1.0.8
 underscore@1.0.4
 underscorestring:underscore.string@3.2.2
