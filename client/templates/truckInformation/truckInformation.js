@@ -1,5 +1,8 @@
 Template.truckInformation.onCreated(function(){
     Blaze._allowJavascriptUrls();
+    if (!Meteor.userId()) {
+        Router.go('login')
+    }
 });
 
 Template.truckInformation.events({
@@ -14,7 +17,7 @@ Template.truckInformation.events({
         //Contatos
         var truckFacebook = $('[id=truckFacebook]').val();
         var truckInstagram = $('[id=truckInstagram]').val();
-        var truckSite = $('[id=truckSite]').val();
+        var truckSite = $('[id=truckWebSite]').val();
         var truckPhone = $('[id=truckPhone]').val();
         var truckTwitter = $('[id=truckTwitter]').val();
         var truckEmail = $('[id=truckEmail]').val();
@@ -25,55 +28,48 @@ Template.truckInformation.events({
             facebook: truckFacebook,
             instagram: truckInstagram,
             twitter: truckTwitter,
-            site: truckSite,
+            website: truckSite,
             email: truckEmail,
             phone: truckPhone
         };
 
-        console.log(truckName,truckSpeciality,truckDescription,contacts);
-
         Meteor.users.update(currentUser,{$set:{
-            "profile.truckName": truckName,
-            "profile.truckSpeciality": truckSpeciality,
-            "profile.truckDescription": truckDescription,
-            "profile.truckContacts": contacts,
-            "profile.truckMenu": truckMenu,
-            "profile.truckCardImgUrl": truckCardImgUrl
+            "profile.name": truckName,
+            "profile.speciality": truckSpeciality,
+            "profile.description": truckDescription,
+            "profile.contacts": contacts,
+            "profile.menu": truckMenu,
+            "profile.img": truckCardImgUrl
         }},function(error){
             if(error){
-                console.log(error);
+                toastr.error("Alguma coisa deu errado na hora de salvar");
             } else {
-                console.log(Meteor.user().profile);
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": false,
-                    "positionClass": "toast-bottom-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "2000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                };
                 toastr.success("Informações salvas com sucesso");
-                //setTimeout(function(){
-                //    $('[id=alertSuccess]').addClass('hidden');
-                //},2000);
             }
         });
-
-
     }
 });
 
 Template.truckInformation.helpers({
     'truckInformation': function(){
-        return Meteor.user()
+        return Meteor.user().profile
     }
-})
+});
+
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-bottom-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "2000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+};

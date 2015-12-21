@@ -52,3 +52,15 @@ Router.route('/truckImages', {
     name: 'truckImages',
     layoutTemplate: 'appLayout'
 });
+
+Router.route('/truckMap', {
+    name: 'truckMap',
+    layoutTemplate: 'appLayout',
+    controller: PreloadController,
+    'preload':{
+        'verbose':true,
+        'styles':['styles/07_daterangepicker-bs3.css'],
+        'sync':['plugins/04_daterangepicker.js',
+            'plugins/05_moment.min.js']
+    }
+});

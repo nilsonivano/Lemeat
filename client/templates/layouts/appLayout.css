@@ -4,7 +4,9 @@
     border-bottom: 0 solid transparent;
     border-right: 1px solid #eee;
 }
-
 .skin-blue-light .main-header > .navbar {
+    background-color: #795548;
+}
+.skin-blue-light .main-header li.user-header {
     background-color: #795548;
 }

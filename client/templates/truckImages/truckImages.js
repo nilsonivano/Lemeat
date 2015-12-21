@@ -1,3 +1,9 @@
+Template.truckImages.onCreated(function(){
+    if (!Meteor.userId()) {
+        Router.go('login')
+    }
+});
+
 Template.truckImages.events({
     'change form': function(event,template){
         event.preventDefault();

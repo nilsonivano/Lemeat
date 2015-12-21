@@ -121,16 +121,16 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="{{user.profile.truckCardImgUrl}}" class="user-image" alt="User Image">
+                                <img src="{{user.profile.img}}" class="user-image" alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">{{user.profile.truckName}}</span>
+                                <span class="hidden-xs">{{user.profile.name}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="{{user.profile.truckCardImgUrl}}" class="img-circle" alt="User Image">
+                                    <img src="{{user.profile.img}}" class="img-circle" alt="User Image">
                                     <p>
-                                        {{user.profile.truckName}}
+                                        {{user.profile.name}}
                                         <small></small>
                                     </p>
                                 </li>
@@ -167,36 +167,14 @@
 
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-
-                <!-- Sidebar user panel (optional) -->
-                <!--           <div class="user-panel">
-                            <div class="pull-left image">
-                              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                            </div>
-                            <div class="pull-left info">
-                              <p>Alexander Pierce</p> -->
-                <!-- Status -->
-                <!--               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                            </div>
-                          </div> -->
-
-                <!-- search form (Optional) -->
-                <!--           <form action="#" method="get" class="sidebar-form">
-                            <div class="input-group">
-                              <input type="text" name="q" class="form-control" placeholder="Search...">
-                              <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                              </span>
-                            </div>
-                          </form> -->
-                <!-- /.search form -->
-
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu">
                     <li class="header">for TRUCKERS</li>
                     <li><a href={{ pathFor 'truckInformation' }}><i class="fa fa-truck"></i> <span>Informações do Truck</span></a></li>
                     <li><a href={{ pathFor 'truckImages'}}><i class="fa fa-image"></i> <span>Imagens do Truck</span></a></li>
                     <li><a href={{ pathFor 'truckAgenda' }}><i class="fa fa-calendar"></i> <span>Cadastro de Agenda</span></a></li>
+                    <li><a href={{ pathFor 'truckMap' }}><i class="fa fa-map"></i> <span>Mapa Geral de Trucks</span></a></li>
+                    <li><a href={{ pathFor 'truckEvents' }}><i class="fa fa-events"></i> <span>Eventos</span></a></li>
                 </ul><!-- /.sidebar-menu -->
             </section>
             <!-- /.sidebar -->

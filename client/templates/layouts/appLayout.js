@@ -12,8 +12,8 @@ Template.appLayout.onRendered(function () {
 });
 
 Template.appLayout.events({
-    'click #menuToggle': function(){
-        $("#menuToggle").toggleClass("open");
+    'click .dropdown-toggle': function(){
+        $('.dropdown-toggle').dropdown();
     },
     'click #logout': function(){
         Meteor.logout(function(err){

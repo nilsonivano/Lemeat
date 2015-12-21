@@ -28,11 +28,11 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>Nome do Food Truck</label>
-                                    <input type="email" class="form-control" id="truckName" placeholder="" value="{{truckInformation.profile.truckName}}">
+                                    <input type="email" class="form-control" id="truckName" placeholder="" value="{{truckInformation.name}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Especialidade</label>
-                                    <input type="text" class="form-control" id="truckSpeciality" placeholder="" value="{{truckInformation.profile.truckSpeciality}}">
+                                    <input type="text" class="form-control" id="truckSpeciality" placeholder="" value="{{truckInformation.speciality}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Imagem principal do card</label>
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Breve descrição do Food Truck (menos de 40 caracteres)</label>
-                                    <textarea class="form-control" rows="3" placeholder="" id="truckDescription" value="{{truckInformation.profile.truckDescription}}"></textarea>
+                                    <textarea class="form-control" rows="3" placeholder="" id="truckDescription" value="{{truckInformation.description}}"></textarea>
                                 </div>
                                 <!--<div class="form-group">-->
                                 <!--<label>Tags relacionadas ao truck</label>-->
@@ -67,32 +67,32 @@
                         <div class="box-body">
                             <div class="input-group">
                                 <span class="input-group-addon">@</span>
-                                <input type="text" class="form-control" placeholder="E-mail" id="truckEmail" value="{{truckInformation.profile.truckContacts.email}}">
+                                <input type="text" class="form-control" placeholder="E-mail" id="truckEmail" value="{{truckInformation.contacts.email}}">
                             </div>
                             <br>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                <input type="text" class="form-control" placeholder="Telefone para contato" id="truckPhone" value="{{truckInformation.profile.truckContacts.phone}}">
+                                <input type="text" class="form-control" placeholder="Telefone para contato" id="truckPhone" value="{{truckInformation.contacts.phone}}">
                             </div>
                             <br>
                             <div class="input-group">
                                 <span class="input-group-addon">www</span>
-                                <input type="text" class="form-control" placeholder="Website" id="truckSite" value="{{truckInformation.profile.truckContacts.site}}">
+                                <input type="text" class="form-control" placeholder="Website" id="truckWebSite" value="{{truckInformation.contacts.website}}">
                             </div>
                             <br>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
-                                <input type="text" class="form-control" placeholder="Copie aqui seu link para o Facebook" id="truckFacebook" value="{{truckInformation.profile.truckContacts.facebook}}">
+                                <input type="text" class="form-control" placeholder="Copie aqui seu link para o Facebook" id="truckFacebook" value="{{truckInformation.contacts.facebook}}">
                             </div>
                             <br>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-                                <input type="text" class="form-control" placeholder="Copie aqui seu link para o Twitter" id="truckTwitter" value="{{truckInformation.profile.truckContacts.twitter}}">
+                                <input type="text" class="form-control" placeholder="Copie aqui seu link para o Twitter" id="truckTwitter" value="{{truckInformation.contacts.twitter}}">
                             </div>
                             <br>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-instagram"></i></span>
-                                <input type="text" class="form-control" placeholder="Copie aqui seu link para o Instagram" id="truckInstagram" value="{{truckInformation.profile.truckContacts.instagram}}">
+                                <input type="text" class="form-control" placeholder="Copie aqui seu link para o Instagram" id="truckInstagram" value="{{truckInformation.contacts.instagram}}">
                             </div>
                             <br>
 
@@ -112,7 +112,7 @@
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>Descrição completa do cardápio oferecido</label>
-                                    <textarea class="form-control" rows="15" placeholder="" id="truckMenu" value="{{truckInformation.profile.truckMenu}}"></textarea>
+                                    <textarea class="form-control" rows="15" placeholder="" id="truckMenu" value="{{truckInformation.menu}}"></textarea>
                                 </div>
                             </div>
 

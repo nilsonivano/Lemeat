@@ -30,14 +30,13 @@ Schemas.truckAgenda = new SimpleSchema({
         label:"Address Reference",
         optional: true
     },
-    truckId: {
+    truckName: {
         type: String,
-        label: "TruckId",
-        optional: true
+        label: "truckName"
     },
     addedBy: {
         type: String,
-        label: "Author"
+        label: "User Author"
     },
     createdAt: {
         type: Date,
