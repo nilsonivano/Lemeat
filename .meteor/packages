@@ -20,14 +20,12 @@ yasinuslu:blaze-meta
 aldeed:collection2
 aldeed:autoform
 yp2:admin-lte
-insecure
 accounts-base
 accounts-ui
 meteortoys:allthings
 dbarrett:dropzonejs
 okgrow:image-upload
 cfs:standard-packages
-autopublish
 standard-minifiers
 meteor-base
 mobile-experience

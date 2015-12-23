@@ -1,3 +1,5 @@
+Meteor.subscribe('truckAgenda');
+
 Template.truckMap.onCreated(function(){
     if (!Meteor.userId()) {
         Router.go('login')
@@ -61,7 +63,6 @@ placeMarkerTruckMap = function(markersArray,map,markerImage){
                 var agendaEnd = results.dateEnd.toUTCString();
                 var agendaAddress = results.address;
                 var truckName = results.truckName;
-                console.log(results);
                 var contentString =
                     '<div>' + '<img style="width:100px; height:100px; margin-bottom:5px; align:center" src=' + '"' + imgUrl + '"' + '>' + '</div>' +
                     '<div>' + '<b>Nome do Truck: </b>' + truckName + '</div>' +
@@ -80,10 +81,10 @@ placeMarkerTruckMap = function(markersArray,map,markerImage){
                 google.maps.event.addListener(marker, 'click', function() {
                     this.infowindow.open(map, this);
                 });
-                bounds.extend(marker.getPosition());
+                var LatLngBounds = new google.maps.LatLng(LatLng);
+                bounds.extend(LatLngBounds);
+                map.fitBounds(bounds);
             }
         });
-
     }
-    map.fitBounds(bounds);
 };

@@ -1,3 +1,5 @@
+Meteor.subscribe('truckAgenda');
+
 if (Meteor.isClient) {
     Meteor.startup(function() {
         GoogleMaps.load();
@@ -56,21 +58,11 @@ Template.truckAgenda.events({
            if (status == google.maps.GeocoderStatus.OK) {
                var lat = results[0].geometry.location.lat();
                var lng = results[0].geometry.location.lng();
-               truckAgenda.insert({
-                   dateStart: dateStart,
-                   dateEnd: dateEnd,
-                   address: agendaAddress,
-                   lat: lat,
-                   lng: lng,
-                   addressReference: agendaAddressReference,
-                   truckName: truckName,
-                   addedBy: userId
-               },function(err){
+               Meteor.call('insertAgenda',dateStart, dateEnd, agendaAddress, lat, lng,
+                   agendaAddressReference, truckName, userId, function(err){
                    if (err){
                        toastr.error("Algo de errado aconteceu")
                    }else{
-                       //Trigger render
-                       //Blaze.render(Template.agendaTable,)
                        $('#agendaAddress').val("");
                        $('#agendaAddressReference').val("");
                        $('#agendaDate').val("");
@@ -108,7 +100,7 @@ Template.truckAgenda.events({
    },
    'click .eraseAgenda': function(event){
        var agendaId = event.target.id;
-       truckAgenda.remove({_id:agendaId}, function(err){
+       Meteor.call('removeAgenda', agendaId, function(err){
            if(err){
                console.log(err.reason)
            } else{
