@@ -11,3 +11,7 @@ Meteor.publish('truckCardImg', function(){
     var currentUserId = this.userId;
     return truckImg.find({addedBy: currentUserId})
 });
+
+Meteor.publish('truckEvents', function(){
+    return truckEvents.find()
+});

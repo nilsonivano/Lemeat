@@ -61,6 +61,7 @@ Template.truckAgenda.events({
                Meteor.call('insertAgenda',dateStart, dateEnd, agendaAddress, lat, lng,
                    agendaAddressReference, truckName, userId, function(err){
                    if (err){
+                       console.log(err);
                        toastr.error("Algo de errado aconteceu")
                    }else{
                        $('#agendaAddress').val("");
