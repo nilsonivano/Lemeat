@@ -2,7 +2,6 @@ Router.route('/', {
   name: 'landing',
   controller: PreloadController,
   'preload':{
-      'verbose':true,
       'styles':[
           'stylesLanding/flat-ui/css/flat-ui.css',
           'stylesLanding/common-files/css/icon-font.css',
@@ -20,26 +19,44 @@ Router.route('/', {
           'plugins/startup-kit.js']
   }
 });
+// Website routing
 
-Router.route('/frontPage', {
-    name: 'lemeatSite',
+Router.route('/home', {
+    name: 'lemeatHome',
+    layoutTemplate: 'siteLayout',
     controller: PreloadController,
     'preload':{
-        'verbose': true,
         'styles':[
-            'stylesSite/style.css',
-            'stylesSite/dark.css',
-            //'stylesSite/font-icons.css',
-            'stylesSite/animate.css',
-            'stylesSite/magnific-popup.css',
-            'stylesSite/responsive.css'
+            '/stylesSite/materialize.css'
         ],
         'sync':[
-            'plugins/pluginsSite.js',
-            'plugins/functions.js'
+            '/plugins/materialize.js'
         ]
     }
 });
+
+Router.route('/truckProfile/:truckId', {
+    name: 'truckProfile',
+    layoutTemplate: 'siteLayout',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/stylesSite/materialize.css'
+        ],
+        'sync':[
+            '/plugins/materialize.js'
+        ]
+    },
+    data: function(){
+        truckId = this.params.truckId;
+        var truckProfile = Meteor.users.findOne({_id: truckId },{fields: {'profile': 1}});
+        this.subscribe('siteTruckProfileImg',truckId);
+        var truckImages = truckImg.find({addedBy: truckId}).fetch();
+        return [truckProfile,truckImages]
+    }
+});
+
+// App for truckers routing
 
 Router.route('/login', {
     name: 'login'
@@ -59,7 +76,6 @@ Router.route('/truckAgenda', {
     layoutTemplate: 'appLayout',
     controller: PreloadController,
     'preload':{
-        'verbose':true,
         'styles':['stylesLanding/06_dataTables.bootstrap.css',
             'stylesLanding/07_daterangepicker-bs3.css',
             'stylesLanding/08_jquery.dataTables.min.css'],
@@ -80,7 +96,6 @@ Router.route('/truckMap', {
     layoutTemplate: 'appLayout',
     controller: PreloadController,
     'preload':{
-        'verbose':true,
         'styles':['stylesLanding/07_daterangepicker-bs3.css'],
         'sync':['plugins/04_daterangepicker.js',
             'plugins/05_moment.min.js']

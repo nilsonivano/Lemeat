@@ -15,3 +15,12 @@ Meteor.publish('truckCardImg', function(){
 Meteor.publish('truckEvents', function(){
     return truckEvents.find()
 });
+
+Meteor.publish('truckProfile', function(){
+    return Meteor.users.find({},{fields: {profile: 1}});
+});
+
+Meteor.publish('siteTruckProfileImg', function(truckId){
+    var truckIdImg = truckId;
+    return truckImg.find({addedBy: truckIdImg})
+});

@@ -61,7 +61,7 @@ ecmascript-runtime@0.2.6
 ejson@1.0.7
 email@1.0.8
 fastclick@1.0.7
-fortawesome:fontawesome@4.4.0_1
+fortawesome:fontawesome@4.5.0
 geojson-utils@1.0.4
 gwendall:body-events@0.1.6
 handlebars@1.0.4
@@ -143,7 +143,7 @@ tracker@1.0.9
 twbs:bootstrap@3.3.6
 ui@1.0.8
 underscore@1.0.4
-underscorestring:underscore.string@3.2.2
+underscorestring:underscore.string@3.2.3
 url@1.0.5
 webapp@1.2.3
 webapp-hashing@1.0.5
