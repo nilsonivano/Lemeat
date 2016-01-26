@@ -18,7 +18,6 @@ iron:router@1.0.0
 yasinuslu:blaze-meta
 aldeed:collection2
 aldeed:autoform
-yp2:admin-lte
 accounts-base
 accounts-ui
 meteortoys:allthings

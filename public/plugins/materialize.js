@@ -2684,13 +2684,13 @@ $(document).ready(function(){
     var text_area_selector = '.materialize-textarea';
 
     function textareaAutoResize($textarea) {
-      // Set font properties of hiddenDiv
+      // Set fonts properties of hiddenDiv
 
-      var fontFamily = $textarea.css('font-family');
+      var fontFamily = $textarea.css('fonts-family');
       var fontSize = $textarea.css('font-size');
 
       if (fontSize) { hiddenDiv.css('font-size', fontSize); }
-      if (fontFamily) { hiddenDiv.css('font-family', fontFamily); }
+      if (fontFamily) { hiddenDiv.css('fonts-family', fontFamily); }
 
       if ($textarea.attr('wrap') === "off") {
         hiddenDiv.css('overflow-wrap', "normal")

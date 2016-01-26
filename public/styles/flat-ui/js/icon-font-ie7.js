@@ -3,7 +3,7 @@
 window.onload = function() {
 	function addIcon(el, entity) {
 		var html = el.innerHTML;
-		el.innerHTML = '<span style="font-family: \'Flat-UI-Icons\'">' + entity + '</span>' + html;
+		el.innerHTML = '<span style="fonts-family: \'Flat-UI-Icons\'">' + entity + '</span>' + html;
 	}
 	var icons = {
 			'fui-arrow-right' : '&#xe02c;',

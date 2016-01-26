@@ -12,7 +12,7 @@
 $.each(['x', 'y', 'width', 'height', 'rx', 'ry', 'cx', 'cy', 'r', 'x1', 'y1', 'x2', 'y2',
 		'stroke-width', 'strokeWidth', 'opacity', 'fill-opacity', 'fillOpacity',
 		'stroke-opacity', 'strokeOpacity', 'stroke-dashoffset', 'strokeDashOffset',
-		'font-size', 'fontSize', 'font-weight', 'fontWeight',
+		'font-size', 'fontSize', 'fonts-weight', 'fontWeight',
 		'letter-spacing', 'letterSpacing', 'word-spacing', 'wordSpacing'],
 	function(i, attrName) {
 		var ccName = attrName.charAt(0).toUpperCase() + attrName.substr(1);

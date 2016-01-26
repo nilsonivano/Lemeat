@@ -4,7 +4,7 @@ Router.route('/', {
   'preload':{
       'styles':[
           'stylesLanding/flat-ui/css/flat-ui.css',
-          'stylesLanding/common-files/css/icon-font.css',
+          'stylesLanding/common-files/css/icon-fonts.css',
           'stylesLanding/common-files/css/animations.css',
           'stylesLanding/ui-kit/ui-kit-contacts/css/style.css',
           'stylesLanding/ui-kit/ui-kit-footer/css/style.css',
@@ -59,16 +59,47 @@ Router.route('/truckProfile/:truckId', {
 // App for truckers routing
 
 Router.route('/login', {
-    name: 'login'
+    name: 'login',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css'
+        ],
+        'sync':[
+            '/plugins/bootstrap.min.js'
+        ]
+    }
 });
 
 Router.route('/register', {
-    name: 'register'
+    name: 'register',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css'
+        ],
+        'sync':[
+            '/plugins/bootstrap.min.js'
+        ]
+    }
 });
 
 Router.route('/truckInformation', {
     name: 'truckInformation',
-    layoutTemplate: 'appLayout'
+    layoutTemplate: 'appLayout',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css',
+            '/styles/skin-lemeat.css'
+        ],
+        'sync':[
+            '/plugins/bootstrap.min.js'
+        ]
+    }
 });
 
 Router.route('/truckAgenda', {
@@ -76,19 +107,35 @@ Router.route('/truckAgenda', {
     layoutTemplate: 'appLayout',
     controller: PreloadController,
     'preload':{
-        'styles':['stylesLanding/06_dataTables.bootstrap.css',
-            'stylesLanding/07_daterangepicker-bs3.css',
-            'stylesLanding/08_jquery.dataTables.min.css'],
-        'sync':['plugins/02_jquery.dataTables.min.js',
-            'plugins/03_dataTables.bootstrap.min.js',
-            'plugins/04_daterangepicker.js',
-            'plugins/05_moment.min.js']
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css',
+            '/styles/dataTables.bootstrap.css',
+            '/styles/daterangepicker-bs3.css',
+            '/styles/jquery.dataTables.min.css'],
+        'sync':[
+            '/plugins/bootstrap.min.js',
+            '/plugins/02_jquery.dataTables.min.js',
+            '/plugins/03_dataTables.bootstrap.min.js',
+            '/plugins/04_daterangepicker.js',
+            '/plugins/05_moment.min.js']
     }
 });
 
 Router.route('/truckImages', {
     name: 'truckImages',
-    layoutTemplate: 'appLayout'
+    layoutTemplate: 'appLayout',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css',
+            '/styles/skin-lemeat.css'
+        ],
+        'sync':[
+            '/plugins/bootstrap.min.js'
+        ]
+    }
 });
 
 Router.route('/truckMap', {
@@ -96,13 +143,30 @@ Router.route('/truckMap', {
     layoutTemplate: 'appLayout',
     controller: PreloadController,
     'preload':{
-        'styles':['stylesLanding/07_daterangepicker-bs3.css'],
-        'sync':['plugins/04_daterangepicker.js',
-            'plugins/05_moment.min.js']
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css',
+            '/styles/skin-lemeat.css',
+            '/styles/daterangepicker-bs3.css'],
+        'sync':[
+            '/plugins/bootstrap.min.js',
+            '/plugins/04_daterangepicker.js',
+            '/plugins/05_moment.min.js']
     }
 });
 
 Router.route('/truckEvents', {
     name: 'truckEvents',
-    layoutTemplate: 'appLayout'
+    layoutTemplate: 'appLayout',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css',
+            '/styles/skin-lemeat.css'
+        ],
+        'sync':[
+            '/plugins/bootstrap.min.js'
+        ]
+    }
 });
