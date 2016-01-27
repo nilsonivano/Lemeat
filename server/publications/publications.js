@@ -16,11 +16,15 @@ Meteor.publish('truckEvents', function(){
     return truckEvents.find()
 });
 
-Meteor.publish('truckProfile', function(){
+Meteor.publish('truckProfileAll', function(){
     return Meteor.users.find({},{fields: {profile: 1}});
 });
 
 Meteor.publish('siteTruckProfileImg', function(truckId){
     var truckIdImg = truckId;
     return truckImg.find({addedBy: truckIdImg})
+});
+
+Meteor.publish('truckProfile', function(truckId){
+    return Meteor.users.find({_id: truckId},{fields: {profile: 1}});
 });

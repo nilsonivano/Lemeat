@@ -1,4 +1,4 @@
-Meteor.subscribe('truckProfile');
+Meteor.subscribe('truckProfileAll');
 
 Template.lemeatHome.onRendered(function(){
     //Ativatingparallax

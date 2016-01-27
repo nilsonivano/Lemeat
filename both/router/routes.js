@@ -27,7 +27,7 @@ Router.route('/home', {
     controller: PreloadController,
     'preload':{
         'styles':[
-            '/stylesSite/materialize.css'
+            '/styles/materialize.css'
         ],
         'sync':[
             '/plugins/materialize.js'
@@ -41,18 +41,11 @@ Router.route('/truckProfile/:truckId', {
     controller: PreloadController,
     'preload':{
         'styles':[
-            '/stylesSite/materialize.css'
+            '/styles/materialize.css'
         ],
         'sync':[
             '/plugins/materialize.js'
         ]
-    },
-    data: function(){
-        truckId = this.params.truckId;
-        var truckProfile = Meteor.users.findOne({_id: truckId },{fields: {'profile': 1}});
-        this.subscribe('siteTruckProfileImg',truckId);
-        var truckImages = truckImg.find({addedBy: truckId}).fetch();
-        return [truckProfile,truckImages]
     }
 });
 
