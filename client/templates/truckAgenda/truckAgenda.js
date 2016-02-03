@@ -1,5 +1,3 @@
-Meteor.subscribe('truckAgenda');
-
 if (Meteor.isClient) {
     Meteor.startup(function() {
         GoogleMaps.load();
@@ -8,6 +6,8 @@ if (Meteor.isClient) {
 Template.truckAgenda.onCreated(function(){
     if (!Meteor.userId()) {
         Router.go('login')
+    } else{
+        Meteor.subscribe('truckAgendaAll');
     }
 });
 
@@ -58,6 +58,7 @@ Template.truckAgenda.events({
            if (status == google.maps.GeocoderStatus.OK) {
                var lat = results[0].geometry.location.lat();
                var lng = results[0].geometry.location.lng();
+               console.log(results);
                Meteor.call('insertAgenda',dateStart, dateEnd, agendaAddress, lat, lng,
                    agendaAddressReference, truckName, userId, function(err){
                    if (err){
@@ -149,12 +150,11 @@ Template.agendaMap.helpers({
             }
         }
     }
-})
+});
 
 placeMarker = function(markersArray,map,markerImage){
     var agendaLength = markersArray.length;
     var bounds = new google.maps.LatLngBounds();
-    console.log(agendaLength,markersArray);
     for(i = 0; i<agendaLength; i++){
         var latNumber = Number(markersArray[i].lat);
         var lngNumber = Number(markersArray[i].lng);

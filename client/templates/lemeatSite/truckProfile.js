@@ -1,26 +1,42 @@
 Template.truckProfile.onRendered(function(){
-    //Activating Slider
-    //Meteor.setTimeout(function(
-    //    ){
-    //    $('.slider').slider();
-    //},500);
+    GoogleMaps.ready('map', function(map){
+        var agendas = truckAgenda.find({addedBy: truckId}).fetch();
+        var map = GoogleMaps.maps.map.instance;
+        var markerImage = '/images/Lemeat_marker_40.png';
+        placeMarker(agendas,map,markerImage);
+    })
 });
 
 Template.truckProfile.onCreated(function(){
-    truckId = Router.current().params.truckId;
-    this.subscribe('siteTruckProfileImg',truckId);
-    this.subscribe('truckProfile', truckId);
 });
 
 Template.truckProfile.helpers({
     'truckProfile': function(){
-        truckId = Router.current().params.truckId;
-        var truckProfile = Meteor.users.find({_id: truckId}).fetch();
+        var truckProfile = Meteor.users.find().fetch();
         return truckProfile[0].profile
     },
     'truckImages': function(){
-        truckId = Router.current().params.truckId;
-        var truckImages = truckImg.find({addedBy: truckId}).fetch();
+        var truckImages = truckImg.find().fetch();
         return truckImages
+    },
+    'truckAgenda': function(){
+        var currentTime = new Date();
+        var agenda = truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}}).fetch();
+        return agenda
+    },
+    mapOptions: function() {
+        if (GoogleMaps.loaded()) {
+            return {
+                center: new google.maps.LatLng(-37.8136, 144.9631),
+                zoom: 16
+            };
+        }
     }
 });
+
+UI.registerHelper('breaklines', function(text, options) {
+    text = s.escapeHTML(text);
+    text = text.replace(/(\r\n|\n|\r)/gm, '<br/>');
+    return new Spacebars.SafeString(text);
+});
+

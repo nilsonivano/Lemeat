@@ -1,8 +1,8 @@
-Meteor.subscribe('truckAgenda');
-
 Template.truckMap.onCreated(function(){
     if (!Meteor.userId()) {
         Router.go('login')
+    } else{
+        Meteor.subscribe('truckAgenda');
     }
 });
 

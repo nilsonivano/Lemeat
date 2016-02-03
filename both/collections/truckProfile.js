@@ -61,7 +61,7 @@ Schemas.truckProfile = new SimpleSchema({
         type: String,
         label:"Breve descrição do truck",
         optional: true,
-        max: 40,
+        max: 200,
         defaultValue: ""
     },
     fullDescription:{

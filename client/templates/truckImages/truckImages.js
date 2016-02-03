@@ -1,8 +1,8 @@
-Meteor.subscribe('truckImg');
-
 Template.truckImages.onCreated(function(){
     if (!Meteor.userId()) {
         Router.go('login')
+    }else {
+        Meteor.subscribe('truckImg');
     }
 });
 

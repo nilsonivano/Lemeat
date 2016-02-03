@@ -42,3 +42,6 @@ chrismbeckett:toastr
 dburles:google-maps
 miro:preloader
 fortawesome:fontawesome
+sergeyt:typeahead
+mdg:geolocation
+monbro:mongodb-mapreduce-aggregation

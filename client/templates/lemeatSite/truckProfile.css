@@ -1,0 +1,49 @@
+.map-agenda {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    margin-top: 15px;
+}
+
+.truckName{
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.truckSpeciality{
+    font-size: small;
+}
+
+.chip{
+    margin-bottom: 5px !important;
+}
+
+.titleSection{
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.contactsText{
+    margin-left: 10px;
+}
+
+.material-icons{
+    vertical-align:middle;
+}
+
+.pre {
+    white-space: pre;
+}
+
+.contactsIcon {
+    vertical-align: middle;
+}
+
+.card.small {
+    height: 400px !important;
+}
+
+.sectionTitle{
+    font-size: 20px;
+    font-weight: 300;
+}

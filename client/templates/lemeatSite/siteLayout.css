@@ -1,6 +1,6 @@
 nav ul a,
 nav .brand-logo {
-    color: black;
+    color: #795548 !important;
 }
 
 p {
@@ -8,7 +8,7 @@ p {
 }
 
 .button-collapse {
-    color: #26a69a;
+    color: #795548;
 }
 
 .parallax-container {
@@ -46,4 +46,42 @@ p {
 
 footer.page-footer {
     margin: 0;
+}
+
+.truckSearchPanel{
+    width: 300px;
+    margin: 0px !important;
+}
+
+.fixed-action-btn.horizontal ul li{
+    margin: 0px !important;
+}
+
+/*Card templating*/
+
+.card-title {
+    color: #fff;
+    position: absolute;
+    bottom: 18px !important;
+    padding: 0px 0px 0px 10px !important;
+    width: 100% !important;
+    opacity: 0.8 !important;
+    background-color: #795548 !important;
+}
+
+.card-subtitle{
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 100% !important;
+    opacity: 0.8 !important;
+    background-color: #795548 !important;
+    padding: 0px 0px 0px 13px;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.card-content{
+    padding: 10px !important;
 }

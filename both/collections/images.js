@@ -18,7 +18,7 @@ ImageUpload.configure({
 
 truckCardImg = ImageUpload.createCollection("truckCardImg", Meteor.users, {
     maxUploadSize: 4,
-    defaultPermissions: true,
+    defaultPermissions: false,
     publicRead: true,
     sizes: {
         normal: [800,800],
@@ -29,7 +29,7 @@ truckCardImg = ImageUpload.createCollection("truckCardImg", Meteor.users, {
 
 truckImg = ImageUpload.createCollection("truckImg", Meteor.users, {
     maxUploadSize: 4,
-    defaultPermissions: true,
+    defaultPermissions: false,
     publicRead: true,
     sizes: {
         normal: [800,600],

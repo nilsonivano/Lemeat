@@ -15,33 +15,148 @@
     </div>
     <div class="container">
         <div class="section">
-            <h4>Conheça alguns de nossos Food Trucks</h4>
+            <div class="titleSectionHome">Conheça alguns de nossos Food Trucks</div>
             <!--   Food Truck Card Section   -->
             <div class="row">
                 {{#each cardInfo}}
-                    <div class="col s12 m4 l4">
-                        <div class="card small">
-                            <div class="card-image">
-                                <img src="{{profile.img}}">
-                                <span class="card-title">{{profile.name}}</span>
-                            </div>
-                            <div class="card-content">
-                                <p>{{profile.description}}</p>
-                            </div>
-                            <div class="card-action" id="{{_id}}">
-                                <a href="/truckProfile/{{_id}}">Mais detalhes</a>
-                            </div>
-                        </div>
-                    </div>
+                    {{> truckCard}}
                 {{/each}}
             </div>
         </div>
+    </div>
+    <div class="container">
         <div class="section">
-            <h4>Mapa dos trucks</h4>
+            <div class="titleSectionHome">Buscar por Food Truck</div>
+            <div class="row">
+                <div class="col s1">
+                    <p>Cidades</p>
+                </div>
+                <div class="col s11">
+                    {{#each allCities}}
+                    <a href="/city/{{this}}"><div class="chip">{{this}}</div></a>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s1">
+                    <p>Tags</p>
+                </div>
+                <div class="col s11">
+                    {{#each allTags}}
+                        <a href="/tags/{{this}}"><div class="chip">{{this}}</div></a>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="titleSectionHome">Mapa dos trucks</div>
             <div class="row">
                 <div class="truckAgendaMap">
-                    {{> googleMap name="map" options=mapOptions}}
+                    {{> googleMap name="map" options= mapOptions}}
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="titleSectionHome">Enviar Oportunidades</div>
+            {{> eventForm}}
+        </div>
+    </div>
+</template>
+
+<template name="eventForm">
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="name" type="text" class="validate">
+                    <label for="name">Nome</label>
+                </div>
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" type="email" class="validate">
+                    <label for="email">E-mail</label>
+                </div>
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="phone" type="text" class="validate">
+                    <label for="phone">Telefone de Contato</label>
+                </div>
+                <div class="input-field col s12 l6">
+                    <select id="eventType">
+                        <option value="" disabled selected>Escolha o tipo de Oportunidade</option>
+                        <option value="Evento">Evento</option>
+                        <option value="Vaga em Food Park">Vaga em Food Park</option>
+                        <option value="Loja">Loja</option>
+                        <option value="Casamento">Casamento</option>
+                    </select>
+                    <label>Tipo de Oportunidade</label>
+                </div>
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">today</i>
+                    <input id="eventDate" type="date" class="datepicker">
+                    <label for="date">Data do evento</label>
+                </div>
+                <div class="input-field col s6 l3">
+                    <i class="material-icons prefix">schedule</i>
+                    <input placeholder="Horário de Início" id="eventTimeStart" type="time">
+                    <label for="time" class="active">Horário de Início</label>
+                </div>
+                <div class="input-field col s6 l3">
+                    <i class="material-icons prefix">schedule</i>
+                    <input placeholder="" id="eventTimeEnd" type="time">
+                    <label for="time" class="active">Horário de Fim</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">store</i>
+                    <input id="eventAddress" type="text" class="validate">
+                    <label for="address">Endereço do evento</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">store</i>
+                    <input id="eventCity" type="text" class="validate">
+                    <label for="address">Cidade do Evento</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="eventDescription" class="materialize-textarea"></textarea>
+                    <label for="textarea">Descrição da Oportunidade</label>
+                </div>
+                <div class="right-align">
+                    <button class="btn waves-effect waves-light brown" type="submit" name="action" id="eventSubmit">Enviar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15 // Creates a dropdown of 15 years to control year
+            });
+        });
+    </script>
+</template>
+
+<template name="truckCard">
+    <div class="col s12 m6 l4">
+        <div class="card small hoverable">
+            <div class="card-image">
+                <img src="{{profile.img}}">
+                <span class="card-title">{{profile.name}}</span>
+                <span class="card-subtitle">{{profile.speciality}}</span>
+            </div>
+            <div class="card-content">
+                <p>{{profile.description}}</p>
+            </div>
+            <div class="card-action" id="{{_id}}">
+                <a href="/truckProfile/{{_id}}">Mais detalhes</a>
             </div>
         </div>
     </div>

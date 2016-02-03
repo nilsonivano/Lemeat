@@ -35,6 +35,17 @@
                                     <input type="text" class="form-control" id="truckSpeciality" placeholder="" value="{{truckInformation.speciality}}">
                                 </div>
                                 <div class="form-group">
+                                    <label>Principal cidade de atuação</label>
+                                    <input type="text" class="form-control" id="truckMainCity" placeholder="" value="{{truckInformation.mainCity}}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tags</label>
+                                    <select id="truckTags" class="form-control select2" multiple="multiple"
+                                            data-placeholder="Selecione as tags relacionadas a seu Truck"
+                                            style="width: 100%">
+                                    </select>
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
                                     <label>Imagem principal do card</label>
                                     <!--<input type="file" id="truckImgCard">-->
                                     {{> uploadImage imageCollection="truckCardImg" size="thumbnail" doc=currentUser classImage="tiny-img round"}}
@@ -44,18 +55,6 @@
                                     <label>Breve descrição do Food Truck (menos de 40 caracteres)</label>
                                     <textarea class="form-control" rows="3" placeholder="" id="truckDescription" value="{{truckInformation.description}}"></textarea>
                                 </div>
-                                <!--<div class="form-group">-->
-                                <!--<label>Tags relacionadas ao truck</label>-->
-                                <!--<select class="form-control select2" multiple="multiple" data-placeholder="Selecione as tags" style="width: 100%;">-->
-                                <!--<option>Hamburger</option>-->
-                                <!--<option>Temaki</option>-->
-                                <!--<option>Hot Dog</option>-->
-                                <!--<option>Temaki</option>-->
-                                <!--<option>Polenta</option>-->
-                                <!--<option>Doces</option>-->
-                                <!--<option>Paletas</option>-->
-                                <!--</select>-->
-                                <!--</div>-->
                             </div>
                         </form>
                     </div>

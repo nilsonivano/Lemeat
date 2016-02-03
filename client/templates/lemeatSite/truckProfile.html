@@ -1,28 +1,100 @@
 <template name="truckProfile">
-    <div class="container" style="margin-top:20px">
+    <div class="container" style="margin-top:10px">
+        <div class="row">
+            <div class="col s12 l8" style="margin-top: 20px">
+                <div class="truckName">
+                    {{truckProfile.name}}
+                </div>
+                <div class="truckSpeciality">
+                    {{truckProfile.speciality}}
+                </div>
+                <p>{{truckProfile.description}}</p>
+            </div>
+            <div class="col s12 l4" style="margin-top: 20px">
+                <div class="row sectionTitle">
+                    Tags Relacionadas
+                </div>
+                <div class="row">
+                    {{#each truckProfile.tags}}
+                        <div class="chip">{{this}}</div>
+                    {{/each}}
+                    {{#if truckProfile.mainCity}}
+                        <div class="chip">{{truckProfile.mainCity}}</div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col s12 l8">
-                    <div class="slider">
-                        <ul class="slides">
-                            {{#each truckImages}}
-                                <li>
-                                    <img src="{{this.url}}">
-                                </li>
-                            {{/each}}
-                        </ul>
-                    </div>
+                <div class="slider">
+                    <ul class="slides">
+                        {{#each truckImages}}
+                            <li>
+                                <img src="{{this.url}}">
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
             <div class="col s12 l4">
-                {{#if truckProfile}}
-                    <div class="row">
-                        <h5>{{truckProfile.name}}</h5>
-                        <p>{{truckProfile.speciality}}</p>
-                    </div>
-                    <p>{{truckProfile.description}}</p>
-                {{else}}
-                    Loading...
-                {{/if}}
+                <div class="row sectionTitle">
+                    Contatos
+                </div>
+                <div class="row">
+                <div><i class="material-icons">phone</i><span class="contactsText">{{truckProfile.contacts.phone}}</span></div>
+                <div><i class="material-icons">email</i><span class="contactsText"><a href="mailto:{{truckProfile.contacts.email}}">{{truckProfile.contacts.email}}</a></span></div>
+                <div><i class="material-icons">web</i><span class="contactsText"><a href="{{truckProfile.contacts.website}}">{{truckProfile.contacts.website}}</a></span></div>
+                <div><img src="/images/facebook.png" class="contactsIcon"><span class="contactsText"><a href="{{truckProfile.contacts.facebook}}">{{truckProfile.contacts.facebook}}</a></span></div>
+                <div><img src="/images/twitter.png" class="contactsIcon"><span class="contactsText"><a href="{{truckProfile.contacts.twitter}}">{{truckProfile.contacts.twitter}}</a></span></div>
+                <div><img src="/images/instagram.png" class="contactsIcon"><span class="contactsText"><a href="{{truckProfile.contacts.instagram}}">{{truckProfile.contacts.instagram}}</a></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="titleSection"><i class="material-icons">list</i> Cardapio Ofertado</div>
+                <p>{{breaklines truckProfile.menu}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="titleSection"><i class="material-icons">today</i> Agendas</div>
+                <table class="striped highlight">
+                    <thead>
+                    <tr>
+                        <th data-field="id">Data</th>
+                        <th data-field="name">Horário</th>
+                        <th data-field="price">Endereço</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each truckAgenda}}
+                    <tr>
+                        <td>{{dateStart.toDateString}}</td>
+                        <td>{{dateStart.toTimeString}} a {{dateEnd.toTimeString}}</td>
+                        <td>{{address}}</td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="titleSection"><i class="material-icons">map</i> Mapa de Agendas</div>
+                <div class="map-agenda">
+                    {{> googleMap name="map" options=mapOptions}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="titleSection"><i class="material-icons">message</i> Requisitar Truck</div>
+                {{> eventForm}}
             </div>
         </div>
     </div>
+    <script>
+        $('.slider').slider();
+    </script>
 </template>

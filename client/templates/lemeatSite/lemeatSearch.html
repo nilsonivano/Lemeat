@@ -1,0 +1,18 @@
+<template name="lemeatSearch">
+    <div class="container">
+        <div class="col s12">
+            <div class="row sectionTitle" style="margin-top: 20px">
+                Busca por Food Trucks
+            </div>
+            <div class="row">
+                {{#if searchResults}}
+                    {{#each searchResults}}
+                        {{> truckCard}}
+                    {{/each}}
+                {{else}}
+                    Não encontramos nenhum truck =(
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>

@@ -14,11 +14,12 @@ truckCardImg.allow({
     download: function (userId, fileObj) {
         // If publicRead has been set anyone can download, otherwise users
         // can only download images that they uploaded
-        if (publicRead) {
-            return true;
-        } else {
-            return fileObj.addedBy === userId;
-        }
+        //if (publicRead) {
+        //    return true;
+        //} else {
+        //    return fileObj.addedBy === userId;
+        //}
+        return true;
     }
 });
 

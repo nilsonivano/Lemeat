@@ -33,5 +33,32 @@ Meteor.methods({
   },
   'removeTruckImg': function(id){
       truckImg.remove(id)
-  }
+  },
+  'insertEvent': function(dateStart, dateEnd, eventAddress, city, lat, lng, name, phone,
+                          email, eventType, visibleToAll, visibleToTruck){
+      truckEvents.insert({
+          dateStart: dateStart,
+          dateEnd: dateEnd,
+          eventType: eventType,
+          address: eventAddress,
+          city: city,
+          lat: lat,
+          lng: lng,
+          addedBy: name,
+          contacts:{
+              phone: phone,
+              email: email
+          },
+          visibleToAll: visibleToAll,
+          visibleToTruck: visibleToTruck
+      })
+  },
+   'getAllCities': function(){
+       var allCities = Meteor.users.distinct("profile.mainCity");
+       return allCities
+   },
+    'getAllTags': function(){
+        var allTags = Meteor.users.distinct("profile.tags");
+        return allTags
+    }
 });

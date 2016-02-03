@@ -2,16 +2,48 @@ truckEvents = new Mongo.Collection('truckEvents');
 
 var Schemas = {};
 
+Schemas.contactsEvent = new SimpleSchema({
+    email: {
+        type: String,
+        optional: true,
+        defaultValue: "",
+        regEx: SimpleSchema.RegEx.Email
+    },
+    phone: {
+        type: String,
+        optional: true,
+        defaultValue: ""
+    },
+    facebook: {
+        type: String,
+        optional: true,
+        defaultValue: ""
+    },
+    instagram: {
+        type: String,
+        optional: true,
+        defaultValue: ""
+    },
+    twitter: {
+        type: String,
+        optional: true,
+        defaultValue: ""
+    },
+    website: {
+        type: String,
+        optional: true,
+        defaultValue: ""
+    }
+});
+
 Schemas.truckEvents = new SimpleSchema({
     dateStart: {
         type: Date,
         label: "Agenda start"
-
     },
     dateEnd:{
         type: Date,
         label: "Agenda end"
-
     },
     eventType:{
         type: String,
@@ -34,6 +66,11 @@ Schemas.truckEvents = new SimpleSchema({
         label:"Address Reference",
         optional: true
     },
+    city:{
+        type: String,
+        label:"City Reference",
+        optional: true
+    },
     addedBy: {
         type: String,
         label: "User Author"
@@ -51,8 +88,15 @@ Schemas.truckEvents = new SimpleSchema({
         }
     },
     contacts: {
-        type: Schemas.contacts,
+        type: Schemas.contactsEvent,
         optional: true
+    },
+    visibleToTruck: {
+        type: [String],
+        optional: true
+    },
+    visibleToAll: {
+        type: Boolean
     }
 });
 
