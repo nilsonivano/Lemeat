@@ -17,6 +17,11 @@ Schemas.truckAgenda = new SimpleSchema({
         type: String,
         label:"Agenda Address"
     },
+    city:{
+        type: String,
+        label:"City Reference",
+        optional: true
+    },
     lat:{
         type: String,
         optional: true

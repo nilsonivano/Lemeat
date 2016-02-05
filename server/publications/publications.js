@@ -6,6 +6,10 @@ Meteor.publish('siteTruckProfileAll', function(){
     return Meteor.users.find({},{fields: {profile: 1}})
 });
 
+Meteor.publish('truckEventsAll', function(){
+    return truckEvents.find()
+})
+
 Meteor.publish('truckImg', function(){
     var currentUserId = this.userId;
     return truckImg.find({addedBy: currentUserId})

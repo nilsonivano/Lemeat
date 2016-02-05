@@ -82,9 +82,9 @@
                 <tbody>
                 {{#each agenda}}
                     <tr>
-                        <td>{{dateStart.toDateString}}</td>
-                        <td>{{dateStart.toUTCString}}</td>
-                        <td>{{dateEnd.toUTCString}}</td>
+                        <td>{{dateDay dateStart}}</td>
+                        <td>{{dateTime dateStart}}</td>
+                        <td>{{dateTime dateEnd}}</td>
                         <td>{{address}}</td>
                         <td>{{addressReference}}</td>
                         <td>

@@ -37,7 +37,7 @@ Template.agendaMap.onRendered(function(){
     var map = GoogleMaps.maps.mapAgenda.instance;
     var user = Meteor.userId();
     var agendas = truckAgenda.find({addedBy:user}).fetch();
-    var markerImage = '/images/markerFt.png';
+    var markerImage = '/images/Lemeat_marker_40.png';
     placeMarker(agendas,map,markerImage);
 });
 
@@ -56,11 +56,13 @@ Template.truckAgenda.events({
        geocoder = new google.maps.Geocoder();
        geocoder.geocode( { 'address': agendaAddress}, function(results, status) {
            if (status == google.maps.GeocoderStatus.OK) {
+               var eventAddress = results[0].formatted_address;
+               var eventCity = results[0].address_components[4].long_name;
                var lat = results[0].geometry.location.lat();
                var lng = results[0].geometry.location.lng();
                console.log(results);
-               Meteor.call('insertAgenda',dateStart, dateEnd, agendaAddress, lat, lng,
-                   agendaAddressReference, truckName, userId, function(err){
+               Meteor.call('insertAgenda',dateStart, dateEnd, eventAddress, lat, lng,
+                   agendaAddressReference, truckName, userId, eventCity, function(err){
                    if (err){
                        console.log(err);
                        toastr.error("Algo de errado aconteceu")
@@ -85,7 +87,7 @@ Template.truckAgenda.events({
        geocoder = new google.maps.Geocoder();
        var address = agendaAddress;
        var map = GoogleMaps.maps.map.instance;
-       var markerImage = '/images/markerFt.png';
+       var markerImage = '/images/Lemeat_marker_40.png';
        geocoder.geocode( { 'address': address}, function(results, status) {
            if (status == google.maps.GeocoderStatus.OK) {
                console.log(results);
@@ -152,32 +154,3 @@ Template.agendaMap.helpers({
     }
 });
 
-placeMarker = function(markersArray,map,markerImage){
-    var agendaLength = markersArray.length;
-    var bounds = new google.maps.LatLngBounds();
-    for(i = 0; i<agendaLength; i++){
-        var latNumber = Number(markersArray[i].lat);
-        var lngNumber = Number(markersArray[i].lng);
-        var LatLng = {lat: latNumber, lng: lngNumber};
-        var agendaStart = markersArray[i].dateStart.toUTCString();
-        var agendaEnd = markersArray[i].dateEnd.toUTCString();
-        var agendaAddress = markersArray[i].address;
-        var contentString = '<div>' + '<b>Endereço: </b>' + agendaAddress + '<div>' +
-            '<div>' + '<b>Início da agenda: </b>'+ agendaStart + '<div>' +
-            '<div>' + '<b>Fim da agenda: </b>' + agendaEnd + '<div>';
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-        var marker = new google.maps.Marker({
-            map: map,
-            position: LatLng,
-            icon: markerImage,
-            infowindow: infowindow
-        });
-        google.maps.event.addListener(marker, 'click', function() {
-            this.infowindow.open(map, this);
-        });
-        bounds.extend(marker.getPosition());
-    }
-    map.fitBounds(bounds);
-};

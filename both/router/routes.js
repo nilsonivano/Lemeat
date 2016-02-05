@@ -193,10 +193,10 @@ Router.route('/truckAgenda', {
             '/styles/jquery.dataTables.min.css'],
         'sync':[
             '/plugins/bootstrap.min.js',
-            '/plugins/02_jquery.dataTables.min.js',
-            '/plugins/03_dataTables.bootstrap.min.js',
-            '/plugins/04_daterangepicker.js',
-            '/plugins/05_moment.min.js']
+            '/plugins/jquery.dataTables.min.js',
+            '/plugins/dataTables.bootstrap.min.js',
+            '/plugins/daterangepicker.js',
+            '/plugins/moment.min.js']
     }
 });
 
@@ -228,8 +228,8 @@ Router.route('/truckMap', {
             '/styles/daterangepicker-bs3.css'],
         'sync':[
             '/plugins/bootstrap.min.js',
-            '/plugins/04_daterangepicker.js',
-            '/plugins/05_moment.min.js']
+            '/plugins/daterangepicker.js',
+            '/plugins/moment.min.js']
     }
 });
 
@@ -241,10 +241,23 @@ Router.route('/truckEvents', {
         'styles':[
             '/styles/bootstrap.min.css',
             '/styles/AdminLTE.css',
-            '/styles/skin-lemeat.css'
+            '/styles/skin-lemeat.css',
+            '/styles/daterangepicker-bs3.css'
         ],
         'sync':[
-            '/plugins/bootstrap.min.js'
+            '/plugins/bootstrap.min.js',
+            '/plugins/daterangepicker.js',
+            '/plugins/moment.min.js'
         ]
+    },
+    subscriptions: function() {
+        return Meteor.subscribe('truckEventsAll');
+    },
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        } else {
+            this.render('loading');
+        }
     }
 });

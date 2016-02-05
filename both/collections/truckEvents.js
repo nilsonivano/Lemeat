@@ -49,17 +49,19 @@ Schemas.truckEvents = new SimpleSchema({
         type: String,
         label: "Tipo do evento"
     },
+    eventDescription:{
+        type: String,
+        label:"Descrição do evento"
+    },
     address: {
         type: String,
         label:"Agenda Address"
     },
     lat:{
-        type: String,
-        optional: true
+        type: String
     },
     lng:{
-        type: String,
-        optional: true
+        type: String
     },
     addressReference:{
         type: String,

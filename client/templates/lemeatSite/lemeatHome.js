@@ -28,24 +28,10 @@ Template.lemeatHome.helpers({
         }
     },
     allCities: function(){
-        Meteor.call('getAllCities', function(err,results){
-            if(err){
-                console.log(err)
-            }else{
-                console.log(results);
-                return results
-            }
-        })
+        return ReactiveMethod.call("getAllCities");
     },
     allTags: function(){
-        Meteor.call('getAllTags', function(err,results){
-            if(err){
-                console.log(err)
-            }else{
-                console.log(results);
-                return results
-            }
-        })
+        return ReactiveMethod.call("getAllTags");
     }
 });
 
@@ -88,11 +74,11 @@ Template.eventForm.events({
                 var lat = results[0].geometry.location.lat();
                 var lng = results[0].geometry.location.lng();
                 Meteor.call('insertEvent',eventDateStart,eventDateEnd,eventAddress,eventCity, lat, lng, name, phone,
-                    email, eventType, visibleToAll, visibleToTruck, function(err){
+                    email, eventType, eventDescription, visibleToAll, visibleToTruck, function(err){
                         if(err){
-                            console.log(err)
+                            Materialize.toast('Ops, ocorreu um erro no envio', 4000, 'red')
                         } else{
-                            console.log("sucesso no envio!")
+                            Materialize.toast('Enviada com sucesso. Agora é só aguardar a resposta do Food Truck', 4000, 'green')
                         }
                     })
             }

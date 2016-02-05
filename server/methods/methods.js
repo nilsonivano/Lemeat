@@ -16,7 +16,7 @@ Meteor.methods({
       markerInfo.userProfile = Meteor.users.find({_id: userId},{fields: {'profile': 1}}).fetch();
       return markerInfo;
   },
-  'insertAgenda': function(dateStart, dateEnd, agendaAddress, lat, lng, agendaAddressReference, truckName, userId){
+  'insertAgenda': function(dateStart, dateEnd, agendaAddress, lat, lng, agendaAddressReference, truckName, userId, city){
       truckAgenda.insert({
           dateStart: dateStart,
           dateEnd: dateEnd,
@@ -25,7 +25,8 @@ Meteor.methods({
           lng: lng,
           addressReference: agendaAddressReference,
           truckName: truckName,
-          addedBy: userId
+          addedBy: userId,
+          city: city
       })
   },
   'removeAgenda': function(agendaId){
@@ -35,11 +36,12 @@ Meteor.methods({
       truckImg.remove(id)
   },
   'insertEvent': function(dateStart, dateEnd, eventAddress, city, lat, lng, name, phone,
-                          email, eventType, visibleToAll, visibleToTruck){
+                          email, eventType, eventDescription, visibleToAll, visibleToTruck){
       truckEvents.insert({
           dateStart: dateStart,
           dateEnd: dateEnd,
           eventType: eventType,
+          eventDescription: eventDescription,
           address: eventAddress,
           city: city,
           lat: lat,

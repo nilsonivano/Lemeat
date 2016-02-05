@@ -70,8 +70,8 @@
                     <tbody>
                     {{#each truckAgenda}}
                     <tr>
-                        <td>{{dateStart.toDateString}}</td>
-                        <td>{{dateStart.toTimeString}} a {{dateEnd.toTimeString}}</td>
+                        <td>{{dateDay dateStart}}</td>
+                        <td>{{dateTime dateStart}} a {{dateTime dateEnd}}</td>
                         <td>{{address}}</td>
                     </tr>
                     {{/each}}

@@ -15,37 +15,39 @@
     </div>
     <div class="container">
         <div class="section">
+            <div class="titleSectionHome">Buscar por Food Truck</div>
+            <div class="row">
+                <div class="col s12 l1">
+                    <p>Cidades</p>
+                </div>
+                <div class="col s12 l11">
+                    {{#each allCities}}
+                        {{#if this}}
+                            <a href="/city/{{this}}"><div class="chip">{{this}}</div></a>
+                        {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 l1">
+                    <p>Tags</p>
+                </div>
+                <div class="col s12 l11">
+                    {{#each allTags}}
+                        <a href="/tags/{{this}}"><div class="chip">{{this}}</div></a>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section">
             <div class="titleSectionHome">Conheça alguns de nossos Food Trucks</div>
             <!--   Food Truck Card Section   -->
             <div class="row">
                 {{#each cardInfo}}
                     {{> truckCard}}
                 {{/each}}
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="section">
-            <div class="titleSectionHome">Buscar por Food Truck</div>
-            <div class="row">
-                <div class="col s1">
-                    <p>Cidades</p>
-                </div>
-                <div class="col s11">
-                    {{#each allCities}}
-                    <a href="/city/{{this}}"><div class="chip">{{this}}</div></a>
-                    {{/each}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s1">
-                    <p>Tags</p>
-                </div>
-                <div class="col s11">
-                    {{#each allTags}}
-                        <a href="/tags/{{this}}"><div class="chip">{{this}}</div></a>
-                    {{/each}}
-                </div>
             </div>
         </div>
     </div>
