@@ -3,7 +3,7 @@ Template.lemeatHome.onRendered(function(){
     $('.parallax').parallax();
 
     //Populating Map
-    GoogleMaps.ready('map', function(map){
+    GoogleMaps.ready('map', function(){
         var currentTime = new Date();
         var agendaFromNow = truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}}).fetch();
         var map = GoogleMaps.maps.map.instance;
@@ -26,19 +26,21 @@ Template.lemeatHome.helpers({
                 zoom: 14
             };
         }
-    },
-    allCities: function(){
-        return ReactiveMethod.call("getAllCities");
-    },
-    allTags: function(){
-        return ReactiveMethod.call("getAllTags");
     }
 });
 
 Template.eventForm.onRendered(function(){
+    this.autorun(function () {
+        if (GoogleMaps.loaded()) {
+            $("#eventAddress").geocomplete();
+        }
+    });
 });
 
 Template.eventForm.helpers({
+    eventTypes: function(){
+        return eventTypes
+    }
 });
 
 Template.eventForm.events({
@@ -51,7 +53,6 @@ Template.eventForm.events({
         var eventAddress = $('[id=eventAddress]').val();
         var eventCity = $('[id=eventCity]').val();
         var eventDescription = $('[id=eventDescription]').val();
-        console.log(email,phone);
         //Datas do evento
         var eventDate = $('[id=eventDate]').val();
         var eventTimeStart = $('[id=eventTimeStart]').val();
@@ -79,12 +80,23 @@ Template.eventForm.events({
                             Materialize.toast('Ops, ocorreu um erro no envio', 4000, 'red')
                         } else{
                             Materialize.toast('Enviada com sucesso. Agora é só aguardar a resposta do Food Truck', 4000, 'green')
+                            $('[id=name]').val("");
+                            $('[id=email]').val("");
+                            $('[id=phone]').val("");
+                            $('[id=eventType]').val("");
+                            $('[id=eventAddress]').val("");
+                            $('[id=eventCity]').val("");
+                            $('[id=eventDescription]').val("");
+                            //Datas do evento
+                            $('[id=eventDate]').val("");
+                            $('[id=eventTimeStart]').val("");
+                            $('[id=eventTimeEnd]').val("");
                         }
                     })
             }
         })
     },
-    'change #eventAddress': function(){
+    'blur #eventAddress': function(){
         var eventAddress = $('[id=eventAddress]').val();
         geocoder = new google.maps.Geocoder();
         geocoder.geocode({'address': eventAddress}, function(results, status){
@@ -96,3 +108,11 @@ Template.eventForm.events({
     }
 });
 
+Template.truckTags.helpers({
+    allCities: function(){
+        return ReactiveMethod.call("getAllCities");
+    },
+    allTags: function(){
+        return ReactiveMethod.call("getAllTags");
+    }
+});

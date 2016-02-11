@@ -12,16 +12,19 @@ Template.truckProfile.onCreated(function(){
 
 Template.truckProfile.helpers({
     'truckProfile': function(){
-        var truckProfile = Meteor.users.find().fetch();
+        var truckId = Router.current().params.truckId;
+        var truckProfile = Meteor.users.find({_id: truckId}).fetch();
         return truckProfile[0].profile
     },
     'truckImages': function(){
-        var truckImages = truckImg.find().fetch();
+        var truckId = Router.current().params.truckId;
+        var truckImages = truckImg.find({addedBy: truckId}).fetch();
         return truckImages
     },
     'truckAgenda': function(){
         var currentTime = new Date();
-        var agenda = truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}}).fetch();
+        var truckId = Router.current().params.truckId;
+        var agenda = truckAgenda.find({dateEnd: {$gte :currentTime},addedBy: truckId }, {sort: {dateStart: 1}}).fetch();
         return agenda
     },
     mapOptions: function() {

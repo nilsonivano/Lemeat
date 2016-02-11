@@ -61,7 +61,8 @@ Schemas.truckEvents = new SimpleSchema({
         type: String
     },
     lng:{
-        type: String
+        type: String,
+        optional: true
     },
     addressReference:{
         type: String,

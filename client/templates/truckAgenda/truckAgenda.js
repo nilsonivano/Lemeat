@@ -1,13 +1,6 @@
-if (Meteor.isClient) {
-    Meteor.startup(function() {
-        GoogleMaps.load();
-    });
-}
 Template.truckAgenda.onCreated(function(){
     if (!Meteor.userId()) {
         Router.go('login')
-    } else{
-        Meteor.subscribe('truckAgendaAll');
     }
 });
 
@@ -18,27 +11,24 @@ Template.truckAgenda.onRendered(function(){
         format: 'DD/MM/YYYY hh:mm A',
         timePicker24Hour: true});
     $("#example1").DataTable();
-
-    //GoogleMaps Autocomplete
-    //var defaultBounds = new google.maps.LatLngBounds(
-    //    new google.maps.LatLng(5.775283, -74.344883),
-    //    new google.maps.LatLng(-35.590799, -35.069929));
-    //
-    //var input = document.getElementById('agendaAddress');
-    //var options = {
-    //    bounds: defaultBounds
-    //};
-    //autocomplete = new google.maps.places.Autocomplete(input, options);
-
+    this.autorun(function () {
+        if (GoogleMaps.loaded()) {
+            $("#agendaAddress").geocomplete();
+        }
+    });
 });
 
 Template.agendaMap.onRendered(function(){
     //Colocando os Markers
-    var map = GoogleMaps.maps.mapAgenda.instance;
-    var user = Meteor.userId();
-    var agendas = truckAgenda.find({addedBy:user}).fetch();
-    var markerImage = '/images/Lemeat_marker_40.png';
-    placeMarker(agendas,map,markerImage);
+    this.autorun(function () {
+        if (GoogleMaps.loaded()) {
+            var map = GoogleMaps.maps.mapAgenda.instance;
+            var user = Meteor.userId();
+            var agendas = truckAgenda.find({addedBy:user}).fetch();
+            var markerImage = '/images/Lemeat_marker_40.png';
+            placeMarker(agendas,map,markerImage);
+        }
+    });
 });
 
 Template.truckAgenda.events({
@@ -80,8 +70,9 @@ Template.truckAgenda.events({
 
 
    },
-   'change #agendaAddress':function(event){
+   'blur #agendaAddress':function(event){
        var agendaAddress = $('#agendaAddress').val();
+       console.log(agendaAddress);
        //Geocoding
        var geocoder;
        geocoder = new google.maps.Geocoder();
@@ -90,7 +81,6 @@ Template.truckAgenda.events({
        var markerImage = '/images/Lemeat_marker_40.png';
        geocoder.geocode( { 'address': address}, function(results, status) {
            if (status == google.maps.GeocoderStatus.OK) {
-               console.log(results);
                map.setCenter(results[0].geometry.location);
                var marker = new google.maps.Marker({
                    map: map,
@@ -127,6 +117,7 @@ Template.truckAgenda.helpers({
 
 Template.agendaTable.helpers({
     agenda: function(){
+        $("#example1").DataTable();
         var user = Meteor.userId();
         return truckAgenda.find({addedBy: user})
     }
@@ -153,4 +144,3 @@ Template.agendaMap.helpers({
         }
     }
 });
-

@@ -62,5 +62,54 @@ Meteor.methods({
     'getAllTags': function(){
         var allTags = Meteor.users.distinct("profile.tags");
         return allTags
+    },
+    'getAllEventCity': function(){
+        var allEventCity = truckEvents.distinct("city");
+        return allEventCity
+    },
+    'getAllTrucksTagsCitiesJson': function(){
+        var allCities = Meteor.users.distinct("profile.mainCity");
+        var allTags = Meteor.users.distinct("profile.tags");
+        var allTrucks = Meteor.users.distinct("profile.name");
+        var data = [];
+        for (i=0; i<allCities.length; i++){
+            var city = {
+                type: "city",
+                value: allCities[i]
+            };
+            data.push(city)
+        }
+        for (i=0; i<allTags.length; i++){
+            var tag = {
+                type: "tag",
+                value: allTags[i]
+            };
+            data.push(tag)
+        }
+        for (i=0; i<allTrucks.length; i++){
+            var truck = {
+                type: "truck",
+                value: allTrucks[i]
+            };
+            data.push(truck)
+        }
+        return data
+    },
+    'getAllTrucksTagsCitiesList': function(){
+        var allCities = Meteor.users.distinct("profile.mainCity");
+        var allTags = Meteor.users.distinct("profile.tags");
+        var allTrucks = Meteor.users.distinct("profile.name");
+        var data = allCities.concat(allTags,allTrucks);
+        return data
+    },
+    'getTruckIdName': function(truckName){
+        var search = Meteor.users.findOne({"profile.name": truckName});
+        var truckId = search._id;
+        console.log(truckId);
+        if(truckId){
+            return truckId
+        } else{
+            return "No truck for this name"
+        }
     }
 });

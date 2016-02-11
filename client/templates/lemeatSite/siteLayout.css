@@ -85,3 +85,7 @@ footer.page-footer {
 .card-content{
     padding: 10px !important;
 }
+
+#searchPanel{
+    height: 195px;
+}

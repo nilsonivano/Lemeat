@@ -8,10 +8,9 @@ Template.truckMap.onCreated(function(){
 
 Template.truckMap.onRendered(function(){
     $('#agendaDate').daterangepicker({
-        timePicker: true,
-        timePickerIncrement: 30,
-        format: 'DD/MM/YYYY hh:mm A',
-        timePicker24Hour: true});
+        format: 'DD/MM/YYYY'
+    });
+    oldAgendaMarkers = [];
 });
 
 Template.truckMap.helpers({
@@ -28,6 +27,11 @@ Template.truckMap.helpers({
 Template.truckMap.events({
     'click #queryAgenda': function(event){
         event.preventDefault();
+        if (oldAgendaMarkers){
+            for(i = 0; i < oldAgendaMarkers; i++){
+                oldAgendaMarkers[i].setMap(null);
+            }
+        }
         var userId = Meteor.userId();
         var drp = $('#agendaDate').data('daterangepicker');
         var dateStart = drp.startDate._d;
@@ -38,8 +42,8 @@ Template.truckMap.events({
             } else {
                 var map = GoogleMaps.maps.map.instance;
                 var markerImage = '/images/Lemeat_marker_40.png';
-                placeMarkerTruckMap(result,map,markerImage);
-            }
+                oldAgendaMarkers = placeMarkerTruckMap(result,map,markerImage);
+                }
             });
         }
 });

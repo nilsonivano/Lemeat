@@ -197,6 +197,16 @@ Router.route('/truckAgenda', {
             '/plugins/dataTables.bootstrap.min.js',
             '/plugins/daterangepicker.js',
             '/plugins/moment.min.js']
+    },
+    subscriptions: function() {
+        return Meteor.subscribe('truckAgendaAll');
+    },
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        } else {
+            this.render('loading');
+        }
     }
 });
 
@@ -242,9 +252,11 @@ Router.route('/truckEvents', {
             '/styles/bootstrap.min.css',
             '/styles/AdminLTE.css',
             '/styles/skin-lemeat.css',
-            '/styles/daterangepicker-bs3.css'
+            '/styles/daterangepicker-bs3.css',
+            '/styles/select2.min.css',
         ],
         'sync':[
+            '/plugins/select2.min.js',
             '/plugins/bootstrap.min.js',
             '/plugins/daterangepicker.js',
             '/plugins/moment.min.js'

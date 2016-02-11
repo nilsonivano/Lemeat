@@ -3,15 +3,21 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-    <nav class="white" role="navigation">
+    <nav class="white brown-text" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="/home" class="brand-logo"><img src="/images/lemeat-logo-small-primarycolor.png"
-                                                                    style="width:60%;height: 60%"></a>
+            <a id="logo-container" href="/home" class="brand-logo">
+                <img src="/images/lemeat-logo-small-primarycolor.png" style="width:60%;height: 60%">
+            </a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="/login">for Truckers</a></li>
             </ul>
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="/login">for Truckers</a></li>
+                <!--<li>-->
+                    <!--<input id="search" type="search" required>-->
+                    <!--<label for="search"><i class="material-icons">search</i></label>-->
+                    <!--<i class="material-icons">close</i>-->
+                <!--</li>-->
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
@@ -19,16 +25,18 @@
 
     <!-- Content Wrapper. Contains page content -->
     {{> yield}}
-    <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 65px; right: 24px;">
+    <div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 150px; right: 24px;">
         <a class="btn-floating btn-large brown">
             <i class="large material-icons">search</i>
         </a>
         <ul>
             <li>
-                <div class="card-panel truckSearchPanel">
+                <div class="card-panel truckSearchPanel" id="searchPanel">
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate">
-                        <label class="active" for="first_name">Buscar Food Truck</label>
+                        <input id="lemeatSearch"
+                               type="text"
+                               placeholder="" style="width: 250px">
+                        <label class="active">Buscar Food Truck, Tags ou Cidades</label>
                     </div>
                 </div>
             </li>

@@ -12,7 +12,7 @@
 
         <section class="content">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 ">
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -21,16 +21,42 @@
                         <!-- form start -->
                         <form role="form">
                             <div class="box-body">
-                                <div class="form-group">
-                                    <label>Selecione o período de consulta</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label>Selecione o período de consulta</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="eventDate" value="">
+                                            </div><!-- /.input group -->
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="eventDate" value="">
-                                    </div><!-- /.input group -->
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label>Tipo de Evento</label>
+                                            <select id="eventType" class="form-control select2" multiple="multiple"
+                                                    data-placeholder="Selecione os tipos de evento que deseja filtrar"
+                                                    style="width: 100%">
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label>Filtro por Cidade</label>
+                                            <select id="eventCity" class="form-control select2" multiple="multiple"
+                                                    data-placeholder="Selecione as cidades que deseja filtrar"
+                                                    style="width: 100%">
+                                                {{#each eventCity}}
+                                                <option value="{{this}}">{{this}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div><!-- /.form-group -->
+                                    </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary" id="queryAgenda"><i class="fa fa-calendar"></i> Consultar Eventos</button>
+
+                                <button type="submit" class="btn btn-primary" id="queryEvent"><i class="fa fa-search"></i> Consultar Eventos</button>
                                 <div class="mapEvents">
                                     {{> googleMap name="map" options=mapOptions}}
                                 </div>
@@ -57,19 +83,24 @@
         <div class="box box-widget">
             <div class='box-header with-border'>
                 <div class='user-block'>
-                    <!--<img class='img-circle' src='../dist/img/user1-128x128.jpg' alt='user image'>-->
-                    <span class='username'>{{name}}</span>
-                    <span class='description'>{{city}}</span>
+                    {{#if visibleToAll}}
+                        <span class='username'>{{addedBy}}</span>
+                        <span class='description'>{{city}} - criado em {{dateDay createdAt}}</span>
+                    {{else}}
+                        <img class="img-circle" src="/images/star.png">
+                        <span class='username'>{{addedBy}}</span>
+                        <span class='description'>{{city}} - criado em {{dateDay createdAt}}</span>
+                    {{/if}}
                 </div><!-- /.user-block -->
                 <div class='box-tools'>
-                    <button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>
-                    <button class='btn btn-box-tool' data-widget='remove'><i class='fa fa-times'></i></button>
+                    <!--<button class='btn btn-box-tool' data-widget='collapse'><i class='fa fa-minus'></i></button>-->
+                    <!--<button class='btn btn-box-tool' data-widget='remove'><i class='fa fa-times'></i></button>-->
                 </div><!-- /.box-tools -->
             </div><!-- /.box-header -->
             <div class='box-body'>
                 <p><b>Tipo:</b> {{eventType}}</p>
                 <p><b>Local:</b> {{address}}</p>
-                <p><b>Data:</b> {{dateDay dateStart}}</p>
+                <p><b>Data do evento:</b> {{dateDay dateStart}}</p>
                 <p><b>Horário:</b> {{dateTime dateStart}} a {{dateTime dateEnd}}</p>
                 <p><b>Descrição:</b> {{eventDescription}}</p>
                 <h4>Contatos</h4>

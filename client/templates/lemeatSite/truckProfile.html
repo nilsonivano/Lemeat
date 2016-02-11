@@ -16,10 +16,10 @@
                 </div>
                 <div class="row">
                     {{#each truckProfile.tags}}
-                        <div class="chip">{{this}}</div>
+                        <a href="/tags/{{this}}"><div class="chip">{{this}}</div></a>
                     {{/each}}
                     {{#if truckProfile.mainCity}}
-                        <div class="chip">{{truckProfile.mainCity}}</div>
+                        <a href="/city/{{truckProfile.mainCity}}"><div class="chip">{{truckProfile.mainCity}}</div></a>
                     {{/if}}
                 </div>
             </div>
@@ -59,24 +59,29 @@
         <div class="row">
             <div class="col s12">
                 <div class="titleSection"><i class="material-icons">today</i> Agendas</div>
-                <table class="striped highlight">
-                    <thead>
-                    <tr>
-                        <th data-field="id">Data</th>
-                        <th data-field="name">Horário</th>
-                        <th data-field="price">Endereço</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#each truckAgenda}}
-                    <tr>
-                        <td>{{dateDay dateStart}}</td>
-                        <td>{{dateTime dateStart}} a {{dateTime dateEnd}}</td>
-                        <td>{{address}}</td>
-                    </tr>
-                    {{/each}}
-                    </tbody>
-                </table>
+                    {{#if truckAgenda}}
+                    <table class="striped highlight">
+                        <thead>
+                        <tr>
+                            <th data-field="id">Data</th>
+                            <th data-field="name">Horário</th>
+                            <th data-field="price">Endereço</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {{#each truckAgenda}}
+                            <tr>
+                                <td>{{dateDay dateStart}}</td>
+                                <td>{{dateTime dateStart}} a {{dateTime dateEnd}}</td>
+                                <td>{{address}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{else}}
+                    <div> Não há agendas para este truck até o momento</div>
+                    {{/if}}
+
             </div>
         </div>
         <div class="row">
