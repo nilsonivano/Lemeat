@@ -162,6 +162,35 @@ Router.route('/register', {
     }
 });
 
+Router.route('/forgotPassword', {
+    name: 'forgotPassword',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css'
+        ],
+        'sync':[
+            '/plugins/bootstrap.min.js'
+        ]
+    }
+});
+
+Router.route('/userProfile', {
+    name: 'userProfile',
+    layoutTemplate: 'appLayout',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css'
+        ],
+        'sync':[
+            '/plugins/bootstrap.min.js'
+        ]
+    }
+});
+
 Router.route('/truckInformation', {
     name: 'truckInformation',
     layoutTemplate: 'appLayout',

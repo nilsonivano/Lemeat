@@ -10,5 +10,5 @@ Template.login.events({
                 Router.go('truckInformation');
             }
         });
-        }
+    }
 });
