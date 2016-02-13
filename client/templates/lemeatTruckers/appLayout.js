@@ -1,6 +1,6 @@
 Template.appLayout.events({
-    'click .dropdown-toggle': function(){
-        $('.dropdown-toggle').dropdown();
+    'click #menuToggle': function(){
+        $('body').toggleClass("sidebar-open");
     },
     'click #logout': function(){
         Meteor.logout(function(err){

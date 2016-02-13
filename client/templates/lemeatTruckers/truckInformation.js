@@ -2,8 +2,6 @@ Template.truckInformation.onCreated(function(){
     Blaze._allowJavascriptUrls();
     if (!Meteor.userId()) {
         Router.go('login')
-    } else{
-        Meteor.subscribe('truckCardImg');
     }
 });
 
@@ -66,6 +64,10 @@ Template.truckInformation.events({
 
 Template.truckInformation.helpers({
     'truckInformation': function(){
+        if(Meteor.user())
         return Meteor.user().profile
+    },
+    'truckId': function(){
+        return Meteor.userId()
     }
 });

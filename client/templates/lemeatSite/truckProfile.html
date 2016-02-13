@@ -41,12 +41,24 @@
                     Contatos
                 </div>
                 <div class="row">
-                <div><i class="material-icons">phone</i><span class="contactsText">{{truckProfile.contacts.phone}}</span></div>
-                <div><i class="material-icons">email</i><span class="contactsText"><a href="mailto:{{truckProfile.contacts.email}}">{{truckProfile.contacts.email}}</a></span></div>
-                <div><i class="material-icons">web</i><span class="contactsText"><a href="{{truckProfile.contacts.website}}">{{truckProfile.contacts.website}}</a></span></div>
-                <div><img src="/images/facebook.png" class="contactsIcon"><span class="contactsText"><a href="{{truckProfile.contacts.facebook}}">{{truckProfile.contacts.facebook}}</a></span></div>
-                <div><img src="/images/twitter.png" class="contactsIcon"><span class="contactsText"><a href="{{truckProfile.contacts.twitter}}">{{truckProfile.contacts.twitter}}</a></span></div>
-                <div><img src="/images/instagram.png" class="contactsIcon"><span class="contactsText"><a href="{{truckProfile.contacts.instagram}}">{{truckProfile.contacts.instagram}}</a></span></div>
+                    {{#if truckProfile.contacts.phone}}
+                        <div><i class="material-icons">phone</i><span class="contactsText">{{truckProfile.contacts.phone}}</span></div>
+                        {{/if}}
+                    {{#if truckProfile.contacts.email}}
+                        <div><i class="material-icons">email</i><span class="contactsText"><a href="mailto:{{truckProfile.contacts.email}}">{{truckProfile.contacts.email}}</a></span></div>
+                        {{/if}}
+                    {{#if truckProfile.contacts.website}}
+                        <div><i class="material-icons">web</i><span class="contactsText"><a href="{{truckProfile.contacts.website}}">{{truckProfile.contacts.website}}</a></span></div>
+                        {{/if}}
+                    {{#if truckProfile.contacts.facebook}}
+                        <div><img src="/images/facebook.png" class="contactsIcon"><span class="contactsText"><a href="{{truckProfile.contacts.facebook}}">{{truckProfile.contacts.facebook}}</a></span></div>
+                        {{/if}}
+                    {{#if truckProfile.contacts.twitter}}
+                        <div><img src="/images/twitter.png" class="contactsIcon"><span class="contactsText"><a href="{{truckProfile.contacts.twitter}}">{{truckProfile.contacts.twitter}}</a></span></div>
+                        {{/if}}
+                    {{#if truckProfile.contacts.instagram}}
+                        <div><img src="/images/instagram.png" class="contactsIcon"><span class="contactsText"><a href="{{truckProfile.contacts.instagram}}">{{truckProfile.contacts.instagram}}</a></span></div>
+                        {{/if}}
                 </div>
             </div>
         </div>

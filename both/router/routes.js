@@ -143,7 +143,8 @@ Router.route('/login', {
             '/styles/AdminLTE.css'
         ],
         'sync':[
-            '/plugins/bootstrap.min.js'
+            '/plugins/bootstrap.min.js',
+            '/plugins/adminLTE.js'
         ]
     }
 });
@@ -157,7 +158,8 @@ Router.route('/register', {
             '/styles/AdminLTE.css'
         ],
         'sync':[
-            '/plugins/bootstrap.min.js'
+            '/plugins/bootstrap.min.js',
+            '/plugins/aadminLTE.js'
         ]
     }
 });
@@ -171,7 +173,8 @@ Router.route('/forgotPassword', {
             '/styles/AdminLTE.css'
         ],
         'sync':[
-            '/plugins/bootstrap.min.js'
+            '/plugins/bootstrap.min.js',
+            '/plugins/adminLTE.js'
         ]
     }
 });
@@ -186,7 +189,8 @@ Router.route('/userProfile', {
             '/styles/AdminLTE.css'
         ],
         'sync':[
-            '/plugins/bootstrap.min.js'
+            '/plugins/bootstrap.min.js',
+            '/plugins/adminLTE.js'
         ]
     }
 });
@@ -204,8 +208,19 @@ Router.route('/truckInformation', {
         ],
         'sync':[
             '/plugins/select2.min.js',
-            '/plugins/bootstrap.min.js'
+            '/plugins/bootstrap.min.js',
+            '/plugins/adminLTE.js'
         ]
+    },
+    subscriptions: function() {
+    return Meteor.subscribe('truckCardImg');
+    },
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        } else {
+            this.render('loading');
+        }
     }
 });
 
@@ -225,7 +240,8 @@ Router.route('/truckAgenda', {
             '/plugins/jquery.dataTables.min.js',
             '/plugins/dataTables.bootstrap.min.js',
             '/plugins/daterangepicker.js',
-            '/plugins/moment.min.js']
+            '/plugins/moment.min.js',
+            '/plugins/adminLTE.js']
     },
     subscriptions: function() {
         return Meteor.subscribe('truckAgendaAll');
@@ -250,7 +266,8 @@ Router.route('/truckImages', {
             '/styles/skin-lemeat.css'
         ],
         'sync':[
-            '/plugins/bootstrap.min.js'
+            '/plugins/bootstrap.min.js',
+            '/plugins/adminLTE.js'
         ]
     }
 });
@@ -268,7 +285,8 @@ Router.route('/truckMap', {
         'sync':[
             '/plugins/bootstrap.min.js',
             '/plugins/daterangepicker.js',
-            '/plugins/moment.min.js']
+            '/plugins/moment.min.js',
+            '/plugins/adminLTE.js']
     }
 });
 
@@ -282,13 +300,14 @@ Router.route('/truckEvents', {
             '/styles/AdminLTE.css',
             '/styles/skin-lemeat.css',
             '/styles/daterangepicker-bs3.css',
-            '/styles/select2.min.css',
+            '/styles/select2.min.css'
         ],
         'sync':[
             '/plugins/select2.min.js',
             '/plugins/bootstrap.min.js',
             '/plugins/daterangepicker.js',
-            '/plugins/moment.min.js'
+            '/plugins/moment.min.js',
+            '/plugins/adminLTE.js'
         ]
     },
     subscriptions: function() {

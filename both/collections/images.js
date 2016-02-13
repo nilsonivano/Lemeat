@@ -4,7 +4,6 @@ if(Meteor.isServer){
     var accessKeyId = Meteor.settings.accessKeyId;
     var secretAccessKey = Meteor.settings.secretAccessKey;
     var bucketName = Meteor.settings.bucketName;
-
 }
 
 FS.debug = true;

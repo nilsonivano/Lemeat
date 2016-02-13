@@ -10,3 +10,34 @@
 .skin-blue-light .main-header li.user-header {
     background-color: #795548;
 }
+
+.nav > li > a:hover,
+.nav > li > a:active,
+.nav > li > a:focus {
+    color: #444;
+    background: #4e342e !important;
+}
+
+.main-header .sidebar-toggle {
+    color: white ;
+}
+
+.sidebar-menu li > a {
+    color: black;
+}
+
+.box.box-primary {
+    border-top-color: #795548 !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #795548 !important;
+    border: 0px solid #aaa !important;
+    border-radius: 2px !important;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 5px;
+    color: white !important;
+}

@@ -7,13 +7,11 @@
                 Informações do Truck
                 <small>Cadastro de Informações gerais</small>
             </h1>
-            <!--           <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                        <li class="active">Here</li>
-                      </ol> -->
+            <span><a target="_blank" href="/truckProfile/{{truckId}}">Ver perfil no lemeat</a></span>
         </section>
 
         <!-- Main content -->
+        {{#if truckInformation}}
         <section class="content">
             <div class="row">
                 <!-- left column -->
@@ -118,11 +116,8 @@
                     </div>
                     <a class="btn btn-app" id="saveTruckInformation"><i class="fa fa-save"></i>SALVAR</a>
                 </div>
-
-                <!-- general form elements disabled -->
-            </div><!--/.col (right) -->
-            <!-- /.row -->
-
+            </div>
         </section><!-- /.content -->
+        {{/if}}
     </div><!-- /.content-wrapper -->
 </template>

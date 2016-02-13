@@ -1,5 +1,5 @@
 <template name="login">
-    <body class="hold-transition login-page">
+    <body class="hold-transition login-page" style="height:100vh">
         <div class="login-box">
             <div class="login-logo">
                 <img src="/images/lemeat-logo-small-white.png"><br>for Truckers
@@ -28,7 +28,7 @@
                         </div><!-- /.col -->
                     </div>
                 </form>
-                <a href="#">Esqueci minha senha</a><br>
+                <a href="{{pathFor route='forgotPassword'}}">Esqueci minha senha</a><br>
                 <a href="{{pathFor route='register'}}" class="text-center">Registrar novo usuário</a>
 
             </div><!-- /.login-box-body -->
