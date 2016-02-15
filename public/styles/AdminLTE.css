@@ -13,6 +13,7 @@
 html,
 body {
   min-height: 100%;
+  overflow:scroll;
 }
 .layout-boxed html,
 .layout-boxed body {

@@ -179,6 +179,21 @@ Router.route('/forgotPassword', {
     }
 });
 
+Router.route('/resetPassword/:token', {
+    name: 'resetPassword',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/styles/bootstrap.min.css',
+            '/styles/AdminLTE.css'
+        ],
+        'sync':[
+            '/plugins/bootstrap.min.js',
+            '/plugins/adminLTE.js'
+        ]
+    }
+});
+
 Router.route('/userProfile', {
     name: 'userProfile',
     layoutTemplate: 'appLayout',

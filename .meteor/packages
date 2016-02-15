@@ -13,7 +13,6 @@ momentjs:moment
 underscorestring:underscore.string
 matb33:collection-hooks
 dburles:factory
-cunneen:mailgun
 iron:router@1.0.0
 yasinuslu:blaze-meta
 aldeed:collection2
@@ -48,3 +47,4 @@ monbro:mongodb-mapreduce-aggregation
 simple:reactive-method
 jeremy:geocomplete
 meteorhacks:kadira
+email
