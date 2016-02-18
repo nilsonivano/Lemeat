@@ -1,9 +1,9 @@
 Template.forgotPassword.events({
     'click #passwordReset': function(event){
         event.preventDefault();
-        toastr.info("Reset de senha requisitado...")
         var truckEmail = $('#truckEmail').val();
         if(truckEmail) {
+            toastr.info("Reset de senha requisitado...");
             Accounts.forgotPassword({email: truckEmail}, function(err) {
                 if (err) {
                     if (err.message === 'User not found [403]') {

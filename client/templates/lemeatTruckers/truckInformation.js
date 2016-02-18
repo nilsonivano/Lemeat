@@ -54,6 +54,7 @@ Template.truckInformation.events({
             "profile.img": truckCardImgUrl
         }},function(error){
             if(error){
+                console.log(error);
                 toastr.error("Alguma coisa deu errado na hora de salvar");
             } else {
                 toastr.success("Informações salvas com sucesso");

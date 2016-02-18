@@ -32,7 +32,6 @@ truckImg = ImageUpload.createCollection("truckImg", Meteor.users, {
     publicRead: true,
     sizes: {
         normal: [800,600],
-        thumbnail: [200,150],
-        avatar: [50, 50]
+        thumbnail: [200,150]
     }
 });

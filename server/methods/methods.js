@@ -8,6 +8,12 @@ Meteor.methods({
           }
       });
   },
+  'insertTruckImg': function(file){
+      truckImg.insert(file)
+  },
+  'insertTruckImgCard': function(file){
+      truckCardImg.insert(file)
+  },
   'queryTruckAgenda': function(dateStart,dateEnd) {
       return truckAgenda.find({dateStart:{$gt: dateStart, $lt:dateEnd}}).fetch()
   },

@@ -4,7 +4,8 @@ Schemas.contacts = new SimpleSchema({
     email: {
         type: String,
         optional: true,
-        regEx: SimpleSchema.RegEx.Email
+        defaultValue: "",
+        label: "Email do Food Truck"
     },
     phone: {
         type: String,
@@ -51,11 +52,13 @@ Schemas.truckProfile = new SimpleSchema({
     img: {
         type: String,
         optional: true,
-        label:"Url da Imagem do Truck"
+        label:"Url da Imagem do Truck",
+        defaultValue: ""
     },
     tags:{
         type: [String],
-        optional: true
+        optional: true,
+        defaultValue: ""
     },
     description:{
         type: String,
