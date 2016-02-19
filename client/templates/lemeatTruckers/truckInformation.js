@@ -21,6 +21,7 @@ Template.truckInformation.events({
         var truckName = $('[id=truckName]').val();
         var truckSpeciality = $('[id=truckSpeciality]').val();
         var truckDescription = $('[id=truckDescription]').val();
+        var truckFullDescription = $('[id=fullTruckDescription]').val();
         var truckMenu = $('[id=truckMenu]').val();
         var truckMainCity = $('[id=truckMainCity]').val();
         var truckTags = $('[id=truckTags]').val();
@@ -47,6 +48,7 @@ Template.truckInformation.events({
             "profile.name": truckName,
             "profile.speciality": truckSpeciality,
             "profile.description": truckDescription,
+            "profile.fullDescription": truckFullDescription,
             "profile.mainCity": truckMainCity,
             "profile.tags": truckTags,
             "profile.contacts": contacts,

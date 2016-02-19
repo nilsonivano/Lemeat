@@ -9,6 +9,33 @@ Template.lemeatHome.onRendered(function(){
         var map = GoogleMaps.maps.map.instance;
         var markerImage = '/images/Lemeat_marker_40.png';
         placeMarkerTruckMap(agendaFromNow,map,markerImage);
+        var locationMarker = "/images/location.png";
+        var latNumber = Geolocation.latLng().lat;
+        var lngNumber = Geolocation.latLng().lng;
+        var locationLatLng = {lat: latNumber, lng: lngNumber};
+        var marker = new google.maps.Marker({
+            map: map,
+            position: locationLatLng,
+            icon: locationMarker
+        });
+    });
+
+    //Searching nearby trucks
+    this.autorun(function() {
+        if(Geolocation.latLng()){
+            var currentTime = new Date();
+            var userLocation = Geolocation.latLng();
+            var userLat = userLocation.lat;
+            var userLng = userLocation.lng;
+            var agendaList = truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}}).fetch();
+            for(i=0; i <agendaList.length; i++){
+                var agendaLat = agendaList[i].lat;
+                var agendaLng = agendaList[i].lng;
+                var distance = getDistanceFromLatLonInKm(userLat, userLng, agendaLat, agendaLng);
+                agendaList[i].userDistance = distance;
+            }
+            console.log(agendaList)
+        }
     })
 });
 

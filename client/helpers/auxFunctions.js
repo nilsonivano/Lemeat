@@ -13,7 +13,7 @@ placeMarker = function(markersArray,map,markerImage){
         var agendaTimeEnd = moment(markersArray[i].dateEnd).format('LT');
         var agendaAddress = markersArray[i].address;
         var contentString =
-            '<div>' + '<b>Endereço: </b>' + agendaAddress + '<div>' +
+            '<div style="max-width: 250px">' + '<b>Endereço: </b>' + agendaAddress + '<div>' +
             '<div>' + '<b>Data: </b>' + agendaDay + '<div>' +
             '<div>' + '<b>Horário: </b>' + agendaTimeStart + ' às ' + agendaTimeEnd + '<div>' ;
         var infowindow = new google.maps.InfoWindow({
@@ -57,9 +57,9 @@ placeMarkerTruckMap = function(markersArray,map,markerImage){
                 var agendaAddress = results.address;
                 var truckName = results.truckName;
                 var contentString =
-                    '<div">' + '<img class="rounded" style="width:100px; height:100px; margin-bottom:5px; align:center" src=' + '"' + imgUrl + '"' + '>' + '</div>' +
+                    '<div>' + '<img class="" style="max-width:150px; max-height:150px; margin-bottom:5px; display:block; margin-left: auto; margin-right: auto" src=' + '"' + imgUrl + '"' + '>' + '</div>' +
                     '<div>' + '<b>Nome do Truck: </b>' + truckName + '</div>' +
-                    '<div>' + '<b>Endereço: </b>' + agendaAddress + '</div>' +
+                    '<div style="max-width: 250px">' + '<b>Endereço: </b>' + agendaAddress + '</div>' +
                     '<div>' + '<b>Data: </b>' + agendaDay + '<div>' +
                     '<div>' + '<b>Horário: </b>' + agendaTimeStart + ' às ' + agendaTimeEnd + '<div>' ;
                 var infowindow = new google.maps.InfoWindow({
@@ -99,10 +99,10 @@ placeMarkerEvent = function(markersArray,map,markerImage){
         var eventAddress = markersArray[i].address;
         var eventType = markersArray[i].eventType;
         var contentString =
-            '<div>' + '<b>Tipo do Evento: </b>' + eventType + '<div>' +
-            '<div>' + '<b>Endereço: </b>' + eventAddress + '<div>' +
-            '<div>' + '<b>Data: </b>' + eventDay + '<div>' +
-            '<div>' + '<b>Horário: </b>' + eventTimeStart + ' às ' + eventTimeEnd + '<div>';
+            '<div>' + '<b>Tipo do Evento: </b>' + eventType + '</div>' +
+            '<div style="max-width: 250px">' + '<b>Endereço: </b>' + eventAddress + '</div>' +
+            '<div>' + '<b>Data: </b>' + eventDay + '</div>' +
+            '<div>' + '<b>Horário: </b>' + eventTimeStart + ' às ' + eventTimeEnd + '</div>';
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
@@ -121,3 +121,23 @@ placeMarkerEvent = function(markersArray,map,markerImage){
     map.fitBounds(bounds);
     return markersOld
 };
+
+deg2rad = function(deg) {
+    return deg * (Math.PI/180)
+};
+
+//Calcular distância entre 2 lat lngs em km
+getDistanceFromLatLonInKm = function(lat1,lon1,lat2,lon2) {
+    var R = 6371; // Radius of the earth in km
+    var dLat = deg2rad(lat2-lat1);  // deg2rad below
+    var dLon = deg2rad(lon2-lon1);
+    var a =
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon/2) * Math.sin(dLon/2)
+        ;
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    var d = R * c; // Distance in km
+    return d;
+};
+

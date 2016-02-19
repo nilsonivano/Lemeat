@@ -3,8 +3,8 @@
         <section class="content-header">
             <h1>
                 Imagens do Truck
-                <small></small>
             </h1>
+            <span><a target="_blank" href="/truckProfile/{{truckId}}">Ver perfil no lemeat</a></span>
         </section>
 
         <section class="content">
@@ -36,6 +36,7 @@
                 </div>
             </div>
             <!-- START ACCORDION & CAROUSEL-->
+            {{#if truckImages}}
             <div class="row">
                 <div class="col-md-12">
                     <div class="box box-solid">
@@ -83,6 +84,7 @@
                     </div><!-- /.box -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
+            {{/if}}
         </section>
     </div>
 </template>

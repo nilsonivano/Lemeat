@@ -42,5 +42,8 @@ Template.truckImages.helpers({
         if (images){
             return images;
         }
+    },
+    'truckId': function(){
+        return Meteor.userId()
     }
 });
