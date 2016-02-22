@@ -65,3 +65,20 @@ Template.registerHelper('dateDay', function(timestamp){
     return timestamp
   }
 });
+
+Template.registerHelper('relativeTime', function(timestamp){
+  if(timestamp){
+    moment().locale('pt-br');
+    return moment(timestamp).calendar();
+  } else{
+    return timestamp
+  }
+});
+
+Template.registerHelper('truncateDistance', function(distance){
+  if(distance){
+    var roundDistance = parseFloat(distance).toFixed(2);
+    return roundDistance
+  }
+});
+

@@ -11,6 +11,24 @@
     margin-bottom: 15px;
 }
 
+.truckDistance{
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.agendaDate{
+    position: absolute;
+    right: 10px;
+    bottom: 2px;
+    color: white;
+    font-size: 10px;
+    font-weight: 100;
+}
+
 /*Form css*/
 
 /* label color */

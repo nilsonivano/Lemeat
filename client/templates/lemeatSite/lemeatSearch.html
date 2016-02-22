@@ -10,12 +10,12 @@
             </div>
             <div class="row">
                 {{#if searchResults}}
-{{#each searchResults}}
-{{> truckCard}}
-{{/each}}
-{{else}}
-Não encontramos nenhum truck =(
-{{/if}}
+                    {{#each searchResults}}
+                    {{> truckCard}}
+                    {{/each}}
+                    {{else}}
+                    Não encontramos nenhum truck =(
+                {{/if}}
             </div>
         </div>
     </div>

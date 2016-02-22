@@ -3,7 +3,7 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
-                <h1 class="header center brown-text text-darken-5">Agora ficou mais fácil encontrar seu Food Truck favorito!
+                <h1 class="header center white-text text-darken-5">Agora ficou mais fácil encontrar seu Food Truck favorito!
                 </h1>
                 <div class="row center">
                     <h5 class="header col s12 light">Aqui no Lemeat você encontra os Food Trucks mais próximos de você, conhece novos e fica sabendo de todos os eventos que acontecem por aí</h5>
@@ -11,7 +11,47 @@
                 <br><br>
             </div>
         </div>
-        <div class="parallax"><img src="images/lemeat-landing-bg4.jpg"></div>
+        <div class="parallax"><img src="images/lemeat-landing-bg2.jpg"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <div class="center">
+                        <img class="center" src="/images/trucker_icon.png">
+                    </div>
+                    <h5 class="center">Para o Trucker</h5>
+                    <p class="light">
+                        Criamos um espaço especial para que você possa divulgar sua agenda e receber oportunidades de . Cadastre-se no lemeat for Truckers aqui
+                    </p>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <div class="center">
+                        <img class="center" src="/images/trucker_icon.png">
+                    </div>
+                    <h5 class="center">Usuário</h5>
+                    <p class="light">
+                        Aqui você encontra todos os Food Trucks mais próximos de você, em uma lista organizada e simples
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <div class="center">
+                        <img class="center" src="/images/trucker_icon.png">
+                    </div>
+                    <div class="center" style="font-size: 22px">Precisa de um Truck?</div>
+
+                    <p class="light">
+                        Pelo lemeat você pode enviar oportunidades e requisitar algum truck diretamente pela nossa plataforma.
+                        Basta escolher o Food Truck e enviar sua proposta.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="section">
@@ -24,7 +64,7 @@
             <div class="titleSectionHome">Conheça alguns de nossos Food Trucks</div>
             <!--   Food Truck Card Section   -->
             <div class="row">
-                {{#each cardInfo}}
+                {{#each cardInfoOrderedByDistance}}
                     {{> truckCard}}
                 {{/each}}
             </div>
@@ -128,15 +168,21 @@
     <div class="col s12 m6 l4">
         <div class="card small hoverable">
             <div class="card-image">
-                <img src="{{profile.img}}">
-                <span class="card-title">{{profile.name}}</span>
-                <span class="card-subtitle">{{profile.speciality}}</span>
+                <img src="{{img}}">
+                <span class="card-title">{{name}}</span>
+                <span class="card-subtitle">{{speciality}}</span>
+                {{#if userDistance}}
+                    <span class="truckDistance">{{truncateDistance userDistance}} km</span>
+                {{/if}}
+                {{#if dateStart}}
+                    <span class="agendaDate">{{relativeTime dateStart}}</span>
+                {{/if}}
             </div>
             <div class="card-content">
-                <p>{{profile.description}}</p>
+                <p>{{description}}</p>
             </div>
-            <div class="card-action" id="{{_id}}">
-                <a href="/truckProfile/{{_id}}">Mais detalhes</a>
+            <div class="card-action" id="{{addedBy}}">
+                <a href="/truckProfile/{{addedBy}}">Mais detalhes</a>
             </div>
         </div>
     </div>

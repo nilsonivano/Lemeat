@@ -19,24 +19,6 @@ Template.lemeatHome.onRendered(function(){
             icon: locationMarker
         });
     });
-
-    //Searching nearby trucks
-    this.autorun(function() {
-        if(Geolocation.latLng()){
-            var currentTime = new Date();
-            var userLocation = Geolocation.latLng();
-            var userLat = userLocation.lat;
-            var userLng = userLocation.lng;
-            var agendaList = truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}}).fetch();
-            for(i=0; i <agendaList.length; i++){
-                var agendaLat = agendaList[i].lat;
-                var agendaLng = agendaList[i].lng;
-                var distance = getDistanceFromLatLonInKm(userLat, userLng, agendaLat, agendaLng);
-                agendaList[i].userDistance = distance;
-            }
-            console.log(agendaList)
-        }
-    })
 });
 
 Template.lemeatHome.helpers({
@@ -52,6 +34,37 @@ Template.lemeatHome.helpers({
                 center: new google.maps.LatLng(lat,lng),
                 zoom: 14
             };
+        }
+    },
+    cardInfoOrderedByDistance: function(){
+        if(Geolocation.latLng()){
+            agendaDistance = new Mongo.Collection();
+            var currentTime = new Date();
+            var userLocation = Geolocation.latLng();
+            var userLat = userLocation.lat;
+            var userLng = userLocation.lng;
+            var agendaList = truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}}).fetch();
+            for(i=0; i <agendaList.length; i++){
+                var agendaLat = agendaList[i].lat;
+                var agendaLng = agendaList[i].lng;
+                var distance = getDistanceFromLatLonInKm(userLat, userLng, agendaLat, agendaLng);
+                agendaList[i].userDistance = distance;
+                agendaDistance.insert(agendaList[i]);
+            }
+            var orderedList = agendaDistance.find({}, {sort: {dateStart: 1, distance:1}}).fetch();
+            var orderedResults = [];
+            for (i in orderedList){
+                var user = Meteor.users.find({_id: orderedList[i].addedBy},{field: {profile: 1}}).fetch();
+                var profile = user[0].profile;
+                orderedResults.push(profile);
+                orderedResults[i].userDistance = orderedList[i].userDistance;
+                orderedResults[i].dateStart = orderedList[i].dateStart;
+                orderedResults[i].dateEnd = orderedList[i].dateEnd;
+                orderedResults[i].address = orderedList[i].address;
+                orderedResults[i].addedBy = orderedList[i].addedBy;
+            }
+            console.log(orderedResults);
+            return orderedResults
         }
     }
 });

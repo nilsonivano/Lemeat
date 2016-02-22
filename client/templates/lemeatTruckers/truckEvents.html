@@ -67,11 +67,21 @@
             </div>
         </section>
 
-        <section class="content">
+        <section class="content" style="margin-top: 0px">
             <div class="row">
-            {{#each events}}
-                {{> eventCard}}
-            {{/each}}
+            {{#if events}}
+                {{#each events}}
+                    {{> eventCard}}
+                {{/each}}
+                {{else}}
+                <div class="col-sm-12">
+                    <div class="box box-widget">
+                        <div class="box-body">
+                            <p style="text-align: center">Sem oportunidades a serem exibidas</p>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
             </div>
         </section>
     </div>

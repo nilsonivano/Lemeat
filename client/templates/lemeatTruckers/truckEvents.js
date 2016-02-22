@@ -40,8 +40,9 @@ Template.truckEvents.helpers({
           var events = Session.get('eventsQuery');
           return events
       } else{
+          var currentTime = new Date();
           var user = Meteor.userId();
-          return truckEvents.find({$or: [{visibleToTruck: {$in: [user]}},{visibleToAll: true}]},
+          return truckEvents.find({$or: [{visibleToTruck: {$in: [user]}},{visibleToAll: true}],dateEnd: {$gte :currentTime}},
               {sort: {visibleToAll: 1}}).fetch()
       }
   },
@@ -61,6 +62,7 @@ Template.truckEvents.helpers({
 Template.truckEvents.events({
     'click #queryEvent': function(event){
         event.preventDefault();
+        var currentTime = new Date();
         var map = GoogleMaps.maps.map.instance;
         for (i=0; i < oldEventMarkers.length; i++){
             oldEventMarkers[i].setMap(null);
@@ -104,12 +106,12 @@ Template.truckEvents.events({
         } else if(eventType){
             console.log("busca por tipo");
             var events = truckEvents.find({$or: [{visibleToTruck: {$in: [user]}},{visibleToAll: true}],
-                eventType: {$in: eventType}}).fetch(); //Busca por Tipo de evento
+                eventType: {$in: eventType}, dateStart: {$gte :currentTime}}).fetch(); //Busca por Tipo de evento
         } else if(eventCity) {
             console.log("busca por cidade");
             var events = truckEvents.find({
                 $or: [{visibleToTruck: {$in: [user]}}, {visibleToAll: true}],
-                city: {$in: eventCity}
+                city: {$in: eventCity}, dateStart: {$gte :currentTime}
             }).fetch(); //Busca por Cidade
         }
         Session.set('eventsQuery',events);

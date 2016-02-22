@@ -68,7 +68,8 @@ Router.route('/tags/:tags', {
     },
     subscriptions: function() {
         tags = Router.current().params.tags;
-        return Meteor.subscribe('tagSearchTruck',tags);
+        return (Meteor.subscribe('tagSearchTruck',tags),
+                Meteor.subscribe('truckAgendaAll'));
     },
     action: function () {
         if (this.ready()) {
@@ -94,7 +95,8 @@ Router.route('/city/:mainCity', {
     },
     subscriptions: function() {
         mainCity = Router.current().params.mainCity;
-        return Meteor.subscribe('citySearchTruck',mainCity);
+        return (Meteor.subscribe('citySearchTruck',mainCity),
+                Meteor.subscribe('truckAgendaAll'));
     },
     action: function () {
         if (this.ready()) {
@@ -121,7 +123,8 @@ Router.route('/city/:mainCity/tags/:tags', {
     subscriptions: function() {
         mainCity = Router.current().params.mainCity;
         tags = Router.current().params.tags;
-        return Meteor.subscribe('cityTagsSearchTruck',tags,mainCity);
+        return (Meteor.subscribe('cityTagsSearchTruck',tags,mainCity),
+                Meteor.subscribe('truckAgendaAll'));
     },
     action: function () {
         if (this.ready()) {
