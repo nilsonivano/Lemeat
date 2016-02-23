@@ -29,6 +29,12 @@
     font-weight: 100;
 }
 
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+    height: 450px !important;
+}
+
 /*Form css*/
 
 /* label color */

@@ -38,7 +38,7 @@ Template.lemeatHome.helpers({
     },
     cardInfoOrderedByDistance: function(){
         if(Geolocation.latLng()){
-            agendaDistance = new Mongo.Collection();
+            agendaDistance = new Mongo.Collection(null);
             var currentTime = new Date();
             var userLocation = Geolocation.latLng();
             var userLat = userLocation.lat;
@@ -63,7 +63,6 @@ Template.lemeatHome.helpers({
                 orderedResults[i].address = orderedList[i].address;
                 orderedResults[i].addedBy = orderedList[i].addedBy;
             }
-            console.log(orderedResults);
             return orderedResults
         }
     }
@@ -119,7 +118,25 @@ Template.eventForm.events({
                         if(err){
                             Materialize.toast('Ops, ocorreu um erro no envio', 4000, 'red')
                         } else{
-                            Materialize.toast('Enviada com sucesso. Agora é só aguardar a resposta do Food Truck', 4000, 'green')
+                            Materialize.toast('Enviada com sucesso. Você receberá um email com confirmação do envio', 4000, 'green');
+                            var html =
+                                '<div>' + 'Olá ' + name + ', sua proposta foi enviada aos Food Trucks do Lemeat.' +
+                                ' Pedimos agora que aguarde o contato dos Food Trucks. Abaixo você pode revisar as informações que você enviou:' + '</div>' +
+                                '<div>' + '<b>Nome: </b>' + name + '</div>' +
+                                '<div>' + '<b>Email: </b>' + email + '</div>' +
+                                '<div>' + '<b>Telefone: </b>' + phone + '<div>' +
+                                '<div>' + '<b>Tipo da oportunidade: </b>' + eventType + '<div>' +
+                                '<div>' + '<b>Endereço: </b>' + eventAddress + '<div>' +
+                                '<div>' + '<b>Data de início e fim do evento: </b>' + eventDateStart + ' a ' + eventDateEnd + '<div>' +
+                                '<div>' + '<b>Descrição da Oportunidade: </b>' + eventDescription + '<div>' +
+                                '<div>' + 'Obrigado por utilizar o Lemeat (www.lemeat.com)' + '</div>';
+
+                            Meteor.call('sendEmail',
+                                email,
+                                'contato@lemeat.com',
+                                'Sua proposta foi enviada com sucesso para os Food Trucks do Lemeat',
+                                html);
+
                             $('[id=name]').val("");
                             $('[id=email]').val("");
                             $('[id=phone]').val("");
@@ -127,7 +144,6 @@ Template.eventForm.events({
                             $('[id=eventAddress]').val("");
                             $('[id=eventCity]').val("");
                             $('[id=eventDescription]').val("");
-                            //Datas do evento
                             $('[id=eventDate]').val("");
                             $('[id=eventTimeStart]').val("");
                             $('[id=eventTimeEnd]').val("");
