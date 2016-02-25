@@ -1,8 +1,9 @@
 // Website routing
 
-Router.route('/home', {
+Router.route('/', {
     name: 'lemeatHome',
     layoutTemplate: 'siteLayout',
+    template: 'lemeatHome',
     controller: PreloadController,
     'preload':{
         'styles':[
@@ -15,6 +16,32 @@ Router.route('/home', {
     subscriptions: function() {
         return (Meteor.subscribe('siteTruckProfileAll'),
                 Meteor.subscribe('truckAgendaAll'));
+    },
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        } else {
+            this.render('loading');
+        }
+    }
+});
+
+Router.route('/home', {
+    name: 'lemeatHome2',
+    layoutTemplate: 'siteLayout',
+    template: 'lemeatHome',
+    controller: PreloadController,
+    'preload':{
+        'styles':[
+            '/styles/materialize.css'
+        ],
+        'sync':[
+            '/plugins/materialize.js'
+        ]
+    },
+    subscriptions: function() {
+        return (Meteor.subscribe('siteTruckProfileAll'),
+            Meteor.subscribe('truckAgendaAll'));
     },
     action: function () {
         if (this.ready()) {
@@ -139,6 +166,7 @@ Router.route('/city/:mainCity/tags/:tags', {
 
 Router.route('/login', {
     name: 'login',
+    template: 'login',
     controller: PreloadController,
     'preload':{
         'styles':[
@@ -162,7 +190,7 @@ Router.route('/register', {
         ],
         'sync':[
             '/plugins/bootstrap.min.js',
-            '/plugins/aadminLTE.js'
+            '/plugins/adminLTE.js'
         ]
     }
 });

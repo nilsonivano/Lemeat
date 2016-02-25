@@ -11,7 +11,9 @@ Template.truckInformation.onRendered(function(){
         data: tagsLemeat,
         tags: true
     });
-    $(".select2").val(tags).trigger("change");
+    if(tags){
+        $(".select2").val(tags).trigger("change");
+    }
 });
 
 Template.truckInformation.events({
@@ -20,6 +22,7 @@ Template.truckInformation.events({
         //Informações do card
         var truckName = $('[id=truckName]').val();
         var truckSpeciality = $('[id=truckSpeciality]').val();
+        var truckVehicleType = $('[id=truckVehicleType]').val();
         var truckDescription = $('[id=truckDescription]').val();
         var truckFullDescription = $('[id=fullTruckDescription]').val();
         var truckMenu = $('[id=truckMenu]').val();
@@ -43,10 +46,10 @@ Template.truckInformation.events({
             email: truckEmail,
             phone: truckPhone
         };
-
         Meteor.users.update(currentUser,{$set:{
             "profile.name": truckName,
             "profile.speciality": truckSpeciality,
+            "profile.vehicleType": truckVehicleType,
             "profile.description": truckDescription,
             "profile.fullDescription": truckFullDescription,
             "profile.mainCity": truckMainCity,
@@ -56,7 +59,6 @@ Template.truckInformation.events({
             "profile.img": truckCardImgUrl
         }},function(error){
             if(error){
-                console.log(error);
                 toastr.error("Alguma coisa deu errado na hora de salvar");
             } else {
                 toastr.success("Informações salvas com sucesso");
@@ -67,8 +69,9 @@ Template.truckInformation.events({
 
 Template.truckInformation.helpers({
     'truckInformation': function(){
-        if(Meteor.user())
-        return Meteor.user().profile
+        if(Meteor.user()){
+            return Meteor.user().profile
+        }
     },
     'truckId': function(){
         return Meteor.userId()

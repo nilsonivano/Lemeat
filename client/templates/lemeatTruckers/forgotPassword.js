@@ -14,7 +14,7 @@ Template.forgotPassword.events({
                         console.log(err)
                     }
                 } else {
-                    toastr.success('Email enviado. De numa olhadinha em sua caixa de entrada');
+                    toastr.success('Reset de senha enviado. De numa olhadinha em sua caixa de entrada');
                 }
             });
         }

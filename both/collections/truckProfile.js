@@ -49,6 +49,12 @@ Schemas.truckProfile = new SimpleSchema({
         label:"Especialidade do Truck",
         defaultValue: ""
     },
+    vehicleType:{
+        type: String,
+        optional: true,
+        label:"Tipo do carrinho",
+        defaultValue: ""
+    },
     img: {
         type: String,
         optional: true,
@@ -57,8 +63,7 @@ Schemas.truckProfile = new SimpleSchema({
     },
     tags:{
         type: [String],
-        optional: true,
-        defaultValue: ""
+        optional: true
     },
     description:{
         type: String,
