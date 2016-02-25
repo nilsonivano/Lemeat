@@ -1,3 +1,28 @@
+//SEO Configs
+if(Meteor.isClient){
+    Router.plugin('seo', {
+        only: [],
+        except: [],
+
+        defaults: {
+            title: 'Lemeat - Tudo para seu Food Truck',
+            description: 'O Lemeat é uma solução completa para Food Trucks que querem divulgar suas agendas,' +
+            'organizar seus itinerários e receber oportunidades de eventos. Quer entrar em nosso mapa? Cadastre seu' +
+            'truck em nossa plataforma gratuita.',
+            image: 'http://lemeat.com/images/lemeat_launcher_icon.png',
+            meta: {
+                keywords: ['Lemeat', 'foodtrucks', 'foodtruck', 'comida', 'itinerante', 'mapa de foodtrucks', 'mapa']
+            },
+            twitter: {
+                card: 'Lemeat'
+            },
+            og: {
+                site_name: 'Lemeat - Tudo para Food Trucks',
+                image: 'http://lemeat.com/images/lemeat_launcher_icon.png'
+            }
+        }
+    });
+}
 // Website routing
 
 Router.route('/', {

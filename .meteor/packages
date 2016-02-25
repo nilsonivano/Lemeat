@@ -52,4 +52,4 @@ okgrow:analytics
 houston:admin
 dburles:mongo-collection-instances
 deps
-manuelschoebel:ms-seo
+lookback:seo
