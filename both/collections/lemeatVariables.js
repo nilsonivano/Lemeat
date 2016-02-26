@@ -29,12 +29,25 @@ tagsLemeat = [
             {id: "massas", text: "massas"},
             {id: "hotdog", text: "hotdog"},
             {id: "picolé", text: "picolé"},
+            {id: "sorvete", text: "sorvete"},
             {id: "waffle", text: "waffle"},
             {id: "salada", text: "salada"},
             {id: "risoto", text: "risoto"},
             {id: "frutos do mar", text: "frutos do mar"},
             {id: "vegan", text: "vegan"},
-            {id: "vegetariano", text: "vegetariano"}
+            {id: "vegetariano", text: "vegetariano"},
+            {id: "kebab", text: "kebab"},
+            {id: "sushi", text: "sushi"},
+            {id: "drinks", text: "drinks"},
+            {id: "cocktails", text: "cocktails"},
+            {id: "bolos", text: "bolos"},
+            {id: "cheesecake", text: "cheesecake"},
+            {id: "cupcake", text: "cupcake"},
+            {id: "tortas", text: "tortas"},
+            {id: "tostex", text: "tostex"},
+            {id: "sanduíches", text: "sanduíches"},{id: "", text: ""},
+
+
         ]},
     {text: "Tipo de Comida por nacionalidade",
         children: [
@@ -46,17 +59,25 @@ tagsLemeat = [
             {id: "comida francesa", text: "comida francesa"},
             {id: "comida americana", text: "comida americana"},
             {id: "comida peruana", text: "comida peruana"},
+            {id: "comida espanhola", text: "comida espanhola"},
             {id: "comida colombiana", text: "comida colombiana"},
             {id: "comida mexicana", text: "comida mexicana"},
             {id: "comida alemã", text: "comida alemã"},
             {id: "comida chinesa", text: "comida chinesa"},
             {id: "comida australiana", text: "comida australiana"},
-            {id: "comida portuguesa", text: "comida portuguesa"}
+            {id: "comida portuguesa", text: "comida portuguesa"},
+            {id: "comida libanesa", text: "comida libanesa"},
+            {id: "comida chinesa", text: "comida chinesa"},
+            {id: "comida argentina", text: "comida argentina"},
+            {id: "comida mediterrânea", text: "comida mediterrânea"},
         ]},
     {text: "Tipo de comida",
         children: [
-            {id: "", text: ""},
-            {id: "", text: ""}
+            {id: "saudável", text: "saudável"},
+            {id: "sem gluten", text: "sem gluten"},
+            {id: "comida ogra", text: "comida ogra"},
+            {id: "infartinho", text: "infartinho"},
+            {id: "infartinho", text: "infartinho"},
         ]}
 ];
 
@@ -66,6 +87,14 @@ eventTypes = [
     "Vaga em Food Park",
     "Evento Fechado",
     "Evento Organizado",
+    "Outros"
+];
+
+vehicleTypes = [
+    "Food Truck",
+    "Food Bike",
+    "Food Cart",
+    "Ônibus",
     "Outros"
 ];
 

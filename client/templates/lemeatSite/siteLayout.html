@@ -10,14 +10,14 @@
                 <img src="/images/lemeat-logo-small-primarycolor.png" style="width:60%;height: 60%">
             </a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/login">Login para Food Trucks</a></li>
-                <li><a href="/register">Cadastrar Food Truck</a></li>
+                <li><a target="_blank" href="{{pathFor route='login'}}">Login para Food Truck</a></li>
+                <li><a target="_blank" href="{{pathFor route='register'}}">Cadastrar Food Truck</a></li>
                 <!--<li><a href="#">Trucks próximos</a></li>-->
 
             </ul>
             <ul id="nav-mobile" class="side-nav">
-                <li><a href="/login">Login para Food Trucks</a></li>
-                <li><a href="/register">Cadastrar</a></li>
+                <li><a target="_blank" href="{{pathFor route='login'}}">Login para Food Truck</a></li>
+                <li><a target="_blank" href="{{pathFor route='register'}}">Cadastrar Food Truck</a></li>
                 <!--<li><a href="#">Trucks próximos</a></li>-->
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -36,7 +36,7 @@
                     <div class="input-field col s12">
                         <input id="lemeatSearch"
                                type="text"
-                               placeholder="" style="width: 250px">
+                               placeholder="" style="width: 250px" data-limit="5">
                         <label class="active">Buscar Food Truck, Tags ou Cidades</label>
                     </div>
                 </div>
@@ -53,9 +53,9 @@
                 <!--</div>-->
                 <div class="col l4 m6 s12">
                     <ul>
-                        <li><a class="white-text" href="/login">LOGIN PARA FOOD TRUCKS</a></li>
-                        <li><a class="white-text" href="/register">CADASTRAR FOOD TRUCK</a></li>
-                        <li><a class="white-text" href="/nearestTrucks">FOOD TRUCKS MAIS PRÓXIMOS</a></li>
+                        <li><a class="white-text" target="_blank" href="{{pathFor route='login'}}">LOGIN PARA FOOD TRUCKS</a></li>
+                        <li><a class="white-text" target="_blank" href="{{pathFor route='register'}}">CADASTRAR FOOD TRUCK</a></li>
+                        <!--<li><a class="white-text" href="/nearestTrucks">FOOD TRUCKS MAIS PRÓXIMOS</a></li>-->
                     </ul>
                 </div>
                 <div class="col l4 m6 s12" style="margin-top: 20px">

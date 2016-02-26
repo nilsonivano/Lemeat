@@ -75,5 +75,8 @@ Template.truckInformation.helpers({
     },
     'truckId': function(){
         return Meteor.userId()
+    },
+    'vehicleTypes': function(){
+        return vehicleTypes
     }
 });

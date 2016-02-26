@@ -53,3 +53,4 @@ houston:admin
 dburles:mongo-collection-instances
 deps
 lookback:seo
+meteorhacks:fast-render

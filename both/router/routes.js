@@ -30,6 +30,7 @@ Router.route('/', {
     layoutTemplate: 'siteLayout',
     template: 'lemeatHome',
     controller: PreloadController,
+    fastRender: true,
     'preload':{
         'styles':[
             '/styles/materialize.css'
@@ -46,7 +47,7 @@ Router.route('/', {
         if (this.ready()) {
             this.render();
         } else {
-            this.render('loading');
+            this.render('lemeatLoading');
         }
     }
 });
@@ -56,6 +57,7 @@ Router.route('/home', {
     layoutTemplate: 'siteLayout',
     template: 'lemeatHome',
     controller: PreloadController,
+    fastRender: true,
     'preload':{
         'styles':[
             '/styles/materialize.css'
@@ -72,7 +74,7 @@ Router.route('/home', {
         if (this.ready()) {
             this.render();
         } else {
-            this.render('loading');
+            this.render('lemeatLoading');
         }
     }
 });
@@ -81,6 +83,7 @@ Router.route('/truckProfile/:truckId', {
     name: 'truckProfile',
     layoutTemplate: 'siteLayout',
     controller: PreloadController,
+    fastRender: true,
     'preload':{
         'styles':[
             '/styles/materialize.css'
@@ -100,7 +103,7 @@ Router.route('/truckProfile/:truckId', {
         if (this.ready()) {
             this.render();
         } else {
-            this.render('loading');
+            this.render('lemeatLoading');
         }
     }
 });
@@ -127,7 +130,7 @@ Router.route('/tags/:tags', {
         if (this.ready()) {
             this.render();
         } else {
-            this.render('loading');
+            this.render('lemeatLoading');
         }
     }
 });
@@ -154,7 +157,7 @@ Router.route('/city/:mainCity', {
         if (this.ready()) {
             this.render();
         } else {
-            this.render('loading');
+            this.render('lemeatLoading');
         }
     }
 });
@@ -193,6 +196,7 @@ Router.route('/login', {
     name: 'login',
     template: 'login',
     controller: PreloadController,
+    fastRender: true,
     'preload':{
         'styles':[
             '/styles/bootstrap.min.css',
@@ -208,6 +212,7 @@ Router.route('/login', {
 Router.route('/register', {
     name: 'register',
     controller: PreloadController,
+    fastRender: true,
     'preload':{
         'styles':[
             '/styles/bootstrap.min.css',

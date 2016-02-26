@@ -13,42 +13,43 @@ Template.siteLayout.onRendered(function(){
 
 Template.siteLayout.events({
     'blur #lemeatSearch': function(){
-        Meteor.call('getAllTrucksTagsCitiesJson', function(err, results){
-            if(err){
-                console.log(err)
-            } else{
-                var search = $('#lemeatSearch').val();
-                var searchType = "";
-                var types = results;
-                console.log(types);
-                for(i=0; i< types.length; i++){
-                    if(types[i].value == search){
-                        searchType = types[i].type;
-                        console.log(searchType);
-                        break
+        if($('#lemeatSearch').val()){
+            Meteor.call('getAllTrucksTagsCitiesJson', function(err, results){
+                if(err){
+                    console.log(err)
+                } else{
+                    var search = $('#lemeatSearch').val();
+                    var searchType = "";
+                    var types = results;
+                    for(i=0; i< types.length; i++){
+                        if(types[i].value == search){
+                            searchType = types[i].type;
+                            console.log(searchType);
+                            break
+                        }
                     }
+                    switch (searchType){
+                        case "tag":
+                            Router.go("/tags/"+ search);
+                            break;
+                        case "truck":
+                            Meteor.call('getTruckIdName',search, function(err,results){
+                                if(err){
+                                    console.log(err)
+                                } else{
+                                    Router.go("/truckProfile/" + results)
+                                }
+                            })
+                            break;
+                        case "city":
+                            Router.go("/city/"+ search);
+                            break
+                    }
+                    $('#lemeatSearch').val("");
                 }
-                console.log(searchType);
-                switch (searchType){
-                    case "tag":
-                        Router.go("/tags/"+ search);
-                        break;
-                    case "truck":
-                        Meteor.call('getTruckIdName',search, function(err,results){
-                            if(err){
-                                console.log(err)
-                            } else{
-                                Router.go("/truckProfile/" + results)
-                            }
-                        })
-                        break;
-                    case "city":
-                        Router.go("/city/"+ search);
-                        break
-                }
-                $('#lemeatSearch').val("");
-            }
 
-        })
+            })
+        }
+
     }
-})
+});

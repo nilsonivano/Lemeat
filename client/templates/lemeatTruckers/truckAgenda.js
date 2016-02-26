@@ -6,10 +6,8 @@ Template.truckAgenda.onCreated(function(){
 
 Template.truckAgenda.onRendered(function(){
     $('#agendaDate').daterangepicker({
-        timePicker: true,
-        timePickerIncrement: 30,
-        format: 'DD/MM/YYYY hh:mm A',
-        timePicker24Hour: true});
+        singleDatePicker: true,
+        format: 'MM/DD/YYYY'});
     $("#example1").DataTable();
     this.autorun(function () {
         if (GoogleMaps.loaded()) {
@@ -35,40 +33,44 @@ Template.truckAgenda.events({
    'click #saveAgenda': function(event){
        var agendaAddress = $('#agendaAddress').val();
        var agendaAddressReference = $('#agendaAddressReference').val();
-       var agendaDate = $('#agendaDate').val();
+       var dateStart = $('#agendaDate').val();
+       var timeStart = $('#timeStart').val();
+       var timeEnd = $('#timeEnd').val();
        var userId = Meteor.userId();
-       var drp = $('#agendaDate').data('daterangepicker');
-       var dateStart = drp.startDate._d;
-       var dateEnd = drp.endDate._d;
-       var truckName = Meteor.user().profile.name;
-       //Geocoding the address
-       var geocoder;
-       geocoder = new google.maps.Geocoder();
-       geocoder.geocode( { 'address': agendaAddress}, function(results, status) {
-           if (status == google.maps.GeocoderStatus.OK) {
-               var eventAddress = results[0].formatted_address;
-               var eventCity = results[0].address_components[4].long_name;
-               var lat = results[0].geometry.location.lat();
-               var lng = results[0].geometry.location.lng();
-               console.log(results);
-               Meteor.call('insertAgenda',dateStart, dateEnd, eventAddress, lat, lng,
-                   agendaAddressReference, truckName, userId, eventCity, function(err){
-                   if (err){
-                       console.log(err);
-                       toastr.error("Algo de errado aconteceu")
-                   }else{
-                       $('#agendaAddress').val("");
-                       $('#agendaAddressReference').val("");
-                       $('#agendaDate').val("");
-                       toastr.success("Agenda inserida com sucesso");
-                   }
-               });
-           } else {
-               alert("Endereço não encontrado: " + status);
-           }
-       });
-
-
+       if(agendaAddress && dateStart && timeStart && timeEnd){
+           var AgendaDateStart = new Date(dateStart + " " + timeStart);
+           var AgendaDateEnd = new Date(dateStart + " " + timeEnd);
+           var truckName = Meteor.user().profile.name;
+           //Geocoding the address
+           var geocoder;
+           geocoder = new google.maps.Geocoder();
+           geocoder.geocode( { 'address': agendaAddress}, function(results, status) {
+               if (status == google.maps.GeocoderStatus.OK) {
+                   var eventAddress = results[0].formatted_address;
+                   var eventCity = results[0].address_components[4].long_name;
+                   var lat = results[0].geometry.location.lat();
+                   var lng = results[0].geometry.location.lng();
+                   Meteor.call('insertAgenda',AgendaDateStart, AgendaDateEnd, eventAddress, lat, lng,
+                       agendaAddressReference, truckName, userId, eventCity, function(err){
+                           if (err){
+                               console.log(err);
+                               toastr.error("Algo de errado aconteceu")
+                           }else{
+                               $('#agendaAddress').val("");
+                               $('#agendaAddressReference').val("");
+                               $('#agendaDate').val("");
+                               $('#timeStart').val("");
+                               $('#timeEnd').val("");
+                               toastr.success("Agenda inserida com sucesso");
+                           }
+                       });
+               } else {
+                   alert("Endereço não encontrado: " + status);
+               }
+           });
+       } else{
+           toastr.error("Completar todos os dados da agenda")
+       }
    },
    'blur #agendaAddress':function(event){
        var agendaAddress = $('#agendaAddress').val();

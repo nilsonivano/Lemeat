@@ -25,15 +25,42 @@
                         <!-- form start -->
                         <form role="form">
                             <div class="box-body">
-                                <div class="form-group">
-                                    <label>Agenda do dia:</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Agenda do dia:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="agendaDate" value="">
+                                            </div><!-- /.input group -->
                                         </div>
-                                        <input type="text" class="form-control pull-right" id="agendaDate" value="">
-                                    </div><!-- /.input group -->
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Horário Início</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                                <input type="time" class="form-control pull-right" id="timeStart" value="">
+                                            </div><!-- /.input group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Horário Fim</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                                <input type="time" class="form-control pull-right" id="timeEnd" value="">
+                                            </div><!-- /.input group -->
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label>Endereço</label>
                                     <input type="text" class="form-control" id="agendaAddress" placeholder="" value="">
@@ -89,7 +116,7 @@
                         <td>{{addressReference}}</td>
                         <td>
                             <button class="btn btn-primary eraseAgenda" id="{{_id}}">
-                                <i class="fa fa-fw fa-trash-o"></i> Apagar Agenda</button>
+                                <i class="fa fa-fw fa-trash-o"></i></button>
                         </td>
                     </tr>
                 {{/each}}
