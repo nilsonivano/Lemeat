@@ -7,12 +7,19 @@ Template.truckInformation.onCreated(function(){
 
 Template.truckInformation.onRendered(function(){
     var tags = Meteor.user().profile.tags;
-    $(".select2").select2({
+    var vehicle = Meteor.user().profile.vehicleType;
+    $("#truckTags").select2({
         data: tagsLemeat,
         tags: true
     });
     if(tags){
-        $(".select2").val(tags).trigger("change");
+        $("#truckTags").val(tags).trigger("change");
+    }
+    $("#vehicleType").select2({
+        data: vehicleTypes
+    });
+    if(vehicle){
+        $("#vehicleType").val(vehicle).trigger("change");
     }
 });
 
@@ -22,7 +29,7 @@ Template.truckInformation.events({
         //Informações do card
         var truckName = $('[id=truckName]').val();
         var truckSpeciality = $('[id=truckSpeciality]').val();
-        var truckVehicleType = $('[id=truckVehicleType]').val();
+        var truckVehicleType = $('[id=vehicleType]').val();
         var truckDescription = $('[id=truckDescription]').val();
         var truckFullDescription = $('[id=fullTruckDescription]').val();
         var truckMenu = $('[id=truckMenu]').val();

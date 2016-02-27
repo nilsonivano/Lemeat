@@ -76,10 +76,10 @@ tagsLemeat = [
             {id: "saudável", text: "saudável"},
             {id: "sem gluten", text: "sem gluten"},
             {id: "comida ogra", text: "comida ogra"},
-            {id: "infartinho", text: "infartinho"},
-            {id: "infartinho", text: "infartinho"},
+            {id: "infartinho", text: "infartinho"}
         ]}
 ];
+
 
 eventTypes = [
     "Casamento",
@@ -91,16 +91,9 @@ eventTypes = [
 ];
 
 vehicleTypes = [
-    "Food Truck",
-    "Food Bike",
-    "Food Cart",
-    "Ônibus",
-    "Outros"
+    {id: "Food Truck", text:"Food Truck"},
+    {id: "Food Bike", text:"Food Bike"},
+    {id: "Food Cart", text:"Food Cart"},
+    {id: "Ônibus", text:"Ônibus"},
+    {id: "Outros", text:"Outros"}
 ];
-
-eventTypesForm = [
-    {id: "Casamento", text: "Casamento"},
-    {id: "Vaga em Loja", text: "Vaga em Loja"}
-];
-
-data = [{ id: 0, text: 'enhancement' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
