@@ -186,6 +186,9 @@
             </div>
             <div class="card-action" id="{{addedBy}}">
                 <a href="/truckProfile/{{addedBy}}">Mais detalhes</a>
+                {{#if statusOpen}}
+                    <a><span class="statusOpen green">Aberto agora</span></a>
+                {{/if}}
             </div>
         </div>
     </div>

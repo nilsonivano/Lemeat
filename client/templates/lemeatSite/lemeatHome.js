@@ -22,9 +22,6 @@ Template.lemeatHome.onRendered(function(){
 });
 
 Template.lemeatHome.helpers({
-    cardInfo: function(){
-        return Meteor.users.find({},{limit: 6})
-    },
     mapOptions: function() {
         if (GoogleMaps.loaded() && Geolocation.latLng()) {
             var userLocation = Geolocation.latLng();
@@ -38,7 +35,7 @@ Template.lemeatHome.helpers({
     },
     cardInfoOrderedByDistance: function(){
         if(Geolocation.latLng()){
-            agendaDistance = new Mongo.Collection(null);
+            var agendaDistance = new Mongo.Collection(null);
             var currentTime = new Date();
             var userLocation = Geolocation.latLng();
             var userLat = userLocation.lat;
@@ -49,9 +46,12 @@ Template.lemeatHome.helpers({
                 var agendaLng = agendaList[i].lng;
                 var distance = getDistanceFromLatLonInKm(userLat, userLng, agendaLat, agendaLng);
                 agendaList[i].userDistance = distance;
+                var dateStart = new Date(agendaList[i].dateStart);
+                dateStart.setHours(0,0,0,0);
+                agendaList[i].day = dateStart;
                 agendaDistance.insert(agendaList[i]);
             }
-            var orderedList = agendaDistance.find({}, {sort: {dateStart: 1, distance:1}}).fetch();
+            var orderedList = agendaDistance.find({}, {sort: {day: 1, userDistance:1}}).fetch();
             var orderedResults = [];
             for (i in orderedList){
                 var user = Meteor.users.find({_id: orderedList[i].addedBy},{field: {profile: 1}}).fetch();
@@ -62,6 +62,26 @@ Template.lemeatHome.helpers({
                 orderedResults[i].dateEnd = orderedList[i].dateEnd;
                 orderedResults[i].address = orderedList[i].address;
                 orderedResults[i].addedBy = orderedList[i].addedBy;
+                if(currentTime >= orderedResults[i].dateStart && currentTime <= orderedResults[i].dateEnd){
+                    orderedResults[i].statusOpen = true
+                } else {
+                    orderedResults[i].statusOpen = false
+                }
+            }
+            var trucks = Meteor.users.find().fetch();
+            while(orderedResults.length < 9){
+                var randomTruck = Random.choice(trucks);
+                var randomTruckProfile = randomTruck.profile;
+                randomTruckProfile.addedBy = randomTruck._id;
+                var countFound = 0;
+                for(i in orderedResults){
+                    if(orderedResults[i].name == randomTruckProfile.name){
+                        countFound++;
+                    }
+                }
+                if(countFound == 0){
+                    orderedResults.push(randomTruckProfile);
+                }
             }
             return orderedResults
         }

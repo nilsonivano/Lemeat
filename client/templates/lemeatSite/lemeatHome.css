@@ -43,6 +43,23 @@
 .card-title{
     font-size: 18px !important;
 }
+
+span.statusOpen {
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #26a69a;
+    border-radius: 2px;
+    min-width: 3rem;
+    padding: 0 6px;
+    text-align: center;
+    line-height: inherit;
+    position: absolute;
+    right: 15px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    box-sizing: inherit;
+}
 /*Form css*/
 
 /* label color */

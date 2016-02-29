@@ -34,6 +34,15 @@ Template.truckProfile.helpers({
                 zoom: 16
             };
         }
+    },
+    'openStatus': function(){
+        var currentTime = new Date();
+        var agenda = truckAgenda.find({dateEnd: {$gte :currentTime}, dateStart: {$lte: currentTime},addedBy: truckId }, {sort: {dateStart: 1}}).fetch()
+        if(agenda.length > 0){
+            return true
+        }else{
+            return false
+        }
     }
 });
 

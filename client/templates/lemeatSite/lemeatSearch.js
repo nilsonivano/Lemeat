@@ -16,23 +16,33 @@ Template.lemeatSearch.helpers({
             var userLocation = Geolocation.latLng();
             var userLat = userLocation.lat;
             var userLng = userLocation.lng;
+            searchResultsDb = new Mongo.Collection(null);
             for(i in results){
-                var agenda = truckAgenda.find({addedBy: results[i].addedBy}, {sort: {dateStart: 1}}).fetch();
+                var agenda = truckAgenda.find({addedBy: results[i].addedBy, dateEnd: {$gte: currentTime}}, {sort: {dateStart: 1}}).fetch();
                 if(agenda.length > 0){
                     var agendaLat = agenda[0].lat;
                     var agendaLng = agenda[0].lng;
                     var distance = getDistanceFromLatLonInKm(userLat, userLng, agendaLat, agendaLng);
+                    results[i].haveAgenda = true;
                     results[i].userDistance = distance;
-                    results[i].dateStart = agenda[0].dateStart
+                    results[i].dateStart = agenda[0].dateStart;
+                    results[i].dateEnd = agenda[0].dateEnd;
+                    var dateStart = new Date(results[i].dateStart);
+                    dateStart.setHours(0,0,0,0);
+                    results[i].day = dateStart;
+                    if(currentTime >= results[i].dateStart && currentTime <= results[i].dateEnd){
+                        results[i].statusOpen = true
+                    } else {
+                        results[i].statusOpen = false
+                    }
+                    searchResultsDb.insert(results[i]);
+                } else{
+                    results[i].haveAgenda = false;
+                    searchResultsDb.insert(results[i]);
                 }
             }
-            if(results){
-                results.sort(function(a, b){
-                    return a.userDistance < b.userDistance;
-                });
-            }
+        return searchResultsDb.find({},{sort: {haveAgenda: -1, day:1, userDistance: 1, name: 1}}).fetch()
         }
-        return results
     },
     search: function(){
         tags = Router.current().params.tags;

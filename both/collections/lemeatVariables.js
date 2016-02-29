@@ -94,6 +94,8 @@ vehicleTypes = [
     {id: "Food Truck", text:"Food Truck"},
     {id: "Food Bike", text:"Food Bike"},
     {id: "Food Cart", text:"Food Cart"},
+    {id: "Tuk Tuk", text: "Tuk Tuk"},
+    {id: "Trailer", text: "Trailer"},
     {id: "Ônibus", text:"Ônibus"},
     {id: "Outros", text:"Outros"}
 ];

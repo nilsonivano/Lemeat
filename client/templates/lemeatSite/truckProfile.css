@@ -47,3 +47,8 @@
     font-size: 20px;
     font-weight: 300;
 }
+
+#statusOpen{
+    border-radius: 6px;
+    font-weight: 300;
+}
