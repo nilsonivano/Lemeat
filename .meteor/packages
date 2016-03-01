@@ -5,14 +5,10 @@
 
 less
 accounts-password
-zimme:iron-router-active
-cmather:handlebars-server@0.2.0
 dburles:collection-helpers
-reywood:publish-composite
 momentjs:moment
 underscorestring:underscore.string
 matb33:collection-hooks
-dburles:factory
 iron:router@1.0.0
 yasinuslu:blaze-meta
 aldeed:collection2
@@ -51,6 +47,5 @@ meteorhacks:kadira-profiler
 okgrow:analytics
 houston:admin
 dburles:mongo-collection-instances
-deps
 lookback:seo
 meteorhacks:fast-render
