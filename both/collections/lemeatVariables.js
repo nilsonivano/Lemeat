@@ -45,9 +45,12 @@ tagsLemeat = [
             {id: "cupcake", text: "cupcake"},
             {id: "tortas", text: "tortas"},
             {id: "tostex", text: "tostex"},
-            {id: "sanduíches", text: "sanduíches"},{id: "", text: ""},
-
-
+            {id: "sanduíches", text: "sanduíches"},
+            {id: "yakissoba", text: "yakissoba"},
+            {id: "okonomiyaki", text: "okonomiyaki"},
+            {id: "yakitori", text: "yakitori"},
+            {id: "takoyaki", text: "takoyaki"},
+            {id: "karaage", text: "karaage"}
         ]},
     {text: "Tipo de Comida por nacionalidade",
         children: [
@@ -87,6 +90,7 @@ eventTypes = [
     "Vaga em Food Park",
     "Evento Fechado",
     "Evento Organizado",
+    "Empresa",
     "Outros"
 ];
 

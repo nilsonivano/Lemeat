@@ -79,7 +79,7 @@ Template.lemeatHome.helpers({
                         countFound++;
                     }
                 }
-                if(countFound == 0){
+                if(countFound == 0 && randomTruckProfile.img){
                     orderedResults.push(randomTruckProfile);
                 }
             }

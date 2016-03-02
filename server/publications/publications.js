@@ -8,7 +8,7 @@ Meteor.publish('siteTruckProfileAll', function(){
 
 Meteor.publish('truckEventsAll', function(){
     return truckEvents.find()
-})
+});
 
 Meteor.publish('truckImg', function(){
     var currentUserId = this.userId;
@@ -20,13 +20,8 @@ Meteor.publish('truckCardImg', function(){
     return truckImg.find({addedBy: currentUserId})
 });
 
-Meteor.publish('truckEventsAll', function(){
-    return truckEvents.find()
-});
-
 Meteor.publish('siteTruckProfileImg', function(truckId){
-    var truckIdImg = truckId;
-    return truckImg.find({addedBy: truckIdImg})
+    return truckImg.find({addedBy: truckId})
 });
 
 Meteor.publish('truckProfile', function(truckId){
@@ -35,7 +30,7 @@ Meteor.publish('truckProfile', function(truckId){
 
 Meteor.publish('truckAgenda', function(truckId){
     return truckAgenda.find({addedBy: truckId})
-})
+});
 
 Meteor.publish('tagSearchTruck', function(tags) {
     return Meteor.users.find(
@@ -57,6 +52,5 @@ Meteor.publish('cityTagsSearchTruck', function(tags, mainCity) {
 
 Meteor.publish('truckAgendaFromNow',function(){
     var currentTime = new Date();
-    var agenda = truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}}).fetch();
-    return agenda
-})
+    return truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}}).fetch();
+});
