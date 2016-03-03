@@ -1,3 +1,9 @@
+Template.login.onCreated(function(){
+    if (Meteor.userId()) {
+        Router.go('truckInformation')
+    }
+});
+
 Template.login.events({
     'submit form':function(event){
         event.preventDefault();
