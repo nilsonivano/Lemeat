@@ -49,3 +49,4 @@ houston:admin
 dburles:mongo-collection-instances
 lookback:seo
 meteorhacks:fast-render
+percolate:synced-cron

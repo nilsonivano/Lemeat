@@ -2,6 +2,8 @@
  * Created by nilsonivano on 09/02/16.
  */
 
+
+
 //Tags Lemeat
 tagsLemeat = [
     {text: "Tipo de comida",
@@ -79,11 +81,10 @@ tagsLemeat = [
             {id: "saudável", text: "saudável"},
             {id: "sem gluten", text: "sem gluten"},
             {id: "comida ogra", text: "comida ogra"},
-            {id: "infartinho", text: "infartinho"}
+            {id: "infartinho", text: "infartinho"},
+            {id: "vegan", text: "vegan"}
         ]}
 ];
-
-
 eventTypes = [
     "Casamento",
     "Vaga em Loja",
@@ -102,4 +103,27 @@ vehicleTypes = [
     {id: "Trailer", text: "Trailer"},
     {id: "Ônibus", text:"Ônibus"},
     {id: "Outros", text:"Outros"}
+];
+
+cidadesLemeat = [
+    {id: "São Paulo", text:"São Paulo"},
+    {id: "Campinas", text:"Campinas"},
+    {id: "Fortaleza", text:"Fortaleza"},
+    {id: "Ribeirão Preto", text:"Ribeirão Preto"},
+    {id: "Belo Horizonte", text:"Belo Horizonte"},
+    {id: "Brotas", text:"Brotas"},
+    {id: "Rio de Janeiro", text:"Rio de Janeiro"},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""},
+    {id: "", text:""}
 ];
