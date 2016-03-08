@@ -41,6 +41,7 @@ Schemas.contacts = new SimpleSchema({
 Schemas.truckProfile = new SimpleSchema({
     name: {
         type: String,
+        optional: true,
         label:"Nome do Truck"
     },
     speciality:{
