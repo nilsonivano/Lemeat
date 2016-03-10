@@ -17,7 +17,12 @@ if(Meteor.isClient){
             },
             og: {
                 site_name: 'Lemeat - Tudo para Food Trucks',
-                image: 'http://lemeat.com/images/lemeat_launcher_icon.png'
+                title: 'Lemeat - Tudo para seu Food Truck em um lugar só',
+                description: 'O Lemeat é uma solução completa para Food Trucks que querem divulgar suas agendas,' +
+                'organizar seus itinerários e receber oportunidades de eventos. Quer entrar em nosso mapa? Cadastre seu' +
+                'truck em nossa plataforma gratuita.',
+                image: 'http://lemeat.com/images/lemeat_launcher_icon.png',
+                type: 'website'
             }
         }
     });
@@ -92,7 +97,7 @@ Router.route('/truckProfile/:truckId', {
         ]
     },
     subscriptions: function() {
-        truckId = Router.current().params.truckId;
+        var truckId = Router.current().params.truckId;
         return (Meteor.subscribe('siteTruckProfileImg',truckId),
                 Meteor.subscribe('truckProfile', truckId),
                 Meteor.subscribe('truckAgenda',truckId)
@@ -121,7 +126,7 @@ Router.route('/tags/:tags', {
         ]
     },
     subscriptions: function() {
-        tags = Router.current().params.tags;
+        var tags = Router.current().params.tags;
         return (Meteor.subscribe('tagSearchTruck',tags),
                 Meteor.subscribe('truckAgendaAll'));
     },
@@ -148,7 +153,7 @@ Router.route('/city/:mainCity', {
         ]
     },
     subscriptions: function() {
-        mainCity = Router.current().params.mainCity;
+        var mainCity = Router.current().params.mainCity;
         return (Meteor.subscribe('citySearchTruck',mainCity),
                 Meteor.subscribe('truckAgendaAll'));
     },
@@ -175,8 +180,8 @@ Router.route('/city/:mainCity/tags/:tags', {
         ]
     },
     subscriptions: function() {
-        mainCity = Router.current().params.mainCity;
-        tags = Router.current().params.tags;
+        var mainCity = Router.current().params.mainCity;
+        var tags = Router.current().params.tags;
         return (Meteor.subscribe('cityTagsSearchTruck',tags,mainCity),
                 Meteor.subscribe('truckAgendaAll'));
     },
