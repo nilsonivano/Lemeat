@@ -80,6 +80,9 @@ footer.page-footer {
     padding: 0px 0px 0px 13px;
     font-size: 12px;
     font-weight: 200;
+    line-height: 1.5em;
+    height: 1.5em;
+    overflow: hidden;
 }
 
 .card-content{
