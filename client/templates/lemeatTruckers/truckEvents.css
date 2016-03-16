@@ -5,3 +5,7 @@
     height: 300px;
 }
 
+.eventDescription {
+    height: 300px;
+    overflow: scroll;
+}

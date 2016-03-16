@@ -30,7 +30,7 @@ Api.addRoute('truckList', {
             var userLat = query.lat;
             var userLng = query.lng;
             var currentTime = new Date();
-            var results = Meteor.users.find().fetch();
+            var results = Meteor.users.find({},{fields: {'profile': 1}}).fetch();
             var searchResultsDb = new Mongo.Collection(null);
             for(i in results){
                 var agenda = truckAgenda.find({addedBy: results[i]._id, dateEnd: {$gte: currentTime}}, {sort: {dateStart: 1}}).fetch();
@@ -56,8 +56,12 @@ Api.addRoute('truckList', {
                     searchResultsDb.insert(results[i]);
                 }
             }
-            return searchResultsDb.find({},{sort: {haveAgenda: -1, day:1, userDistance: 1, name: 1}}).fetch()
+            var search = searchResultsDb.find({},{sort: {haveAgenda: -1, day:1, userDistance: 1, name: 1}}).fetch()
+            for (i in search) {
+                search[i].profile.img = "http://localhost:3000" + search[i].profile.img;
             }
+            return search
+        }
     }
 });
 

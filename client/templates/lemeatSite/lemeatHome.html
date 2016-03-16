@@ -240,7 +240,9 @@
         </div>
         <div class="col s12 l11">
             {{#each allTags}}
-                <a href="/tags/{{this}}"><div class="chip">{{this}}</div></a>
+                {{#if this}}
+                    <a href="/tags/{{this}}"><div class="chip">{{this}}</div></a>
+                {{/if}}
             {{/each}}
         </div>
     </div>

@@ -4,7 +4,19 @@ Template.truckProfile.onRendered(function(){
         var map = GoogleMaps.maps.map.instance;
         var markerImage = '/images/Lemeat_marker_40.png';
         placeMarker(agendas,map,markerImage);
-    })
+    });
+    $('.truckFullDescription').readmore({
+        speed: 200,
+        moreLink: '<a href="#">Mais</a>',
+        lessLink: '<a href="#">Menos</a>',
+        collapsedHeight: 150
+    });
+    $('.truckMenuDescription').readmore({
+        speed: 200,
+        moreLink: '<a href="#">Mais</a>',
+        lessLink: '<a href="#">Menos</a>',
+        collapsedHeight: 150
+    });
 });
 
 Template.truckProfile.onCreated(function(){

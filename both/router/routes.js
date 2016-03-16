@@ -93,7 +93,8 @@ Router.route('/truckProfile/:truckId', {
             '/styles/materialize.css'
         ],
         'sync':[
-            '/plugins/materialize.js'
+            '/plugins/materialize.js',
+            '/plugins/readmore.js'
         ]
     },
     subscriptions: function() {
