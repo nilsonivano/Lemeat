@@ -17,5 +17,8 @@ Template.appLayout.events({
 Template.appLayout.helpers({
     'user': function(){
         return Meteor.user();
+    },
+    'countEventsMenu': function(){
+        return ReactiveMethod.call('getValidEventsCount');
     }
 });

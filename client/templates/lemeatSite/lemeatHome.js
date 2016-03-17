@@ -113,11 +113,10 @@ Template.eventForm.events({
         var eventCity = $('[id=eventCity]').val();
         var eventDescription = $('[id=eventDescription]').val();
         //Datas do evento
-        var eventDate = $('[id=eventDate]').val();
-        var eventTimeStart = $('[id=eventTimeStart]').val();
-        var eventTimeEnd = $('[id=eventTimeEnd]').val();
-        var eventDateStart = new Date(eventDate + " " + eventTimeStart);
-        var eventDateEnd = new Date(eventDate + " " + eventTimeEnd);
+        var eventStart = $('[id=eventDateStart]').val();
+        var eventEnd = $('[id=eventDateEnd]').val();
+        var eventDateStart = new Date(eventStart);
+        var eventDateEnd = new Date(eventEnd);
         if(Router.current().params.truckId){
             var visibleToTruck = [Router.current().params.truckId];
             var visibleToAll = false

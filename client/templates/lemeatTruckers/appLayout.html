@@ -1,101 +1,101 @@
 <template name="appLayout">
-<head>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-</head>
-<body class="skin-blue-light sidebar-mini">
-    <div class="wrapper">
+    <head>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    </head>
+    <body class="skin-blue-light sidebar-mini">
+        <div class="wrapper">
 
-        <!-- Main Header -->
-        <header class="main-header">
+            <!-- Main Header -->
+            <header class="main-header">
 
-            <!-- Logo -->
-            <a href="#" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini">Lmt</span>
-                <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><img src="/images/lemeat-logo-small-white.png" style="width: 80px"></span>
-            </a>
-
-            <!-- Header Navbar -->
-            <nav class="navbar navbar-static-top" role="navigation">
-                <!-- Sidebar toggle button-->
-                <a href="#" id="menuToggle" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
+                <!-- Logo -->
+                <a href="#" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini">Lmt</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><img src="/images/lemeat-logo-small-white.png" style="width: 80px"></span>
                 </a>
-                <!-- Navbar Right Menu -->
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-                        <!-- User Account Menu -->
-                        <li class="dropdown user user-menu" id="menuToggle">
-                            <!-- Menu Toggle Button -->
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <!-- The user image in the navbar-->
-                                <img src="{{user.profile.img}}" class="user-image" alt="User Image">
-                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs" style="color: white">{{user.profile.name}}</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <!-- The user image in the menu -->
-                                <li class="user-header">
-                                    <img src="{{user.profile.img}}" class="img-circle" alt="User Image">
-                                    <p>{{user.profile.name}}</p>
-                                </li>
-                                <!-- Menu Body -->
-                                <!--<li class="user-body">-->
-                                    <!--<div class="col-xs-4 text-center">-->
-                                        <!--<a href="#">Followers</a>-->
-                                    <!--</div>-->
-                                    <!--<div class="col-xs-4 text-center">-->
-                                        <!--<a href="#">Sales</a>-->
-                                    <!--</div>-->
-                                    <!--<div class="col-xs-4 text-center">-->
-                                        <!--<a href="#">Friends</a>-->
-                                    <!--</div>-->
-                                <!--</li>-->
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat" id="logout">Logout</a>
-                                    </div>
-                                    <div class="pull-left">
-                                        <a href="/userProfile" class="btn btn-default btn-flat">Perfil</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+
+                <!-- Header Navbar -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" id="menuToggle" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu" id="menuToggle">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!-- The user image in the navbar-->
+                                    <img src="{{user.profile.img}}" class="user-image" alt="User Image">
+                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span class="hidden-xs" style="color: white">{{user.profile.name}}</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- The user image in the menu -->
+                                    <li class="user-header">
+                                        <img src="{{user.profile.img}}" class="img-circle" alt="User Image">
+                                        <p>{{user.profile.name}}</p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <!--<li class="user-body">-->
+                                        <!--<div class="col-xs-4 text-center">-->
+                                            <!--<a href="#">Followers</a>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-4 text-center">-->
+                                            <!--<a href="#">Sales</a>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-4 text-center">-->
+                                            <!--<a href="#">Friends</a>-->
+                                        <!--</div>-->
+                                    <!--</li>-->
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-right">
+                                            <a href="#" class="btn btn-default btn-flat" id="logout">Logout</a>
+                                        </div>
+                                        <div class="pull-left">
+                                            <a href="/userProfile" class="btn btn-default btn-flat">Perfil</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar Menu -->
+                    <ul class="sidebar-menu">
+                        <li class="header">for TRUCKERS</li>
+                        <li><a href={{ pathFor 'truckInformation' }}><i class="fa fa-truck"></i> <span>Informações do Truck</span></a></li>
+                        <li><a href={{ pathFor 'truckImages'}}><i class="fa fa-image"></i> <span>Imagens do Truck</span></a></li>
+                        <li><a href={{ pathFor 'truckAgenda' }}><i class="fa fa-calendar"></i> <span>Cadastro de Agenda</span></a></li>
+                        <li><a href={{ pathFor 'truckMap' }}><i class="fa fa-map"></i> <span>Mapa Geral de Trucks</span></a></li>
+                        <li><a href={{ pathFor 'truckEvents' }}><i class="fa fa-envelope"></i> <span>Eventos / Oportunidades</span><span class="label label-primary pull-right lemeatColor">{{countEventsMenu}}</span></a></li>
+                    </ul><!-- /.sidebar-menu -->
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            {{> yield}}
+
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    Lemeat For Truckers
                 </div>
-            </nav>
-        </header>
-        <!-- Left side column. contains the logo and sidebar -->
-        <aside class="main-sidebar">
-
-            <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
-                <!-- Sidebar Menu -->
-                <ul class="sidebar-menu">
-                    <li class="header">for TRUCKERS</li>
-                    <li><a href={{ pathFor 'truckInformation' }}><i class="fa fa-truck"></i> <span>Informações do Truck</span></a></li>
-                    <li><a href={{ pathFor 'truckImages'}}><i class="fa fa-image"></i> <span>Imagens do Truck</span></a></li>
-                    <li><a href={{ pathFor 'truckAgenda' }}><i class="fa fa-calendar"></i> <span>Cadastro de Agenda</span></a></li>
-                    <li><a href={{ pathFor 'truckMap' }}><i class="fa fa-map"></i> <span>Mapa Geral de Trucks</span></a></li>
-                    <li><a href={{ pathFor 'truckEvents' }}><i class="fa fa-envelope"></i> <span>Eventos / Oportunidades</span></a></li>
-                </ul><!-- /.sidebar-menu -->
-            </section>
-            <!-- /.sidebar -->
-        </aside>
-
-        <!-- Content Wrapper. Contains page content -->
-        {{> yield}}
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                Lemeat For Truckers
-            </div>
-            <strong>Copyright &copy; 2015 <a href="#">Lemeat</a>.</strong> Todos os direitos reservados.
-        </footer>
-    </div>
-</body>
+                <strong>Copyright &copy; 2015 <a href="#">Lemeat</a>.</strong> Todos os direitos reservados.
+            </footer>
+        </div>
+    </body>
 </template>

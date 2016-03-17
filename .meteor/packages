@@ -50,3 +50,5 @@ dburles:mongo-collection-instances
 lookback:seo
 meteorhacks:fast-render
 nimble:restivus@=0.8.5
+kadira:debug
+percolate:synced-cron

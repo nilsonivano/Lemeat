@@ -77,6 +77,8 @@ iron:router@1.0.12
 iron:url@1.0.11
 jeremy:geocomplete@1.6.5_12
 jquery@1.11.4
+kadira:debug@3.2.1
+kadira:runtime-dev@0.0.1
 lai:collection-extensions@0.2.1_1
 launch-screen@1.0.4
 less@2.5.1
@@ -130,6 +132,7 @@ observe-sequence@1.0.7
 okgrow:analytics@1.0.4
 okgrow:image-upload@0.8.1
 ordered-dict@1.0.4
+percolate:synced-cron@1.3.0
 promise@0.5.1
 raix:eventemitter@0.1.3
 random@1.0.5

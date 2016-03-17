@@ -79,25 +79,31 @@ Meteor.methods({
         var allTrucks = Meteor.users.distinct("profile.name");
         var data = [];
         for (i=0; i<allCities.length; i++){
-            var city = {
-                type: "city",
-                value: allCities[i]
-            };
-            data.push(city)
+            if(allCities[i]){
+                var city = {
+                    type: "city",
+                    value: allCities[i]
+                };
+                data.push(city)
+            }
         }
         for (i=0; i<allTags.length; i++){
-            var tag = {
-                type: "tag",
-                value: allTags[i]
-            };
-            data.push(tag)
+            if(allTags[i]){
+                var tag = {
+                    type: "tag",
+                    value: allTags[i]
+                };
+                data.push(tag)
+            }
         }
         for (i=0; i<allTrucks.length; i++){
-            var truck = {
-                type: "truck",
-                value: allTrucks[i]
-            };
-            data.push(truck)
+            if(allTrucks[i]){
+                var truck = {
+                    type: "truck",
+                    value: allTrucks[i]
+                };
+                data.push(truck)
+            }
         }
         return data
     },
@@ -117,5 +123,11 @@ Meteor.methods({
         } else{
             return "No truck for this name"
         }
+    },
+    'getValidEventsCount': function(){
+        var now = new Date();
+        var truckId = this.userId;
+        return truckEvents.find({$or: [{visibleToTruck: {$in: [truckId]}},{visibleToAll: true}],
+            dateEnd: {$gt: now}}).count()
     }
 });
