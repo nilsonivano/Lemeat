@@ -2,7 +2,7 @@ Template.siteLayout.onRendered(function(){
     //Ativating lateral menu
     $('.button-collapse').sideNav();
     //Activating autocomplete
-    Meteor.call('getAllTrucksTagsCitiesList', function(err, results){
+    Meteor.call('getAllTrucksTagsCitiesJson', function(err, results){
         if(err){
             console.log(err)
         } else{

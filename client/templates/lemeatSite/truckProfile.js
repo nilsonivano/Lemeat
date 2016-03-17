@@ -1,5 +1,6 @@
 Template.truckProfile.onRendered(function(){
     GoogleMaps.ready('map', function(map){
+        var truckId = Router.current().params.truckId;
         var agendas = truckAgenda.find({addedBy: truckId}).fetch();
         var map = GoogleMaps.maps.map.instance;
         var markerImage = '/images/Lemeat_marker_40.png';
@@ -48,6 +49,7 @@ Template.truckProfile.helpers({
         }
     },
     'openStatus': function(){
+        var truckId = Router.current().params.truckId;
         var currentTime = new Date();
         var agenda = truckAgenda.find({dateEnd: {$gte :currentTime}, dateStart: {$lte: currentTime},addedBy: truckId }, {sort: {dateStart: 1}}).fetch()
         if(agenda.length > 0){
