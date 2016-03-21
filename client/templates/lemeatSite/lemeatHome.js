@@ -36,6 +36,7 @@ Template.lemeatHome.helpers({
     cardInfoOrderedByDistance: function(){
         if(Geolocation.latLng()){
             var agendaDistance = new Mongo.Collection(null);
+            var orderedResults = [];
             var currentTime = new Date();
             var userLocation = Geolocation.latLng();
             var userLat = userLocation.lat;
@@ -52,22 +53,28 @@ Template.lemeatHome.helpers({
                 agendaDistance.insert(agendaList[i]);
             }
             var orderedList = agendaDistance.find({}, {sort: {day: 1, userDistance:1}}).fetch();
-            var orderedResults = [];
             for (i in orderedList){
                 var user = Meteor.users.find({_id: orderedList[i].addedBy},{field: {profile: 1}}).fetch();
-                var profile = user[0].profile;
-                orderedResults.push(profile);
-                orderedResults[i].userDistance = orderedList[i].userDistance;
-                orderedResults[i].dateStart = orderedList[i].dateStart;
-                orderedResults[i].dateEnd = orderedList[i].dateEnd;
-                orderedResults[i].address = orderedList[i].address;
-                orderedResults[i].addedBy = orderedList[i].addedBy;
-                if(currentTime >= orderedResults[i].dateStart && currentTime <= orderedResults[i].dateEnd){
-                    orderedResults[i].statusOpen = true
-                } else {
-                    orderedResults[i].statusOpen = false
+                var userId = user[0]._id;
+                var userIdInOrderedResults = orderedResults.filter(function ( obj ) {
+                    return obj.addedBy === userId;
+                })[0];
+                if(!userIdInOrderedResults){
+                    var profile = user[0].profile;
+                    var orderedResultsItem = {};
+                    orderedResults.push(profile);
+                    orderedResults[i].userDistance = orderedList[i].userDistance;
+                    orderedResults[i].dateStart = orderedList[i].dateStart;
+                    orderedResults[i].dateEnd = orderedList[i].dateEnd;
+                    orderedResults[i].address = orderedList[i].address;
+                    orderedResults[i].addedBy = orderedList[i].addedBy;
+                    if(currentTime >= orderedResults[i].dateStart && currentTime <= orderedResults[i].dateEnd){
+                        orderedResults[i].statusOpen = true
+                    } else {
+                        orderedResults[i].statusOpen = false
+                        }
+                    }
                 }
-            }
             var trucks = Meteor.users.find().fetch();
             while(orderedResults.length < 9){
                 var randomTruck = Random.choice(trucks);
