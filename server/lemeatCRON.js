@@ -2,7 +2,7 @@ SyncedCron.add({
     name: 'Send email to trucks without week agenda',
     schedule: function(parser) {
         // parser is a later.parse object
-        return parser.text('at 10:48 am every weds');
+        return parser.text('at 10:48 am on wednesday');
     },
     job: function() {
         var users = Meteor.users.find().fetch();
