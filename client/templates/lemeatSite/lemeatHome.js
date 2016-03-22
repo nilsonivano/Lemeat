@@ -62,17 +62,18 @@ Template.lemeatHome.helpers({
                 if(!userIdInOrderedResults){
                     var profile = user[0].profile;
                     var orderedResultsItem = {};
-                    orderedResults.push(profile);
-                    orderedResults[i].userDistance = orderedList[i].userDistance;
-                    orderedResults[i].dateStart = orderedList[i].dateStart;
-                    orderedResults[i].dateEnd = orderedList[i].dateEnd;
-                    orderedResults[i].address = orderedList[i].address;
-                    orderedResults[i].addedBy = orderedList[i].addedBy;
-                    if(currentTime >= orderedResults[i].dateStart && currentTime <= orderedResults[i].dateEnd){
-                        orderedResults[i].statusOpen = true
+                    orderedResultsItem = profile;
+                    orderedResultsItem.userDistance = orderedList[i].userDistance;
+                    orderedResultsItem.dateStart = orderedList[i].dateStart;
+                    orderedResultsItem.dateEnd = orderedList[i].dateEnd;
+                    orderedResultsItem.address = orderedList[i].address;
+                    orderedResultsItem.addedBy = orderedList[i].addedBy;
+                    if(currentTime >= orderedResultsItem.dateStart && currentTime <= orderedResultsItem.dateEnd){
+                        orderedResultsItem.statusOpen = true
                     } else {
-                        orderedResults[i].statusOpen = false
+                        orderedResultsItem.statusOpen = false
                         }
+                    orderedResults.push(orderedResultsItem);
                     }
                 }
             var trucks = Meteor.users.find().fetch();
@@ -90,6 +91,7 @@ Template.lemeatHome.helpers({
                     orderedResults.push(randomTruckProfile);
                 }
             }
+            console.log(orderedResults);
             return orderedResults
         }
     }

@@ -42,6 +42,11 @@
 
 .card-title{
     font-size: 18px !important;
+    text-overflow: ellipsis;
+}
+
+.card-subtitle{
+    text-overflow: ellipsis;
 }
 
 span.statusOpen {
