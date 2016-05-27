@@ -61,19 +61,21 @@ Template.lemeatHome.helpers({
                 })[0];
                 if(!userIdInOrderedResults){
                     var profile = user[0].profile;
-                    var orderedResultsItem = {};
-                    orderedResultsItem = profile;
-                    orderedResultsItem.userDistance = orderedList[i].userDistance;
-                    orderedResultsItem.dateStart = orderedList[i].dateStart;
-                    orderedResultsItem.dateEnd = orderedList[i].dateEnd;
-                    orderedResultsItem.address = orderedList[i].address;
-                    orderedResultsItem.addedBy = orderedList[i].addedBy;
-                    if(currentTime >= orderedResultsItem.dateStart && currentTime <= orderedResultsItem.dateEnd){
-                        orderedResultsItem.statusOpen = true
-                    } else {
-                        orderedResultsItem.statusOpen = false
+                    if(profile.description.length > 0 && profile.img.length > 0){
+                        var orderedResultsItem = {};
+                        orderedResultsItem = profile;
+                        orderedResultsItem.userDistance = orderedList[i].userDistance;
+                        orderedResultsItem.dateStart = orderedList[i].dateStart;
+                        orderedResultsItem.dateEnd = orderedList[i].dateEnd;
+                        orderedResultsItem.address = orderedList[i].address;
+                        orderedResultsItem.addedBy = orderedList[i].addedBy;
+                        if(currentTime >= orderedResultsItem.dateStart && currentTime <= orderedResultsItem.dateEnd){
+                            orderedResultsItem.statusOpen = true
+                            } else {
+                                orderedResultsItem.statusOpen = false
+                            }
+                        orderedResults.push(orderedResultsItem);
                         }
-                    orderedResults.push(orderedResultsItem);
                     }
                 }
             var trucks = Meteor.users.find().fetch();
@@ -91,7 +93,6 @@ Template.lemeatHome.helpers({
                     orderedResults.push(randomTruckProfile);
                 }
             }
-            console.log(orderedResults);
             return orderedResults
         }
     }
