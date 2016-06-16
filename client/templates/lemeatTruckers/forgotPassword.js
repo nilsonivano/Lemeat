@@ -1,3 +1,10 @@
+Template.forgotPassword.onCreated(function(){
+    require('/imports/styles/bootstrap.css');
+    require('/imports/styles/AdminLTE.css');
+    require('/imports/plugins/bootstrap.js');
+    require('/imports/plugins/adminLTE.js');
+});
+
 Template.forgotPassword.events({
     'click #passwordReset': function(event){
         event.preventDefault();

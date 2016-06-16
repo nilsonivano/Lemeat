@@ -33,16 +33,7 @@ Router.route('/', {
     name: 'lemeatHome',
     layoutTemplate: 'siteLayout',
     template: 'lemeatHome',
-    controller: PreloadController,
     fastRender: true,
-    'preload':{
-        'styles':[
-            '/styles/materialize.css'
-        ],
-        'sync':[
-            '/plugins/materialize.js'
-        ]
-    },
     subscriptions: function() {
         return (Meteor.subscribe('siteTruckProfileAll'),
                 Meteor.subscribe('truckAgendaAll'));
@@ -60,16 +51,7 @@ Router.route('/home', {
     name: 'lemeatHome2',
     layoutTemplate: 'siteLayout',
     template: 'lemeatHome',
-    controller: PreloadController,
-    fastRender: true,
-    'preload':{
-        'styles':[
-            '/styles/materialize.css'
-        ],
-        'sync':[
-            '/plugins/materialize.js'
-        ]
-    },
+    fastRender: false,
     subscriptions: function() {
         return (Meteor.subscribe('siteTruckProfileAll'),
             Meteor.subscribe('truckAgendaAll'));
@@ -86,17 +68,7 @@ Router.route('/home', {
 Router.route('/truckProfile/:truckId', {
     name: 'truckProfile',
     layoutTemplate: 'siteLayout',
-    controller: PreloadController,
     fastRender: true,
-    'preload':{
-        'styles':[
-            '/styles/materialize.css'
-        ],
-        'sync':[
-            '/plugins/materialize.js',
-            '/plugins/readmore.js'
-        ]
-    },
     subscriptions: function() {
         var truckId = Router.current().params.truckId;
         return (Meteor.subscribe('siteTruckProfileImg',truckId),
@@ -117,15 +89,6 @@ Router.route('/tags/:tags', {
     name: 'lemeatSearchTags',
     template: 'lemeatSearch',
     layoutTemplate: 'siteLayout',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/materialize.css'
-        ],
-        'sync':[
-            '/plugins/materialize.js'
-        ]
-    },
     subscriptions: function() {
         var tags = Router.current().params.tags;
         return (Meteor.subscribe('tagSearchTruck',tags),
@@ -144,15 +107,6 @@ Router.route('/city/:mainCity', {
     name: 'lemeatSearchCity',
     template: 'lemeatSearch',
     layoutTemplate: 'siteLayout',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/materialize.css'
-        ],
-        'sync':[
-            '/plugins/materialize.js'
-        ]
-    },
     subscriptions: function() {
         var mainCity = Router.current().params.mainCity;
         return (Meteor.subscribe('citySearchTruck',mainCity),
@@ -171,15 +125,6 @@ Router.route('/city/:mainCity/tags/:tags', {
     name: 'lemeatSearchCityTags',
     template: 'lemeatSearch',
     layoutTemplate: 'siteLayout',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/materialize.css'
-        ],
-        'sync':[
-            '/plugins/materialize.js'
-        ]
-    },
     subscriptions: function() {
         var mainCity = Router.current().params.mainCity;
         var tags = Router.current().params.tags;
@@ -190,7 +135,7 @@ Router.route('/city/:mainCity/tags/:tags', {
         if (this.ready()) {
             this.render();
         } else {
-            this.render('loading');
+            this.render('lemeatLoading');
         }
     }
 });
@@ -200,99 +145,33 @@ Router.route('/city/:mainCity/tags/:tags', {
 Router.route('/login', {
     name: 'login',
     template: 'login',
-    controller: PreloadController,
-    fastRender: true,
-    'preload':{
-        'styles':[
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css'
-        ],
-        'sync':[
-            '/plugins/bootstrap.min.js',
-            '/plugins/adminLTE.js'
-        ]
-    }
+    fastRender: true
 });
 
 Router.route('/register', {
     name: 'register',
-    controller: PreloadController,
-    fastRender: true,
-    'preload':{
-        'styles':[
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css'
-        ],
-        'sync':[
-            '/plugins/bootstrap.min.js',
-            '/plugins/adminLTE.js'
-        ]
-    }
+    fastRender: true
+
 });
 
 Router.route('/forgotPassword', {
     name: 'forgotPassword',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css'
-        ],
-        'sync':[
-            '/plugins/bootstrap.min.js',
-            '/plugins/adminLTE.js'
-        ]
-    }
+    fastRender: true
 });
 
 Router.route('/resetPassword/:token', {
     name: 'resetPassword',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css'
-        ],
-        'sync':[
-            '/plugins/bootstrap.min.js',
-            '/plugins/adminLTE.js'
-        ]
-    }
+    fasterRender: true
 });
 
 Router.route('/userProfile', {
     name: 'userProfile',
-    layoutTemplate: 'appLayout',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css'
-        ],
-        'sync':[
-            '/plugins/bootstrap.min.js',
-            '/plugins/adminLTE.js'
-        ]
-    }
+    layoutTemplate: 'appLayout'
 });
 
 Router.route('/truckInformation', {
     name: 'truckInformation',
     layoutTemplate: 'appLayout',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/select2.min.css',
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css',
-            '/styles/skin-lemeat.css'
-        ],
-        'sync':[
-            '/plugins/select2.min.js',
-            '/plugins/bootstrap.min.js',
-            '/plugins/adminLTE.js'
-        ]
-    },
     subscriptions: function() {
     return Meteor.subscribe('truckCardImg');
     },
@@ -300,7 +179,7 @@ Router.route('/truckInformation', {
         if (this.ready()) {
             this.render();
         } else {
-            this.render('loading');
+            this.render('lemeatLoading');
         }
     }
 });
@@ -308,22 +187,6 @@ Router.route('/truckInformation', {
 Router.route('/truckAgenda', {
     name: 'truckAgenda',
     layoutTemplate: 'appLayout',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css',
-            '/styles/dataTables.bootstrap.css',
-            '/styles/daterangepicker-bs3.css',
-            '/styles/jquery.dataTables.min.css'],
-        'sync':[
-            '/plugins/bootstrap.min.js',
-            '/plugins/jquery.dataTables.min.js',
-            '/plugins/dataTables.bootstrap.min.js',
-            '/plugins/daterangepicker.js',
-            '/plugins/moment.min.js',
-            '/plugins/adminLTE.js']
-    },
     subscriptions: function() {
         return Meteor.subscribe('truckAgendaAll');
     },
@@ -331,7 +194,7 @@ Router.route('/truckAgenda', {
         if (this.ready()) {
             this.render();
         } else {
-            this.render('loading');
+            this.render('lemeatLoading');
         }
     }
 });
@@ -339,58 +202,30 @@ Router.route('/truckAgenda', {
 Router.route('/truckImages', {
     name: 'truckImages',
     layoutTemplate: 'appLayout',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css',
-            '/styles/skin-lemeat.css'
-        ],
-        'sync':[
-            '/plugins/bootstrap.min.js',
-            '/plugins/adminLTE.js'
-        ]
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        } else {
+            this.render('lemeatLoading');
+        }
     }
 });
 
 Router.route('/truckMap', {
     name: 'truckMap',
     layoutTemplate: 'appLayout',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css',
-            '/styles/skin-lemeat.css',
-            '/styles/daterangepicker-bs3.css'],
-        'sync':[
-            '/plugins/bootstrap.min.js',
-            '/plugins/daterangepicker.js',
-            '/plugins/moment.min.js',
-            '/plugins/adminLTE.js']
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        } else {
+            this.render('lemeatLoading');
+        }
     }
 });
 
 Router.route('/truckEvents', {
     name: 'truckEvents',
     layoutTemplate: 'appLayout',
-    controller: PreloadController,
-    'preload':{
-        'styles':[
-            '/styles/bootstrap.min.css',
-            '/styles/AdminLTE.css',
-            '/styles/skin-lemeat.css',
-            '/styles/daterangepicker-bs3.css',
-            '/styles/select2.min.css'
-        ],
-        'sync':[
-            '/plugins/select2.min.js',
-            '/plugins/bootstrap.min.js',
-            '/plugins/daterangepicker.js',
-            '/plugins/moment.min.js',
-            '/plugins/adminLTE.js'
-        ]
-    },
     subscriptions: function() {
         return Meteor.subscribe('truckEventsAll');
     },
@@ -398,7 +233,7 @@ Router.route('/truckEvents', {
         if (this.ready()) {
             this.render();
         } else {
-            this.render('loading');
+            this.render('lemeatLoading');
         }
     }
 });

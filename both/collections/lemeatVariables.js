@@ -82,7 +82,9 @@ tagsLemeat = [
             {id: "sem gluten", text: "sem gluten"},
             {id: "comida ogra", text: "comida ogra"},
             {id: "infartinho", text: "infartinho"},
-            {id: "vegan", text: "vegan"}
+            {id: "vegan", text: "vegan"},
+            {id: "artesanal", text: "artesanal"},
+            {id: "caseiro", text: "caseiro"}
         ]}
 ];
 eventTypes = [

@@ -1,3 +1,9 @@
+Template.siteLayout.onCreated(function(){
+    require('/imports/styles/materialize.css');
+    require('/imports/plugins/picker.js');
+    require('/imports/plugins/materialize.js');
+});
+
 Template.siteLayout.onRendered(function(){
     //Ativating lateral menu
     $('.button-collapse').sideNav();

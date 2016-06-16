@@ -1,3 +1,10 @@
+Template.register.onCreated(function(){
+    require('/imports/styles/bootstrap.css');
+    require('/imports/styles/AdminLTE.css');
+    require('/imports/plugins/bootstrap.js');
+    require('/imports/plugins/adminLTE.js');
+});
+
 Template.register.events({
     'submit form':function(event){
         event.preventDefault();

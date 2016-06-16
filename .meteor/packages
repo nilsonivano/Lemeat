@@ -3,19 +3,14 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-less
 accounts-password
-dburles:collection-helpers
 momentjs:moment
 underscorestring:underscore.string
-matb33:collection-hooks
 iron:router@1.0.0
 yasinuslu:blaze-meta
-aldeed:collection2
 aldeed:autoform
 accounts-base
 accounts-ui
-meteortoys:allthings
 okgrow:image-upload
 cfs:standard-packages
 meteor-base
@@ -23,8 +18,6 @@ mobile-experience
 mongo
 blaze-html-templates
 session
-jquery
-tracker
 logging
 reload
 random
@@ -33,7 +26,6 @@ spacebars
 check
 chrismbeckett:toastr
 dburles:google-maps
-miro:preloader
 fortawesome:fontawesome
 sergeyt:typeahead
 mdg:geolocation
@@ -45,7 +37,6 @@ email
 meteorhacks:kadira-profiler
 okgrow:analytics
 houston:admin
-dburles:mongo-collection-instances
 lookback:seo
 meteorhacks:fast-render
 nimble:restivus@=0.8.5
@@ -53,3 +44,8 @@ kadira:debug
 percolate:synced-cron
 standard-minifier-css
 standard-minifier-js
+meteortoys:allthings
+aldeed:collection2
+tracker
+ecmascript
+miro:preloader

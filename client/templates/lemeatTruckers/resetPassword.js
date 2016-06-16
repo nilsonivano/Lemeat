@@ -1,3 +1,10 @@
+Template.resetPassword.onCreated(function(){
+    require('/imports/styles/bootstrap.css');
+    require('/imports/styles/AdminLTE.css');
+    require('/imports/plugins/bootstrap.js');
+    require('/imports/plugins/adminLTE.js');
+});
+
 Template.resetPassword.onRendered(function(){
    Session.set('resetToken', Router.current().params.token);
 });

@@ -1,3 +1,7 @@
+Template.truckProfile.onCreated(function(){
+    require('/imports/plugins/readmore.js');
+});
+
 Template.truckProfile.onRendered(function(){
     GoogleMaps.ready('map', function(map){
         var truckId = Router.current().params.truckId;
@@ -18,9 +22,6 @@ Template.truckProfile.onRendered(function(){
         lessLink: '<a href="#">Menos</a>',
         collapsedHeight: 150
     });
-});
-
-Template.truckProfile.onCreated(function(){
 });
 
 Template.truckProfile.helpers({
