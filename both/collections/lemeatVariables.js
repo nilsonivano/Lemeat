@@ -2,8 +2,6 @@
  * Created by nilsonivano on 09/02/16.
  */
 
-
-
 //Tags Lemeat
 tagsLemeat = [
     {text: "Tipo de comida",
@@ -75,6 +73,7 @@ tagsLemeat = [
             {id: "comida chinesa", text: "comida chinesa"},
             {id: "comida argentina", text: "comida argentina"},
             {id: "comida mediterrânea", text: "comida mediterrânea"},
+            {id: "comida contemporânea", text: "comida contemporânea"}
         ]},
     {text: "Tipo de comida",
         children: [

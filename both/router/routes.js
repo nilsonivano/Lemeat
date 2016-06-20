@@ -1,3 +1,4 @@
+
 //SEO Configs
 if(Meteor.isClient){
     Router.plugin('seo',
@@ -40,7 +41,7 @@ Router.route('/', {
     },
     action: function () {
         if (this.ready()) {
-            this.render();
+            this.render()
         } else {
             this.render('lemeatLoading');
         }
@@ -133,7 +134,9 @@ Router.route('/city/:mainCity/tags/:tags', {
     },
     action: function () {
         if (this.ready()) {
-            this.render();
+            this.render('lemeatLoading');
+            Meteor.setTimeout(this.render(), 5000);
+            ;
         } else {
             this.render('lemeatLoading');
         }

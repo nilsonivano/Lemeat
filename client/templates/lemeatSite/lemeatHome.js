@@ -22,17 +22,6 @@ Template.lemeatHome.onRendered(function(){
 });
 
 Template.lemeatHome.helpers({
-    mapOptions: function() {
-        if (GoogleMaps.loaded() && Geolocation.latLng()) {
-            var userLocation = Geolocation.latLng();
-            var lat = userLocation.lat;
-            var lng = userLocation.lng;
-            return {
-                center: new google.maps.LatLng(lat,lng),
-                zoom: 14
-            };
-        }
-    },
     cardInfoOrderedByDistance: function(){
         if(Geolocation.latLng()){
             var agendaDistance = new Mongo.Collection(null);
@@ -94,6 +83,23 @@ Template.lemeatHome.helpers({
                 }
             }
             return orderedResults
+        } else {
+            var trucks = Meteor.users.find().fetch();
+            var orderedResults = [];
+            while(orderedResults.length < 9){
+                var randomTruck = Random.choice(trucks);
+                var randomTruckProfile = randomTruck.profile;
+                randomTruckProfile.addedBy = randomTruck._id;
+                var countFound = 0;
+                for(i in orderedResults){
+                    if(orderedResults[i].name == randomTruckProfile.name){
+                        countFound++;
+                    }
+                }
+                if(countFound == 0 && randomTruckProfile.img){
+                    orderedResults.push(randomTruckProfile);
+                }
+            }
         }
     }
 });

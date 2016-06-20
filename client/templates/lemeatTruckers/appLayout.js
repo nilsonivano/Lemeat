@@ -11,7 +11,6 @@ Template.appLayout.onCreated(function(){
     require('/imports/styles/dataTables.bootstrap.css');
     require('/imports/styles/jquery.dataTables.min.css');
     require('/imports/plugins/jquery.dataTables.min.js');
-    //require('/imports/plugins/dataTables.bootstrap.min.js');
 });
 
 Template.appLayout.events({
