@@ -1,6 +1,7 @@
 Template.lemeatHome.onRendered(function(){
     //Ativating Parallax
     $('.parallax').parallax();
+    Session.set('userLocAccuracy', 100000);
 
     //Populating Map
     GoogleMaps.ready('map', function(){
@@ -22,8 +23,24 @@ Template.lemeatHome.onRendered(function(){
 });
 
 Template.lemeatHome.helpers({
+    mapOptions: function() {
+        if (GoogleMaps.loaded() && Geolocation.latLng()) {
+            var userLocation = Geolocation.latLng();
+            var lat = userLocation.lat;
+            var lng = userLocation.lng;
+            return {
+                center: new google.maps.LatLng(lat,lng),
+                zoom: 14
+            };
+        }
+    },
     cardInfoOrderedByDistance: function(){
-        if(Geolocation.latLng()){
+        var userLoc = Geolocation.currentLocation();
+        var userLocAccuracy = userLoc.coords.accuracy;
+        var userLocAccuracyOld = Session.get('userLocAccuracy');
+        var userLocAccuracyDif = Math.abs(userLocAccuracy - userLocAccuracyOld);
+        console.log(userLocAccuracyDif);
+        if(userLoc && userLocAccuracyDif >= 10){
             var agendaDistance = new Mongo.Collection(null);
             var orderedResults = [];
             var currentTime = new Date();
@@ -82,6 +99,7 @@ Template.lemeatHome.helpers({
                     orderedResults.push(randomTruckProfile);
                 }
             }
+            Session.set('userLocAccuracy',userLocAccuracy);
             return orderedResults
         } else {
             var trucks = Meteor.users.find().fetch();
@@ -100,6 +118,8 @@ Template.lemeatHome.helpers({
                     orderedResults.push(randomTruckProfile);
                 }
             }
+            Session.set('userLocAccuracy',userLocAccuracy);
+            return orderedResults
         }
     }
 });

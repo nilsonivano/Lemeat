@@ -8,8 +8,8 @@ Template.truckAgenda.onRendered(function(){
     $('#agendaDate').daterangepicker({
         singleDatePicker: true,
         format: 'MM/DD/YYYY'});
-    $("#example1").DataTable();
-    this.autorun(function () {
+    $("#agendaTable").DataTable();
+    Tracker.autorun(function(){
         if (GoogleMaps.loaded()) {
             $("#agendaAddress").geocomplete();
         }
