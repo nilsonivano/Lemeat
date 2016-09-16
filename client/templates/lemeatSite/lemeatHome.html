@@ -129,16 +129,6 @@
                     <input id="eventDateEnd" type="date" class="datepicker">
                     <label for="date">Data de fim</label>
                 </div>
-                <!--<div class="input-field col s6 l3">-->
-                    <!--<i class="material-icons prefix">schedule</i>-->
-                    <!--<input placeholder="Horário de Início" id="eventTimeStart" type="time">-->
-                    <!--<label for="time" class="active">Horário de Início</label>-->
-                <!--</div>-->
-                <!--<div class="input-field col s6 l3">-->
-                    <!--<i class="material-icons prefix">schedule</i>-->
-                    <!--<input placeholder="" id="eventTimeEnd" type="time">-->
-                    <!--<label for="time" class="active">Horário de Fim</label>-->
-                <!--</div>-->
                 <div class="input-field col s6">
                     <i class="material-icons prefix">store</i>
                     <input id="eventAddress" type="text" class="validate">
@@ -178,6 +168,7 @@
         <div class="card small hoverable">
             <div class="card-image">
                 <img src="{{img}}">
+                <div class="bottomContent"></div>
                 <span class="card-title">{{name}}</span>
                 <span class="card-subtitle">{{speciality}}</span>
                 {{#if userDistance}}
