@@ -37,7 +37,7 @@ Router.route('/', {
     fastRender: true,
     subscriptions: function() {
         return (Meteor.subscribe('siteTruckProfileAll'),
-                Meteor.subscribe('truckAgendaAll'));
+                Meteor.subscribe('truckAgendaFromNow'));
     },
     action: function () {
         if (this.ready()) {
@@ -55,7 +55,7 @@ Router.route('/home', {
     fastRender: false,
     subscriptions: function() {
         return (Meteor.subscribe('siteTruckProfileAll'),
-            Meteor.subscribe('truckAgendaAll'));
+            Meteor.subscribe('truckAgendaFromNow'));
     },
     action: function () {
         if (this.ready()) {
@@ -93,7 +93,7 @@ Router.route('/tags/:tags', {
     subscriptions: function() {
         var tags = Router.current().params.tags;
         return (Meteor.subscribe('tagSearchTruck',tags),
-                Meteor.subscribe('truckAgendaAll'));
+                Meteor.subscribe('truckAgendaFromNow'));
     },
     action: function () {
         if (this.ready()) {
@@ -111,7 +111,7 @@ Router.route('/city/:mainCity', {
     subscriptions: function() {
         var mainCity = Router.current().params.mainCity;
         return (Meteor.subscribe('citySearchTruck',mainCity),
-                Meteor.subscribe('truckAgendaAll'));
+                Meteor.subscribe('truckAgendaFromNow'));
     },
     action: function () {
         if (this.ready()) {
@@ -130,7 +130,7 @@ Router.route('/city/:mainCity/tags/:tags', {
         var mainCity = Router.current().params.mainCity;
         var tags = Router.current().params.tags;
         return (Meteor.subscribe('cityTagsSearchTruck',tags,mainCity),
-                Meteor.subscribe('truckAgendaAll'));
+                Meteor.subscribe('truckAgendaFromNow'));
     },
     action: function () {
         if (this.ready()) {

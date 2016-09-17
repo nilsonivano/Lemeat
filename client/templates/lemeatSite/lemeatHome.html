@@ -3,10 +3,12 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
-                <h1 class="header center white-text text-darken-5">Agora ficou mais fácil encontrar seu Food Truck favorito!
+                <h1 class="header center white-text text-darken-5">Agora ficou mais fácil encontrar seu Food Truck
+                    favorito!
                 </h1>
                 <div class="row center">
-                    <h5 class="header col s12 light">Aqui no Lemeat você encontra os Food Trucks mais próximos de você, conhece novos e fica sabendo de todos os eventos que acontecem por aí</h5>
+                    <h5 class="header col s12 light">Aqui no Lemeat você encontra os Food Trucks mais próximos de você,
+                        conhece novos e fica sabendo de todos os eventos que acontecem por aí</h5>
                 </div>
                 <br><br>
             </div>
@@ -24,7 +26,8 @@
                     <p class="light">
                         Criamos um espaço especial para que você possa divulgar sua agenda, suas informações
                         e receber oportunidades de eventos, festas, casamentos e muito mais.
-                        Cadastre-se no lemeat for Truckers <a href="/register" target="_blank">aqui</a> e faça parte desta comunidade.
+                        Cadastre-se no lemeat for Truckers <a href="/register" target="_blank">aqui</a> e faça parte
+                        desta comunidade.
                         Lembrando que é de graça!
                     </p>
                 </div>
@@ -36,7 +39,8 @@
                     </div>
                     <div class="center" style="font-size: 22px">Encontre facilmente os Food Trucks</div>
                     <p class="light">
-                        Aqui você encontra todos os Food Trucks mais próximos de você, em uma lista organizada e simples.
+                        Aqui você encontra todos os Food Trucks mais próximos de você, em uma lista organizada e
+                        simples.
                         Você fica sabendo da agenda atualizada e pode procurar Food Trucks por categoria
                     </p>
                 </div>
@@ -49,7 +53,8 @@
                     </div>
                     <div class="center" style="font-size: 22px">Precisa de um Food Truck em seu evento?</div>
                     <p class="light">
-                        Pelo Lemeat você pode enviar oportunidades e requisitar algum truck diretamente pela nossa plataforma.
+                        Pelo Lemeat você pode enviar oportunidades e requisitar algum truck diretamente pela nossa
+                        plataforma.
                         Basta escolher o Food Truck e enviar sua proposta.
                     </p>
                 </div>
@@ -67,9 +72,13 @@
             <div class="titleSectionHome">Conheça alguns de nossos Food Trucks</div>
             <!--   Food Truck Card Section   -->
             <div class="row">
-                {{#each cardInfoOrderedByDistance}}
-                    {{> truckCard}}
-                {{/each}}
+                {{#if cardInfoOrderedByDistance}}
+                    {{#each cardInfoOrderedByDistance}}
+                        {{> truckCard}}
+                    {{/each}}
+                {{ else }}
+                    {{> lemeatLoading}}
+                {{/if}}
             </div>
         </div>
     </div>
@@ -113,9 +122,9 @@
                 <div class="input-field col s12 l6">
                     <select id="eventType">
                         <option value="" disabled selected>Escolha o tipo de Oportunidade</option>
-                            {{#each eventTypes}}
+                        {{#each eventTypes}}
                             <option value="{{this}}">{{this}}</option>
-                            {{/each}}
+                        {{/each}}
                     </select>
                     <label>Tipo de Oportunidade</label>
                 </div>
@@ -145,14 +154,15 @@
                     <label for="textarea">Descrição da Oportunidade</label>
                 </div>
                 <div class="right-align">
-                    <button class="btn waves-effect waves-light brown" type="submit" name="action" id="eventSubmit">Enviar
+                    <button class="btn waves-effect waves-light brown" type="submit" name="action" id="eventSubmit">
+                        Enviar
                     </button>
                 </div>
             </div>
         </form>
     </div>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('select').material_select();
             $('.datepicker').pickadate({
                 selectMonths: true, // Creates a dropdown to control month
@@ -164,57 +174,57 @@
 
 <template name="truckCard">
     {{#if img}}
-    <div class="col s12 m6 l4">
-        <div class="card small hoverable">
-            <div class="card-image">
-                <img src="{{img}}">
-                <div class="bottomContent"></div>
-                <span class="card-title">{{name}}</span>
-                <span class="card-subtitle">{{speciality}}</span>
-                {{#if userDistance}}
-                    <span class="truckDistance">{{truncateDistance userDistance}} km</span>
-                {{/if}}
-                {{#if dateStart}}
-                    <span class="agendaDate">{{relativeTime dateStart}}</span>
-                {{/if}}
-            </div>
-            <div class="card-content">
-                <div class="truckDescription">{{description}}</div>
-            </div>
-            <div class="card-action" id="{{addedBy}}">
-                <a href="/truckProfile/{{addedBy}}">Mais detalhes</a>
-                {{#if statusOpen}}
-                    <a><span class="statusOpen green">Aberto agora</span></a>
-                {{/if}}
-            </div>
-        </div>
-    </div>
-        {{else}}
-    <div class="col s12 m6 l4">
-        <div class="card small hoverable">
-            <div class="card-image">
-                <img src="/images/noImage.png">
-                <span class="card-title">{{name}}</span>
-                <span class="card-subtitle">{{speciality}}</span>
-                {{#if userDistance}}
-                    <span class="truckDistance">{{truncateDistance userDistance}} km</span>
-                {{/if}}
-                {{#if dateStart}}
-                    <span class="agendaDate">{{relativeTime dateStart}}</span>
-                {{/if}}
-            </div>
-            <div class="card-content">
-                <div class="truckDescription">{{description}}</div>
-            </div>
-            <div class="card-action" id="{{addedBy}}">
-                <a href="/truckProfile/{{addedBy}}">Mais detalhes</a>
-                {{#if statusOpen}}
-                    <a><span class="statusOpen green">Aberto agora</span></a>
-                {{/if}}
+        <div class="col s12 m6 l4">
+            <div class="card small hoverable">
+                <div class="card-image">
+                    <img src="{{img}}">
+                    <div class="bottomContent"></div>
+                    <span class="card-title">{{name}}</span>
+                    <span class="card-subtitle">{{speciality}}</span>
+                    {{#if userDistance}}
+                        <span class="truckDistance">{{truncateDistance userDistance}} km</span>
+                    {{/if}}
+                    {{#if dateStart}}
+                        <span class="agendaDate">{{relativeTime dateStart}}</span>
+                    {{/if}}
+                </div>
+                <div class="card-content">
+                    <div class="truckDescription">{{description}}</div>
+                </div>
+                <div class="card-action" id="{{addedBy}}">
+                    <a href="/truckProfile/{{addedBy}}">Mais detalhes</a>
+                    {{#if statusOpen}}
+                        <a><span class="statusOpen green">Aberto agora</span></a>
+                    {{/if}}
+                </div>
             </div>
         </div>
-    </div>
-        {{/if}}
+    {{else}}
+        <div class="col s12 m6 l4">
+            <div class="card small hoverable">
+                <div class="card-image">
+                    <img src="/images/noImage.png">
+                    <span class="card-title">{{name}}</span>
+                    <span class="card-subtitle">{{speciality}}</span>
+                    {{#if userDistance}}
+                        <span class="truckDistance">{{truncateDistance userDistance}} km</span>
+                    {{/if}}
+                    {{#if dateStart}}
+                        <span class="agendaDate">{{relativeTime dateStart}}</span>
+                    {{/if}}
+                </div>
+                <div class="card-content">
+                    <div class="truckDescription">{{description}}</div>
+                </div>
+                <div class="card-action" id="{{addedBy}}">
+                    <a href="/truckProfile/{{addedBy}}">Mais detalhes</a>
+                    {{#if statusOpen}}
+                        <a><span class="statusOpen green">Aberto agora</span></a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
 </template>
 
 <template name="truckTags">
@@ -225,7 +235,9 @@
         <div class="col s12 l11">
             {{#each allCities}}
                 {{#if this}}
-                    <a href="/city/{{this}}"><div class="chip">{{this}}</div></a>
+                    <a href="/city/{{this}}">
+                        <div class="chip">{{this}}</div>
+                    </a>
                 {{/if}}
             {{/each}}
         </div>
@@ -237,7 +249,9 @@
         <div class="col s12 l11">
             {{#each allTags}}
                 {{#if this}}
-                    <a href="/tags/{{this}}"><div class="chip">{{this}}</div></a>
+                    <a href="/tags/{{this}}">
+                        <div class="chip">{{this}}</div>
+                    </a>
                 {{/if}}
             {{/each}}
         </div>

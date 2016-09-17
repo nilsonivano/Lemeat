@@ -10,11 +10,11 @@
             </div>
             <div class="row">
                 {{#if searchResults}}
-                {{#each searchResults}}
-                {{ > truckCard}}
-                {{ / each}}
+                    {{#each searchResults}}
+                    {{ > truckCard}}
+                    {{ / each}}
                 {{else}}
-                Não encontramos nenhum truck =(
+                {{> lemeatLoading}}
                 {{ /if}}
             </div>
         </div>

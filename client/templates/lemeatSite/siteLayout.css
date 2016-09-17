@@ -53,6 +53,21 @@ footer.page-footer {
     margin: 0px !important;
 }
 
+.twitter-typeahead{
+    width: 100% !important;
+}
+
+@media only screen and (max-width : 400px) {
+    .truckSearchPanel{
+        width: 200px;
+        margin: 0px !important;
+    }
+    #searchPanel{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
 .fixed-action-btn.horizontal ul li{
     margin: 0px !important;
 }

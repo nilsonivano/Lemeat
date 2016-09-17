@@ -2,6 +2,11 @@ Meteor.publish('truckAgendaAll', function(){
     return truckAgenda.find()
 });
 
+Meteor.publish('truckAgendaFromNow',function(){
+    var currentTime = new Date();
+    return truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}});
+});
+
 Meteor.publish('siteTruckProfileAll', function(){
     return Meteor.users.find({},{fields: {profile: 1}})
 });
@@ -48,9 +53,4 @@ Meteor.publish('cityTagsSearchTruck', function(tags, mainCity) {
     return Meteor.users.find(
             {"profile.mainCity": mainCity, "profile.tags": {$in: [tags]}},
             {fields: {profile: 1}})
-});
-
-Meteor.publish('truckAgendaFromNow',function(){
-    var currentTime = new Date();
-    return truckAgenda.find({dateEnd: {$gte :currentTime}}, {sort: {dateStart: 1}}).fetch();
 });
