@@ -1,3 +1,40 @@
+.headerText{
+    height: 100%;
+}
+
+.headerLemeat{
+    margin-top: 40px;
+    font-size: 4em;
+    line-height: 110%;
+    font-weight: 400;
+}
+
+.headerLemeatSub{
+    margin-top: 30px;
+    font-size: 2em;
+    font-weight: 200;
+    line-height: 100%;
+}
+
+@media screen and (max-width: 800px){
+    .headerLemeat{
+        margin-top: 20px;
+    }
+    .headerLemeatSub{
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .headerLemeat{
+        margin-top: 20px;
+        font-size: 3em;
+    }
+    .headerLemeatSub{
+        font-size: 1.2em;
+    }
+}
+
 .truckAgendaMap {
     margin-top: 10px;
     width: 100%;
