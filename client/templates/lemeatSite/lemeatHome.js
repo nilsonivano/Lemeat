@@ -5,20 +5,21 @@ Template.lemeatHome.onRendered(function () {
 
     //Populating Map
     GoogleMaps.ready('map', function () {
-        var currentTime = new Date();
-        var agendaFromNow = truckAgenda.find({dateEnd: {$gte: currentTime}}, {sort: {dateStart: 1}}).fetch();
+        var agendaFromNow = truckAgenda.find().fetch();
         var map = GoogleMaps.maps.map.instance;
         var markerImage = '/images/Lemeat_marker_40.png';
         placeMarkerTruckMap(agendaFromNow, map, markerImage);
-        var locationMarker = "/images/location.png";
-        var latNumber = Geolocation.latLng().lat;
-        var lngNumber = Geolocation.latLng().lng;
-        var locationLatLng = {lat: latNumber, lng: lngNumber};
-        var marker = new google.maps.Marker({
-            map: map,
-            position: locationLatLng,
-            icon: locationMarker
-        });
+        if (Geolocation.latLng()) {
+            var locationMarker = "/images/location.png";
+            var latNumber = Geolocation.latLng().lat;
+            var lngNumber = Geolocation.latLng().lng;
+            var locationLatLng = {lat: latNumber, lng: lngNumber};
+            var marker = new google.maps.Marker({
+                map: map,
+                position: locationLatLng,
+                icon: locationMarker
+            });
+        }
     });
 });
 
@@ -32,15 +33,20 @@ Template.lemeatHome.helpers({
                 center: new google.maps.LatLng(lat, lng),
                 zoom: 14
             };
+        } else {
+            return {
+                center: new google.maps.LatLng(-23.594861, -46.636279),
+                zoom: 14
+            }
         }
     },
     cardInfoOrderedByDistance: function () {
+        //if userLocation
         if (Geolocation.currentLocation()) {
             var userLoc = Geolocation.currentLocation();
             var userLocAccuracy = userLoc.coords.accuracy;
             var userLocAccuracyOld = Session.get('userLocAccuracy');
             var userLocAccuracyDif = Math.abs(userLocAccuracyOld - userLocAccuracy);
-            console.log(userLoc, userLocAccuracy, userLocAccuracyOld, userLocAccuracyDif);
             Session.set('userLocAccuracy', userLocAccuracy);
             if (userLocAccuracyDif > 100) {
                 var agendaDistance = new Mongo.Collection(null);
@@ -106,13 +112,71 @@ Template.lemeatHome.helpers({
                     }
                 }
                 Session.set('orderedResultsOld', orderedResults);
-                console.log('if' + orderedResults);
                 return orderedResults
-            } else{
+            } else {
                 var orderedResults = Session.get('orderedResultsOld');
-                console.log('else' + orderedResults);
                 return orderedResults
             }
+            //if no userLocation
+        } else {
+            var orderedResults = [];
+            var currentTime = new Date();
+            var agendaList = truckAgenda.find({}, {sort: {dateStart: 1}}).fetch();
+            var agendaDistance = new Mongo.Collection(null);
+            for (i = 0; i < agendaList.length; i++) {
+                var agendaLat = agendaList[i].lat;
+                var agendaLng = agendaList[i].lng;
+                var dateStart = new Date(agendaList[i].dateStart);
+                dateStart.setHours(0, 0, 0, 0);
+                agendaList[i].day = dateStart;
+                agendaDistance.insert(agendaList[i]);
+            }
+            var orderedList = agendaDistance.find({}, {sort: {day: 1}}).fetch();
+            for (i in orderedList) {
+                var user = Meteor.users.find({_id: orderedList[i].addedBy}, {field: {profile: 1}}).fetch();
+                var userId = user[0]._id;
+                var userIdInOrderedResults = orderedResults.filter(function (obj) {
+                    return obj.addedBy === userId;
+                })[0];
+                if (!userIdInOrderedResults) {
+                    var profile = user[0].profile;
+                    if (profile.description.length > 0 && profile.img.length > 0) {
+                        var orderedResultsItem = {};
+                        orderedResultsItem = profile;
+                        orderedResultsItem.dateStart = orderedList[i].dateStart;
+                        orderedResultsItem.dateEnd = orderedList[i].dateEnd;
+                        orderedResultsItem.address = orderedList[i].address;
+                        orderedResultsItem.addedBy = orderedList[i].addedBy;
+                        if (currentTime >= orderedResultsItem.dateStart && currentTime <= orderedResultsItem.dateEnd) {
+                            orderedResultsItem.statusOpen = true
+                        } else {
+                            orderedResultsItem.statusOpen = false
+                        }
+                        orderedResults.push(orderedResultsItem);
+                    }
+                }
+            }
+            var trucks = Meteor.users.find().fetch();
+            while (orderedResults.length < 9) {
+                var randomTruck = Random.choice(trucks);
+                var randomTruckProfile = randomTruck.profile;
+                randomTruckProfile.addedBy = randomTruck._id;
+                var countFound = 0;
+                for (i in orderedResults) {
+                    if (orderedResults[i].name == randomTruckProfile.name) {
+                        countFound++;
+                    }
+                }
+                var truckDescription = randomTruckProfile.description;
+                if (truckDescription) {
+                    var truckDescriptionLength = truckDescription.length;
+                    if (countFound == 0 && randomTruckProfile.img && truckDescriptionLength > 30) {
+                        orderedResults.push(randomTruckProfile);
+                    }
+                }
+            }
+            Session.set('orderedResultsOld', orderedResults);
+            return orderedResults
         }
     }
 });

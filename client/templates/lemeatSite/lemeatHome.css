@@ -12,7 +12,7 @@
 .headerLemeatSub{
     margin-top: 30px;
     font-size: 2em;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 100%;
 }
 
@@ -31,7 +31,7 @@
         font-size: 3em;
     }
     .headerLemeatSub{
-        font-size: 1.2em;
+        font-size: 1.5em;
     }
 }
 

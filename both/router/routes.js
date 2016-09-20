@@ -1,32 +1,31 @@
-
 //SEO Configs
-if(Meteor.isClient){
+if (Meteor.isClient) {
     Router.plugin('seo',
-    {
-        defaults: {
-            title: 'Lemeat - Tudo para seu Food Truck em um lugar só',
-            description: 'O Lemeat é uma solução completa para Food Trucks que querem divulgar suas agendas,' +
-            'organizar seus itinerários e receber oportunidades de eventos. Quer entrar em nosso mapa? Cadastre seu' +
-            'truck em nossa plataforma gratuita.',
-            image: 'http://lemeat.com/images/lemeat_launcher_icon.png',
-            meta: {
-                keywords: ['Lemeat', 'foodtrucks', 'foodtruck', 'comida', 'itinerante', 'mapa de foodtrucks', 'mapa',
-                'comida itinerante', 'food truck', 'food bike', 'Food Truck', 'comida itinerante']
-            },
-            twitter: {
-                card: 'Lemeat'
-            },
-            og: {
-                site_name: 'Lemeat - Tudo para Food Trucks',
+        {
+            defaults: {
                 title: 'Lemeat - Tudo para seu Food Truck em um lugar só',
                 description: 'O Lemeat é uma solução completa para Food Trucks que querem divulgar suas agendas,' +
                 'organizar seus itinerários e receber oportunidades de eventos. Quer entrar em nosso mapa? Cadastre seu' +
                 'truck em nossa plataforma gratuita.',
                 image: 'http://lemeat.com/images/lemeat_launcher_icon.png',
-                type: 'website'
+                meta: {
+                    keywords: ['Lemeat', 'foodtrucks', 'foodtruck', 'comida', 'itinerante', 'mapa de foodtrucks', 'mapa',
+                        'comida itinerante', 'food truck', 'food bike', 'Food Truck', 'comida itinerante']
+                },
+                twitter: {
+                    card: 'Lemeat'
+                },
+                og: {
+                    site_name: 'Lemeat - Tudo para Food Trucks',
+                    title: 'Lemeat - Tudo para seu Food Truck em um lugar só',
+                    description: 'O Lemeat é uma solução completa para Food Trucks que querem divulgar suas agendas,' +
+                    'organizar seus itinerários e receber oportunidades de eventos. Quer entrar em nosso mapa? Cadastre seu' +
+                    'truck em nossa plataforma gratuita.',
+                    image: 'http://lemeat.com/images/lemeat_launcher_icon.png',
+                    type: 'website'
+                }
             }
-        }
-    });
+        });
 }
 // Website routing
 
@@ -35,9 +34,9 @@ Router.route('/', {
     layoutTemplate: 'siteLayout',
     template: 'lemeatHome',
     fastRender: true,
-    subscriptions: function() {
+    subscriptions: function () {
         return (Meteor.subscribe('siteTruckProfileAll'),
-                Meteor.subscribe('truckAgendaFromNow'));
+            Meteor.subscribe('truckAgendaFromNow'));
     },
     action: function () {
         if (this.ready()) {
@@ -53,7 +52,7 @@ Router.route('/home', {
     layoutTemplate: 'siteLayout',
     template: 'lemeatHome',
     fastRender: false,
-    subscriptions: function() {
+    subscriptions: function () {
         return (Meteor.subscribe('siteTruckProfileAll'),
             Meteor.subscribe('truckAgendaFromNow'));
     },
@@ -70,11 +69,11 @@ Router.route('/truckProfile/:truckId', {
     name: 'truckProfile',
     layoutTemplate: 'siteLayout',
     fastRender: true,
-    subscriptions: function() {
+    subscriptions: function () {
         var truckId = Router.current().params.truckId;
-        return (Meteor.subscribe('siteTruckProfileImg',truckId),
+        return (Meteor.subscribe('siteTruckProfileImg', truckId),
                 Meteor.subscribe('truckProfile', truckId),
-                Meteor.subscribe('truckAgenda',truckId)
+                Meteor.subscribe('truckAgenda', truckId)
         );
     },
     action: function () {
@@ -90,10 +89,10 @@ Router.route('/tags/:tags', {
     name: 'lemeatSearchTags',
     template: 'lemeatSearch',
     layoutTemplate: 'siteLayout',
-    subscriptions: function() {
+    subscriptions: function () {
         var tags = Router.current().params.tags;
-        return (Meteor.subscribe('tagSearchTruck',tags),
-                Meteor.subscribe('truckAgendaFromNow'));
+        return (Meteor.subscribe('tagSearchTruck', tags),
+            Meteor.subscribe('truckAgendaFromNow'));
     },
     action: function () {
         if (this.ready()) {
@@ -108,10 +107,10 @@ Router.route('/city/:mainCity', {
     name: 'lemeatSearchCity',
     template: 'lemeatSearch',
     layoutTemplate: 'siteLayout',
-    subscriptions: function() {
+    subscriptions: function () {
         var mainCity = Router.current().params.mainCity;
-        return (Meteor.subscribe('citySearchTruck',mainCity),
-                Meteor.subscribe('truckAgendaFromNow'));
+        return (Meteor.subscribe('citySearchTruck', mainCity),
+            Meteor.subscribe('truckAgendaFromNow'));
     },
     action: function () {
         if (this.ready()) {
@@ -126,11 +125,11 @@ Router.route('/city/:mainCity/tags/:tags', {
     name: 'lemeatSearchCityTags',
     template: 'lemeatSearch',
     layoutTemplate: 'siteLayout',
-    subscriptions: function() {
+    subscriptions: function () {
         var mainCity = Router.current().params.mainCity;
         var tags = Router.current().params.tags;
-        return (Meteor.subscribe('cityTagsSearchTruck',tags,mainCity),
-                Meteor.subscribe('truckAgendaFromNow'));
+        return (Meteor.subscribe('cityTagsSearchTruck', tags, mainCity),
+            Meteor.subscribe('truckAgendaFromNow'));
     },
     action: function () {
         if (this.ready()) {
@@ -175,8 +174,8 @@ Router.route('/userProfile', {
 Router.route('/truckInformation', {
     name: 'truckInformation',
     layoutTemplate: 'appLayout',
-    subscriptions: function() {
-    return Meteor.subscribe('truckCardImg');
+    subscriptions: function () {
+        return Meteor.subscribe('truckCardImg');
     },
     action: function () {
         if (this.ready()) {
@@ -190,7 +189,7 @@ Router.route('/truckInformation', {
 Router.route('/truckAgenda', {
     name: 'truckAgenda',
     layoutTemplate: 'appLayout',
-    subscriptions: function() {
+    subscriptions: function () {
         return Meteor.subscribe('truckAgendaAll');
     },
     action: function () {
@@ -229,7 +228,7 @@ Router.route('/truckMap', {
 Router.route('/truckEvents', {
     name: 'truckEvents',
     layoutTemplate: 'appLayout',
-    subscriptions: function() {
+    subscriptions: function () {
         return Meteor.subscribe('truckEventsAll');
     },
     action: function () {
