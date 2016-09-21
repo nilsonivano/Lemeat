@@ -56,12 +56,17 @@ placeMarkerTruckMap = function(markersArray,map,markerImage){
                 var agendaTimeEnd = moment(agendaEnd).format('LT');
                 var agendaAddress = results.address;
                 var truckName = results.truckName;
+                var truckId = results._id;
+                var truckProfileAddress = 'http://lemeat.com/truckProfile/' + truckId;
                 var contentString =
-                    '<div>' + '<img class="" style="max-width:150px; max-height:150px; margin-bottom:5px; display:block; margin-left: auto; margin-right: auto" src=' + '"' + imgUrl + '"' + '>' + '</div>' +
+                    '<div style="height: 100%;width: 100%">' +
+                    '<div>' + '<img class="rounded" style="max-width:100px; max-height:100px; margin-bottom:5px; display:block; margin-left: auto; margin-right: auto" src=' + '"' + imgUrl + '"' + '>' + '</div>' +
                     '<div>' + '<b>Nome do Truck: </b>' + truckName + '</div>' +
                     '<div style="max-width: 250px">' + '<b>Endereço: </b>' + agendaAddress + '</div>' +
                     '<div>' + '<b>Data: </b>' + agendaDay + '<div>' +
-                    '<div>' + '<b>Horário: </b>' + agendaTimeStart + ' às ' + agendaTimeEnd + '<div>' ;
+                    '<div>' + '<b>Horário: </b>' + agendaTimeStart + ' às ' + agendaTimeEnd + '<div>' +
+                    '<div><a href="' + truckProfileAddress + '" target="_blank">Visualizar Perfil</a></div>'
+                    + '<div>';
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
