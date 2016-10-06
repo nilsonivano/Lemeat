@@ -4,7 +4,17 @@ var Api = new Restivus({
     prettyJson: true
 });
 
-Api.addCollection(truckAgenda);
+Api.addRoute('truckAgenda',{
+    get: {
+        authRequired: false,
+        action: function () {
+            //Get Agendas
+            var currentTime = new Date();
+            var agenda = truckAgenda.find({dateEnd: {$gte: currentTime}}, {sort: {dateStart: 1}}).fetch();
+            return agenda
+        }
+    }
+});
 
 Api.addCollection(Meteor.users, {
     excludedEndpoints: ['getAll', 'put'],
@@ -68,7 +78,7 @@ Api.addRoute('truckList', {
     }
 });
 
-//Truck detailed information /truck/{id}
+//Truck detailed information /truckInfo/{id}
 Api.addRoute('truckInfo', {
     get: {
         authRequired: false,
@@ -76,6 +86,13 @@ Api.addRoute('truckInfo', {
             var query = this.queryParams;
             var id = query.id;
             var results = Meteor.users.find({_id: id}, {fields: {'profile': 1}}).fetch();
+            //Get Agendas
+            var currentTime = new Date();
+            var agenda = truckAgenda.find({addedBy: id, dateEnd: {$gte: currentTime}}, {sort: {dateStart: 1}}).fetch();
+            results[0].agenda = agenda;
+            //Get Images
+            var images = truckImg.find({addedBy: id}).fetch();
+            results[0].images = images;
             return results
         }
     }
