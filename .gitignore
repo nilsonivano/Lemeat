@@ -1,6 +1,6 @@
 .DS_Store
 .idea/
-.meteor
-node_modules
+.meteor/
+node_modules/
 settings.json
 mup.json
